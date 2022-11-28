@@ -3,4 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="sound">Sound:</string>
+    <string name="vibration">Vibration:</string>
+    <string name="connection">Connect to device:</string>
 </resources>

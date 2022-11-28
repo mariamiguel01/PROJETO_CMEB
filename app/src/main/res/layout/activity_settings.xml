@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:padding="30dip"
+    android:gravity="center"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:switchMinWidth="56dp"
+        android:text="@string/sound"
+        android:textColor="@color/dark_green"
+        android:textSize="25sp"
+        android:textOff="OFF"
+        android:textOn="ON"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@+id/switch1"
+        android:switchMinWidth="56dp"
+        android:text="@string/vibration"
+        android:textColor="@color/dark_green"
+        android:textSize="25sp"
+        android:textOff="OFF"
+        android:textOn="ON"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@+id/switch2"
+        android:switchMinWidth="56dp"
+        android:text="@string/connection"
+        android:textColor="@color/dark_green"
+        android:textSize="25sp"
+        android:textOff="OFF"
+        android:textOn="ON"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+</LinearLayout>
