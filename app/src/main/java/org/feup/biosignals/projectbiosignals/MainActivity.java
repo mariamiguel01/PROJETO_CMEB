@@ -1,6 +1,8 @@
 package org.feup.biosignals.projectbiosignals;
 
+import android.bluetooth.BluetoothAdapter;
 import android.os.Bundle;
+import android.bluetooth.BluetoothDevice;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -33,6 +35,49 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
-public abstract class Context extends Object { }
+    public final class BluetoothManager<bluetoothAdapter> extends Object {
+        BluetoothManager bluetoothManager = getSystemService(BluetoothManager.class);
+        BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
+
+        if (bluetoothAdapter == null) {
+            // Device doesn't support Bluetooth
+        }
+        if (!bluetoothAdapter.isEnabled()) {
+            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+        }
+
+    }
+    // Find BLE devices
+    public int startScan (List<ScanFilter> filters,
+                          ScanSettings settings,
+                          PendingIntent callbackIntent)
+
+
+    private BluetoothLeScanner bluetoothLeScanner = bluetoothAdapter.getBluetoothLeScanner();
+    private boolean scanning;
+    private Handler handler = new Handler();
+
+    // Stops scanning after 10 seconds.
+    private static final long SCAN_PERIOD = 10000;
+
+    private void scanLeDevice() {
+        if (!scanning) {
+            // Stops scanning after a predefined scan period.
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    scanning = false;
+                    bluetoothLeScanner.stopScan(leScanCallback);
+                }
+            }, SCAN_PERIOD);
+
+            scanning = true;
+            bluetoothLeScanner.startScan(leScanCallback);
+        } else {
+            scanning = false;
+            bluetoothLeScanner.stopScan(leScanCallback);
+        }
+    }
 
 }
