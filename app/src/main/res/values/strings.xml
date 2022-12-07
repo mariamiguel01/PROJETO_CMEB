@@ -10,4 +10,29 @@
     <string name="vibration">Vibration:</string>
     <string name="connection">Connect to device:</string>
     <string name="welcome">"Hi! Let's see how you are doing!"</string>
+    <string name="news_title1">Here is more evidence sitting too much can kill you</string>
+    <string name="news_subtitle1">Sitting more than six hour a day during your free time raises the risk of early death by 19 percent.</string>
+    <string name="news_message1">There’s more evidence that sitting in your free time can kill you.
+        People who sat the most were more likely to die from 14 different diseases, the new survey from the American Cancer Society finds.
+        The survey of more than 125,000 adults found that those who sat six or more hours a day were 19 percent more likely to die over the next 21 years than those who spent less time on the couch or at a desk after the workday is over.
+        “Risk was significantly higher for 14 of the 22 specific causes of death examined, and importantly, for eight of the top 10 leading causes of death in the U.S.,” the American Cancer Society’s Alpa Patel and colleagues wrote in their report, published in the American Journal of Epidemiology.
+        It’s not the first study to show that sitting too much can be deadly. But it’s a long-term study of many people, and broke down the causes of death in detail.
+        The 14 causes of death that were more likely the longer people sat: cancer, coronary heart disease, stroke, diabetes, kidney disease, suicide, COPD (such as emphysema), pneumonitis due to inhaling something, liver disease, peptic ulcer and other digestive disease, Parkinson’s disease, Alzheimer’s, nervous disorders and musculoskeletal disorders.
+        The researchers used data from a larger, ongoing survey of people. They were asked: "During the past year, on an average day (not counting time spent at your job), how many hours per day did you spend sitting (watching television, reading, etc.)?”
+        Over the next 21 years, more than 48,000 of the people who answered the survey died.
+        Other studies have shown that Americans spend an average of six to eight hours sitting in their free time. This survey supports that, said Dr. Neha Pagidipati, a cardiologist at Duke University who was not involved in the study.
+        “It's something that we all do whether we are sitting and watching TV, resting, reading or working at our computer — and it's important to know what health risks could be associated with sitting for that long in the day,” she said.
+        And the higher risk of death held even when people said they were trying to exercise.
+        “Even if you're doing your recommended 30 minutes of moderate to vigorous physical activity every day of the week, there still can be a risk associated with sitting for the rest of the day,” Pagidipati said.</string>
+    <string name="news_subtitle2">A little exercise is better than none</string>
+    <string name="news_message2">“We should be moving as much as possible. Get as much physical activity as you can and do not be discouraged if you ca not get the exact amount that the guidelines recommend,” Pagidipati said.
+        Federal guidelines say Americans should do 2.5 hours a week of moderate exercise such as brisk walking or 75 minutes a week of running or similarly high-intensity exercise.
+        It’s not clear how much is enough to offset a sedentary life. But other studies have shown even a little exercise is better than none.
+        “We do not have enough evidence yet to say exactly what the guidelines should be and that is why there are no U.S. guidelines yet on how much people should sit versus move around,” Pagidipati said. “But what we can say with relative confidence is that people are sitting too much and we should sit less and move more.”
+        There are several possible explanations for how sitting can be linked with shorter lives. One is obvious.
+        “Time spent sitting displaces time spent in physical activity and is associated with lower total physical activity levels,” the researchers wrote.
+        “Alternatively, it is possible that time spent sitting, especially when engaged in specific activities such as television viewing, is associated with other unhealthy behaviors, such as excess snacking. This could explain why associations with time spent watching television are generally stronger in magnitude than those for leisure-time spent sitting.”
+        Sitting also affects the metabolism, interfering with healthy cholesterol and blood sugar levels.
+        As for suicide, it’s possible people who are clinically depressed may be more likely to spend time sitting. And a lack of energy and sitting may be early warning signs of diseases such as Alzheimer’s and Parkinson’s.</string>
+    <string name="news_title2">News 2</string>
 </resources>
