@@ -24,5 +24,4 @@
         android:icon="@drawable/ic_outline_notifications_active_24"
         android:title="@string/title_alerts" />
 
-
 </menu>
