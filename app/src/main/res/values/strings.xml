@@ -9,4 +9,5 @@
     <string name="sound">Sound:</string>
     <string name="vibration">Vibration:</string>
     <string name="connection">Connect to device:</string>
+    <string name="welcome">"Hi! Let's see how you are doing!"</string>
 </resources>
