@@ -12,16 +12,17 @@
         android:title="@string/title_stats" />
 
     <item
-        android:id="@+id/navigation_exercises"
-        android:icon="@drawable/ic_outline_accessibility_new_24"
-        android:title="@string/title_exercises" />
-    <item
-        android:id="@+id/navigation_news"
+        android:id="@+id/navigation_news_exercises"
         android:icon="@drawable/ic_baseline_newspaper_24"
-        android:title="@string/title_news" />
+        android:title="@string/title_news_exercises" />
+
     <item
         android:id="@+id/navigation_alerts"
         android:icon="@drawable/ic_outline_notifications_active_24"
         android:title="@string/title_alerts" />
 
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="@string/title_settings" />
 </menu>
