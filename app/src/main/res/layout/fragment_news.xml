@@ -1,57 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
 
-    <LinearLayout
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:padding="30dip"
+    android:gravity="center"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:text="@string/title_news_exerc"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="25dip"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/bt1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginEnd="5dp"
+        android:onClick="plotECG"
+        android:text="@string/news_title1"/>
 
-        <TextView
-            android:id="@+id/article_heading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/news_title1"
-            android:textSize="20sp"
-            android:textAppearance=
-                "@android:style/TextAppearance.DeviceDefault" />
-        <TextView
-            android:id="@+id/article_subheading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/news_subtitle1"
-            android:textAppearance=
-                "@android:style/TextAppearance.DeviceDefault" />
+    <Button
+        android:id="@+id/bt2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:onClick="plotECG"
+        android:text="@string/news_title2" />
 
-        <TextView
-            android:id="@+id/message1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autoLink="web"
-            android:padding="16dp"
-            android:text="@string/news_message1" />
-
-        <TextView
-            android:id="@+id/article_subheading2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/news_subtitle2"
-            android:textAppearance=
-                "@android:style/TextAppearance.DeviceDefault" />
-
-        <TextView
-            android:id="@+id/message2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autoLink="web"
-            android:padding="16dp"
-            android:text="@string/news_message2" />
-    </LinearLayout>
-
-</ScrollView>
-
+</LinearLayout>
