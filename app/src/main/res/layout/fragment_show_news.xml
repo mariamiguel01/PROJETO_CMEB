@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:autoLink="web"
             android:padding="16dp"
-            android:text="@string/news1_ref"
+            android:text="@string/news1_ref" />
     </LinearLayout>
 
 </ScrollView>
