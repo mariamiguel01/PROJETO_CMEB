@@ -11,6 +11,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/title_news_exercises"
         android:text="@string/title_news_exerc"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
