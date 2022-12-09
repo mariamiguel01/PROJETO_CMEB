@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="@string/news_title1"
+            android:text="@string/news_title2"
             android:textSize="20sp"
             android:textAppearance=
                 "@android:style/TextAppearance.DeviceDefault" />
@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="@string/news_subtitle1"
+            android:text="@string/news2_subtitle1"
             android:textAppearance=
                 "@android:style/TextAppearance.DeviceDefault" />
 
@@ -33,24 +33,8 @@
             android:layout_height="wrap_content"
             android:autoLink="web"
             android:padding="16dp"
-            android:text="@string/news_message1" />
+            android:text="@string/news2_message1" />
 
-        <TextView
-            android:id="@+id/article_subheading2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/news_subtitle2"
-            android:textAppearance=
-                "@android:style/TextAppearance.DeviceDefault" />
-
-        <TextView
-            android:id="@+id/message2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autoLink="web"
-            android:padding="16dp"
-            android:text="@string/news_message2" />
     </LinearLayout>
 
 </ScrollView>
