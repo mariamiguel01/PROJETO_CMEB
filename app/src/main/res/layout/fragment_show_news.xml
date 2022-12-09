@@ -51,6 +51,14 @@
             android:autoLink="web"
             android:padding="16dp"
             android:text="@string/news_message2" />
+
+        <TextView
+            android:id="@+id/news1_ref"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:padding="16dp"
+            android:text="@string/news1_ref"
     </LinearLayout>
 
 </ScrollView>
