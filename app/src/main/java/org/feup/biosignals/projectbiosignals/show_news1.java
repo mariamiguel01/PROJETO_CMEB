@@ -24,7 +24,7 @@ public class show_news1 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public show_news() {
+    public show_news1() {
         // Required empty public constructor
     }
 
