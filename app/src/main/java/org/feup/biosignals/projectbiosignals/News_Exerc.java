@@ -23,7 +23,7 @@ public class News_Exerc extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(News_Exerc.this,show_news.class);
+                Intent intent = new Intent(News_Exerc.this,show_news1.class);
                 startActivity(intent);
             }
         });
@@ -32,7 +32,7 @@ public class News_Exerc extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(News_Exerc.this,show_news.class);
+                Intent intent = new Intent(News_Exerc.this,show_news2.class);
                 startActivity(intent);
             }
         });
