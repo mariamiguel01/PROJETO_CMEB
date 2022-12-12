@@ -1,0 +1,1 @@
+package org.feup.biosignals.projectbiosignals.ui.exercises_news;

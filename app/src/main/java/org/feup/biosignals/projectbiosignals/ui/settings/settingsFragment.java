@@ -1,1 +1,1 @@
-package org.feup.biosignals.projectbiosignals.ui.stats;
+package org.feup.biosignals.projectbiosignals.ui.settings;
