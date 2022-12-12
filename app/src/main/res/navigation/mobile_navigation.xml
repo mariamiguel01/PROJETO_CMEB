@@ -18,13 +18,13 @@
         tools:layout="@layout/fragment_alerts" />
     <fragment
         android:id="@+id/navigation_news"
-        android:name="org.feup.biosignals.projectbiosignals.ui.exercises_news.newsFragment"
+        android:name="org.feup.biosignals.projectbiosignals.ui.exercises_news.NewsFragment"
         android:label="@string/title_news_exercises"
         tools:layout="@layout/fragment_news" />
 
     <fragment
         android:id="@+id/navigation_stats"
-        android:name="org.feup.biosignals.projectbiosignals.ui.stats.statsFragment"
+        android:name="org.feup.biosignals.projectbiosignals.ui.stats.StatsFragment"
         android:label="@string/title_stats"
         tools:layout="@layout/fragment_stats" />
     <fragment
