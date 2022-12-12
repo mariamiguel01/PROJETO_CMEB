@@ -8,8 +8,6 @@ import android.os.Handler;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import org.feup.biosignals.projectbiosignals.databinding.ActivityMainBinding;
-
 
 public class Home extends AppCompatActivity {
 
