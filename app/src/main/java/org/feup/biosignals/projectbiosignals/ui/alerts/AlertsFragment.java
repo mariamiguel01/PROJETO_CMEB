@@ -25,7 +25,7 @@ public class AlertsFragment extends Fragment {
         binding = FragmentAlertsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textalerts;
+        final TextView textView = binding.textNotifications;
         alertsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }

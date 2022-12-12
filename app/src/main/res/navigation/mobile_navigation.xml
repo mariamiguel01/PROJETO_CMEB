@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/navigation_news"
         android:name="org.feup.biosignals.projectbiosignals.ui.exercises_news.newsFragment"
-        android:label="News and Exercises"
+        android:label="@string/title_news_exercises"
         tools:layout="@layout/fragment_news" />
 
     <fragment
