@@ -9,8 +9,6 @@
     android:indeterminateTintMode="src_in"
     tools:context=".ui.exercises_news.newsFragment">
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
@@ -44,4 +42,21 @@
         android:onClick="plotECG"
         android:text="@string/news_title2" />
 
+    <TextView
+        android:id="@+id/title2_news_exercises"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="25dip"
+        android:text="@string/title2_news_exerc"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/bt3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:onClick="exercises"
+        android:text="@string/video" />
 </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

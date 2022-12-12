@@ -11,8 +11,10 @@
     <string name="connection">Connect to device:</string>
     <string name="welcome">"Hi! Let's see how you are doing!"</string>
     <string name="title_news_exerc">Choose the news you want to read:</string>
+    <string name="title2_news_exerc">Or maybe do some exercises</string>
     <string name="news_title1">Here is more evidence sitting too much can kill you</string>
     <string name="news_subtitle1">Sitting more than six hour a day during your free time raises the risk of early death by 19 percent.</string>
+    <string name="video">5 exercises to improve your posture</string>
     <string name="news_message1">There’s more evidence that sitting in your free time can kill you.
         People who sat the most were more likely to die from 14 different diseases, the new survey from the American Cancer Society finds.
         The survey of more than 125,000 adults found that those who sat six or more hours a day were 19 percent more likely to die over the next 21 years than those who spent less time on the couch or at a desk after the workday is over.
