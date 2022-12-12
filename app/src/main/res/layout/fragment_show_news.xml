@@ -17,6 +17,7 @@
             android:padding="16dp"
             android:text="@string/news_title1"
             android:textSize="20sp"
+            android:justificationMode="inter_word"
             android:textAppearance=
                 "@android:style/TextAppearance.DeviceDefault" />
         <TextView
@@ -25,6 +26,7 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="@string/news_subtitle1"
+            android:justificationMode="inter_word"
             android:textAppearance=
                 "@android:style/TextAppearance.DeviceDefault" />
 
@@ -44,7 +46,8 @@
             android:layout_height="wrap_content"
             android:autoLink="web"
             android:padding="16dp"
-            android:text="@string/news_message1" />
+            android:text="@string/news_message1"
+            android:justificationMode="inter_word" />
 
         <TextView
             android:id="@+id/article_subheading2"
@@ -52,6 +55,7 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="@string/news_subtitle2"
+            android:justificationMode="inter_word"
             android:textAppearance=
                 "@android:style/TextAppearance.DeviceDefault" />
 
@@ -61,7 +65,8 @@
             android:layout_height="wrap_content"
             android:autoLink="web"
             android:padding="16dp"
-            android:text="@string/news_message2" />
+            android:text="@string/news_message2"
+            android:justificationMode="inter_word" />
 
         <TextView
             android:id="@+id/news1_ref"
@@ -69,7 +74,8 @@
             android:layout_height="wrap_content"
             android:autoLink="web"
             android:padding="16dp"
-            android:text="@string/news1_ref" />
+            android:text="@string/news1_ref"
+            android:justificationMode="inter_word" />
     </LinearLayout>
 
 </ScrollView>
