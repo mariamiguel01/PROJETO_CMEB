@@ -13,23 +13,23 @@
 
     <fragment
         android:id="@+id/navigation_alerts"
-        android:name="org.feup.biosignals.projectbiosignals.ui.dashboard.DashboardFragment"
+        android:name="org.feup.biosignals.projectbiosignals.ui.exercises_news.DashboardFragment"
         android:label="@string/title_alerts"
         tools:layout="@layout/fragment_alerts" />
     <fragment
         android:id="@+id/navigation_news"
-        android:name="org.feup.biosignals.projectbiosignals.ui.dashboard.DashboardFragment"
+        android:name="org.feup.biosignals.projectbiosignals.ui.exercises_news.DashboardFragment"
         android:label="@string/title_news"
         tools:layout="@layout/fragment_news" />
     <fragment
         android:id="@+id/navigation_exercises"
-        android:name="org.feup.biosignals.projectbiosignals.ui.dashboard.DashboardFragment"
+        android:name="org.feup.biosignals.projectbiosignals.ui.exercises_news.DashboardFragment"
         android:label="@string/title_exercises"
         tools:layout="@layout/fragmented_exercises" />
 
     <fragment
         android:id="@+id/navigation_stats"
-        android:name="org.feup.biosignals.projectbiosignals.ui.notifications.NotificationsFragment"
+        android:name="org.feup.biosignals.projectbiosignals.ui.alerts.NotificationsFragment"
         android:label="@string/title_stats"
         tools:layout="@layout/fragment_stats" />
 </navigation>
