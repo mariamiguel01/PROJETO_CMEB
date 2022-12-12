@@ -25,7 +25,7 @@
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 
     <Switch
         android:id="@+id/switch1"
@@ -34,9 +34,9 @@
         android:switchMinWidth="56dp"
         android:text="@string/sound"
         android:textColor="@color/white"
-        android:textSize="25sp"
         android:textOff="OFF"
         android:textOn="ON"
+        android:textSize="25sp"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Switch
