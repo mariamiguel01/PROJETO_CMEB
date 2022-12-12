@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import org.feup.biosignals.projectbiosignals.databinding.FragmentSettingsBinding;
-import org.feup.biosignals.projectbiosignals.ui.settings.SettingsViewModel;
 
 public class SettingsFragment extends Fragment {
 
