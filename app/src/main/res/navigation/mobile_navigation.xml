@@ -31,5 +31,5 @@
         android:id="@+id/navigation_settings"
         android:name="org.feup.biosignals.projectbiosignals.ui.settings.settingsFragment"
         android:label="@string/title_stats"
-        tools:layout="@layout/activity_settings" />
+        tools:layout="@layout/fragment_settings" />
 </navigation>

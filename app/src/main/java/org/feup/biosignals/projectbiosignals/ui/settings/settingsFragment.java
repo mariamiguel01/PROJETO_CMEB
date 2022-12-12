@@ -1,1 +1,0 @@
-package org.feup.biosignals.projectbiosignals.ui.settings;
