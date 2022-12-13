@@ -8,15 +8,6 @@
     android:indeterminateTintMode="src_in"
     tools:context=".ui.exercises_news.NewsFragment">
 
-    <TextView
-        android:id="@+id/text_news"
-        android:text="See news and exercises"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:layout_gravity="center"
-        android:layout_marginBottom="25dip"
-        android:textSize="22sp" />
-
     <LinearLayout
         android:background="@color/white"
         android:layout_height="match_parent"
