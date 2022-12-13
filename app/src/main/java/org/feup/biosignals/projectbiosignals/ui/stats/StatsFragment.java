@@ -24,8 +24,6 @@ public class StatsFragment extends Fragment {
         binding = FragmentStatsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textStats;
-        settingsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
