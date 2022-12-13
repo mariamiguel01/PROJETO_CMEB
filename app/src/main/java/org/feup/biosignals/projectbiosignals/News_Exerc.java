@@ -36,5 +36,7 @@ public class News_Exerc extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
 }
