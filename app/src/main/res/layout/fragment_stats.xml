@@ -20,7 +20,7 @@
             android:layout_marginTop="25dp"/>
 
         <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/activity_main_piechart"
+            android:id="@+id/piechart"
             android:layout_width="250dp"
             android:layout_height="200dp"
             android:layout_weight="1"
@@ -29,14 +29,14 @@
             android:layout_marginTop="10dp"/>
 
         <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/barChart_view"
+            android:id="@+id/barchart"
             android:layout_width="250dp"
             android:layout_height="200dp"
             android:layout_weight="1"
             android:layout_gravity="center" />
 
         <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/activity_main_linechart"
+            android:id="@+id/linechart"
             android:layout_width="250dp"
             android:layout_height="200dp"
             android:layout_weight="1"
