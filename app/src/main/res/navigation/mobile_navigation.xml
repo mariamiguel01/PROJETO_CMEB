@@ -17,7 +17,7 @@
         android:label="@string/title_alerts"
         tools:layout="@layout/fragment_alerts" />
     <fragment
-        android:id="@+id/navigation_news"
+        android:id="@+id/navigation_news_exercises"
         android:name="org.feup.biosignals.projectbiosignals.ui.exercises_news.NewsFragment"
         android:label="@string/title_news_exercises"
         tools:layout="@layout/fragment_news" />
