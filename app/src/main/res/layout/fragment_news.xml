@@ -7,61 +7,58 @@
     android:gravity="center_horizontal"
     android:indeterminateTintMode="src_in"
     tools:context=".ui.exercises_news.NewsFragment">
-<LinearLayout
-
-    android:background="@color/white"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:padding="30dip"
-    android:gravity="center"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
 
     <TextView
         android:id="@+id/text_news"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"/>
-
-    <TextView
-        android:id="@+id/title_news_exercises"
-        android:text="@string/title_news_exerc"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:text="See news and exercises"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
         android:layout_gravity="center"
         android:layout_marginBottom="25dip"
         android:textSize="22sp" />
 
-    <Button
-        android:id="@+id/bt1"
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:onClick="plotECG"
-        android:text="@string/news_title1"/>
+        android:padding="30dip"
+        android:gravity="center"
+        tools:context=".MainActivity"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/bt2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:onClick="plotECG"
-        android:text="@string/news_title2" />
+        <TextView
+            android:id="@+id/title_news_exercises"
+            android:text="@string/title_news_exerc"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="25dip"
+            android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/title2_news_exercises"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="25dip"
-        android:text="@string/title2_news_exerc"
-        android:textSize="22sp" />
+        <Button
+            android:id="@+id/bt1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:onClick="plotECG"
+            android:text="@string/news_title1"/>
 
-    <Button
-        android:id="@+id/bt3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:onClick="exercises"
-        android:text="@string/video" />
-</LinearLayout>
+        <Button
+            android:id="@+id/bt2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:onClick="plotECG"
+            android:text="@string/news_title2" />
+
+
+
+        <Button
+            android:id="@+id/bt3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:onClick="exercises"
+            android:text="@string/video" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
