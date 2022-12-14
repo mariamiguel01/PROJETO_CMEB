@@ -48,6 +48,16 @@ public class NewsFragment extends Fragment{
             }
         });
 
+        Button button3 = (Button) root.findViewById(R.id.bt3);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction fr = getParentFragmentManager().beginTransaction();
+                // fr.replace(R.id.nav_host_fragment_activity_main, new show_exerc());
+                fr.commit();
+            }
+        });
+
         return root;
     }
 
