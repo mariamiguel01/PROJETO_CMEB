@@ -71,11 +71,12 @@
         <TextView
             android:id="@+id/news1_ref"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="139dp"
+            android:layout_marginBottom="25dip"
             android:autoLink="web"
+            android:justificationMode="inter_word"
             android:padding="16dp"
-            android:text="@string/news1_ref"
-            android:justificationMode="inter_word" />
+            android:text="@string/news1_ref" />
     </LinearLayout>
 
 </ScrollView>
