@@ -53,8 +53,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="day_time">Total Daily Time Spent:</string>
-    <string name="average_previous">Last month average</string>
-    <string name="average_actual">This month average</string>
-    <string name="improvement">You have improved: %!</string>
+    <string name="day_time">Total Daily Time Spent: 12h </string>
+    <string name="average_previous">Last month average: 15º </string>
+    <string name="average_actual">This month average: 10º </string>
+    <string name="improvement">You have improved: 30 %!</string>
+    <string name="month_progress">Your progress during this month...</string>
 </resources>

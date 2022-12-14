@@ -25,6 +25,7 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import org.feup.biosignals.projectbiosignals.databinding.FragmentStatsBinding;
 
@@ -45,6 +46,8 @@ public class StatsFragment extends Fragment {
         binding = FragmentStatsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        getActivity().getWindow().setBackgroundDrawable(null);
+
         return root;
     }
 
@@ -62,11 +65,9 @@ public class StatsFragment extends Fragment {
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
         pieChart = view.findViewById(org.feup.biosignals.projectbiosignals.R.id.piechart);
-        barChart = view.findViewById(org.feup.biosignals.projectbiosignals.R.id.barchart);
         lineChart = view.findViewById(org.feup.biosignals.projectbiosignals.R.id.linechart);
         setupPieChart();
         loadPieChartData();
-        loadBarChartData();
         loadLineChart();
 
     }
@@ -110,47 +111,46 @@ public class StatsFragment extends Fragment {
         pieChart.invalidate();
     }
 
-    private void loadBarChartData(){
-        ArrayList<Double> valueList = new ArrayList<Double>();
-        ArrayList<BarEntry> entries = new ArrayList<>();
-        String title = "Title";
-
-        //input data
-        for(int i = 0; i < 4; i++){
-            valueList.add(i * 100.1);
-        }
-
-        //fit the data into a bar
-        for (int i = 0; i < valueList.size(); i++) {
-            BarEntry barEntry = new BarEntry(i, valueList.get(i).floatValue());
-            entries.add(barEntry);
-        }
-
-        BarDataSet barDataSet = new BarDataSet(entries, title);
-        barDataSet.setColors(new int[] {Color.rgb(131,157,219), Color.rgb(140,191,219), Color.rgb(160, 219, 206)});
-        BarData data = new BarData(barDataSet);
-        barChart.setData(data);
-        barChart.invalidate();
-    }
 
     private void loadLineChart(){
 
         ArrayList<Double> valueList = new ArrayList<Double>();
         ArrayList<Entry> entries = new ArrayList<>();
 
-        entries.add(new Entry(0,60f));
-        entries.add(new Entry(1,50f));
-        entries.add(new Entry(2, 70f));
-        entries.add(new Entry(3, 30f));
-        entries.add(new Entry(4, 50f));
-        entries.add(new Entry(5, 60f));
+        entries.add(new Entry(0,40f));
+        entries.add(new Entry(1,60f));
+        entries.add(new Entry(2, 50f));
+        entries.add(new Entry(3, 60f));
+        entries.add(new Entry(4, 61f));
+        entries.add(new Entry(5, 62f));
         entries.add(new Entry(6, 65f));
 
-        LineDataSet set1 = new LineDataSet(entries, "Data Set 1");
+        LineDataSet set1 = new LineDataSet(entries, "Good Posture");
+        set1.setColors(new int[] {Color.rgb(131,157,219)});
 
-        LineData data = new LineData(set1);
+        ArrayList<Entry> entries2 = new ArrayList<>();
+        entries2.add(new Entry(0,60f));
+        entries2.add(new Entry(1,40f));
+        entries2.add(new Entry(2,50f));
+        entries2.add(new Entry(3, 40f));
+        entries2.add(new Entry(4, 39f));
+        entries2.add(new Entry(5, 38f));
+        entries2.add(new Entry(6, 35f));
+
+
+        LineDataSet set2 = new LineDataSet(entries2, "Wrong Posture");
+        set2.setColors(new int[] {Color.rgb(131,157,219)});
+
+        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(set1);
+        dataSets.add(set2);
+
+        LineData data = new LineData(dataSets);
+
 
         lineChart.setData(data);
         lineChart.invalidate();
     }
+
+
 }
