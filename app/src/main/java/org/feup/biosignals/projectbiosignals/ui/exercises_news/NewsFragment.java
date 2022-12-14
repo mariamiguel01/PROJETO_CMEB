@@ -29,22 +29,21 @@ public class NewsFragment extends Fragment{
         View root = inflater.inflate(R.layout.fragment_news, container, false);
 
         Button button1 = (Button) root.findViewById(R.id.bt1);
-        Button button2 = (Button) root.findViewById(R.id.bt2);
-
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fr = getParentFragmentManager().beginTransaction();
-                fr.replace(R.id.navigation_news_exercises, new show_news1());
+                fr.replace(R.id.nav_host_fragment_activity_main, new show_news1());
                 fr.commit();
             }
         });
 
+        Button button2 = (Button) root.findViewById(R.id.bt2);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fr = getParentFragmentManager().beginTransaction();
-                fr.replace(R.id.navigation_news_exercises, new show_news1());
+                fr.replace(R.id.nav_host_fragment_activity_main, new show_news2());
                 fr.commit();
             }
         });
