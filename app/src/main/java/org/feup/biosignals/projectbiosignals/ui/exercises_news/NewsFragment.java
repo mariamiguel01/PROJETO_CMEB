@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import org.feup.biosignals.projectbiosignals.News_Exerc;
 import org.feup.biosignals.projectbiosignals.R;
+import org.feup.biosignals.projectbiosignals.WebVideoFragment;
 import org.feup.biosignals.projectbiosignals.databinding.FragmentNewsBinding;
 import org.feup.biosignals.projectbiosignals.show_news1;
 import org.feup.biosignals.projectbiosignals.show_news2;
@@ -53,7 +54,7 @@ public class NewsFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 FragmentTransaction fr = getParentFragmentManager().beginTransaction();
-                // fr.replace(R.id.nav_host_fragment_activity_main, new show_exerc());
+                    fr.replace(R.id.nav_host_fragment_activity_main, new WebVideoFragment());
                 fr.commit();
             }
         });
