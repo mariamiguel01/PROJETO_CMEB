@@ -39,4 +39,5 @@ public class News_Exerc extends AppCompatActivity {
 
 
     }
+
 }
