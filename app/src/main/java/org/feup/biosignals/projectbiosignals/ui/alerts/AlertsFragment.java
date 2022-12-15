@@ -26,6 +26,7 @@ public class AlertsFragment extends Fragment {
         View root = binding.getRoot();
 
         final TextView textView = binding.textDashboard;
+
         alertsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
