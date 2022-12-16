@@ -44,7 +44,8 @@
             android:id="@+id/buttonAlertTest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button Alert" />
+            android:text="Button Alert"
+            android:onClick="sendAlert"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
