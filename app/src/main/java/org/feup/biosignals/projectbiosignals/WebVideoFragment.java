@@ -14,10 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class WebVideoFragment extends Fragment {
+public class WebVideoFragment extends Fragment{
     private VideoView videoView;
-    private EditText uriEditText;
-    private Button playButton;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,11 +26,9 @@ public class WebVideoFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_show_video, container, false);
-
         videoView = view.findViewById(R.id.fragment_webvideo_videoView);
-        uriEditText = view.findViewById(R.id.fragment_webvideo_uriEditText);
+        Button playButton;
         playButton = view.findViewById(R.id.fragment_webvideo_play);
-
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,11 +39,12 @@ public class WebVideoFragment extends Fragment {
         return view;
     }
     private void playVideoFromWeb() {
-        Uri uri = Uri.parse(uriEditText.getText().toString());
+        Uri uri= Uri.parse("https://youtu.be/5R54QoUbbow");
         videoView.setVideoURI(uri);
-        MediaController mediaController = new MediaController(getActivity());
-        videoView.setMediaController(mediaController);
+        MediaController mediaController = new MediaController(this.getActivity());
         mediaController.setAnchorView(videoView);
+        mediaController.setMediaPlayer(videoView);
+        videoView.setMediaController(mediaController);
         videoView.start();
     }
 }

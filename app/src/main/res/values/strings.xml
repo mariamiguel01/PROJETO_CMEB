@@ -58,4 +58,7 @@
     <string name="average_actual">This month average: 10º </string>
     <string name="improvement">You have improved: 30 %!</string>
     <string name="month_progress">Your progress during this month...</string>
+    <string name="video_uri">Video URI</string>
+    <string name="video_url"><![CDATA[https://www.youtube.com/watch?v=5R54QoUbbow&list=PPSV]]></string>
+    <string name="play">Play</string>
 </resources>

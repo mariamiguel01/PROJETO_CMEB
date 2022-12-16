@@ -1,5 +1,5 @@
 package org.feup.biosignals.projectbiosignals;
-
+import android.widget.MediaController;
 import android.bluetooth.BluetoothAdapter;
 import android.os.Bundle;
 import android.bluetooth.BluetoothDevice;

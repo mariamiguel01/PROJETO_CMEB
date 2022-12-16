@@ -8,25 +8,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".MainActivity">
-
-        <EditText
-            android:id="@+id/fragment_webvideo_uriEditText"
-            android:layout_width="match_parent"
-            android:layout_height="682dp"
-            android:hint="Video URI"
-            android:text='https://www.youtube.com/watch?v=5R54QoUbbow&amp;list=PPSV' />
+        tools:context="WebVideoFragment">
 
         <Button
+            android:id="@+id/fragment_webvideo_play"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Play"
-            android:id="@+id/fragment_webvideo_play" />
+            android:text="@string/play" />
 
         <VideoView
+            android:id="@+id/fragment_webvideo_videoView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/fragment_webvideo_videoView"/>
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            tools:visibility="visible"/>
 
     </LinearLayout>
 
