@@ -1,4 +1,7 @@
 package org.feup.biosignals.projectbiosignals;
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
 import android.widget.MediaController;
 import android.bluetooth.BluetoothAdapter;
 import android.os.Bundle;
@@ -13,10 +16,12 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import org.feup.biosignals.projectbiosignals.databinding.ActivityMainBinding;
+import org.feup.biosignals.projectbiosignals.ui.alerts.Notifications;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private Button buttonHelp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,5 +39,21 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+        /*buttonHelp = findViewById(R.id.buttonAlertTest);
+        buttonHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNotification();
+            }
+        });*/
+
+
+
+    }
+
+    public void openNotification() {
+        Intent intent = new Intent(this, Notifications.class);
+        startActivity(intent);
     }
 }
