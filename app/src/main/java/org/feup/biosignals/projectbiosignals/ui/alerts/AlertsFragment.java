@@ -34,6 +34,7 @@ public class AlertsFragment extends Fragment {
     private FragmentAlertsBinding binding;
 
 
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         AlertsViewModel alertsViewModel =
@@ -41,6 +42,7 @@ public class AlertsFragment extends Fragment {
 
         binding = FragmentAlertsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
 
        /* NotificationManager notificationManager = ( NotificationManager ) getActivity().getSystemService( getActivity().NOTIFICATION_SERVICE );
         int icon = R.drawable.ic_outline_notifications_active_24;
@@ -61,8 +63,8 @@ public class AlertsFragment extends Fragment {
         NotificationManager notificationManager;
         notificationManager.notify(1, mnotification);*/
 
-        final TextView textView = binding.textDashboard;
-        alertsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        /*final TextView textView = binding.textDashboard;
+        alertsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);*/
         return root;
     }
 
