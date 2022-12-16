@@ -38,8 +38,10 @@ public class WebVideoFragment extends Fragment{
 
         return view;
     }
-    private void playVideoFromWeb() {
-        Uri uri= Uri.parse("https://youtu.be/5R54QoUbbow");
+    protected void playVideoFromWeb() {
+
+        String   video= "https://youtu.be/5R54QoUbbow";
+        Uri uri= Uri.parse(video);
         videoView.setVideoURI(uri);
         MediaController mediaController = new MediaController(this.getActivity());
         mediaController.setAnchorView(videoView);
