@@ -8,7 +8,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.VideoView;
+import com.google.android.youtube.player.YouTubeInitializationResult;
 
+import com.google.android.youtube.player.YouTubePlayer;
+
+import com.google.android.youtube.player.YouTubePlayerView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
