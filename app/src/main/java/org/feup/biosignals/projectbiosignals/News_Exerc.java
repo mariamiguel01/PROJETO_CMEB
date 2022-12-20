@@ -11,6 +11,7 @@ public class News_Exerc extends AppCompatActivity {
 
     public Button button1;
     public Button button2;
+    public Button button3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,16 @@ public class News_Exerc extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        button3 = (Button) findViewById(R.id.bt3);
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(News_Exerc.this,video.class);
+                startActivity(intent);
+            }
+        });
+
 
 
     }

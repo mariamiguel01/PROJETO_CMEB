@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import org.feup.biosignals.projectbiosignals.News_Exerc;
 import org.feup.biosignals.projectbiosignals.R;
-import org.feup.biosignals.projectbiosignals.WebVideoFragment;
+import org.feup.biosignals.projectbiosignals.video;
 import org.feup.biosignals.projectbiosignals.databinding.FragmentNewsBinding;
 import org.feup.biosignals.projectbiosignals.show_news1;
 import org.feup.biosignals.projectbiosignals.show_news2;
@@ -49,13 +49,13 @@ public class NewsFragment extends Fragment{
             }
         });
 
-        Button button3 = (Button) root.findViewById(R.id.bt3);
+        Intent intent1;
+        intent1 = new Intent(getActivity(), video.class);
+        final Button button3 = (Button) root.findViewById(R.id.bt3);
+
         button3.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View v) {
-                FragmentTransaction fr = getParentFragmentManager().beginTransaction();
-                    fr.replace(R.id.nav_host_fragment_activity_main, new WebVideoFragment());
-                fr.commit();
+                startActivity(intent1);
             }
         });
 
