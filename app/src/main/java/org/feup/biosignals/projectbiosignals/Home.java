@@ -25,7 +25,7 @@ public class Home extends AppCompatActivity {
         // set the id for the progressbar and progress text
         progressBar = findViewById(R.id.progress_bar);
         progressText = findViewById(R.id.progress_text);
-        pointsText = findViewById(R.id.points_text);
+        pointsText = findViewById(R.id.level);
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
