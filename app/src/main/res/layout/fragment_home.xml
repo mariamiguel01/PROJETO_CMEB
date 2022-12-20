@@ -28,9 +28,9 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_width="410dp"
+        android:layout_height="645dp"
+        android:layout_marginTop="48dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,8 +71,56 @@
                 android:textColor="@color/white"
                 android:textSize="48sp"
                 android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/bonification_layout"
+            android:layout_width="400dp"
+            android:layout_height="150dp"
+            android:layout_margin="100dp">
+
+
+            <TextView
+                android:id="@+id/points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="false"
+                android:layout_marginLeft="20dp"
+                android:layout_toStartOf="@id/image_level"
+                android:layout_toRightOf="@+id/image_level"
+                android:text="Points"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="false"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/image_level"
+                android:text="Level 1 (of 7)"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/image_level"
+                android:layout_width="222dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="0dp"
+                android:layout_marginBottom="0dp"
+                app:srcCompat="@drawable/level1" />
+
+
         </RelativeLayout>
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
