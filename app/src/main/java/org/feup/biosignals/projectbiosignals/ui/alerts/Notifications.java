@@ -28,7 +28,7 @@ public class Notifications extends AppCompatActivity {
        /* Button createNotifBt = findViewById(R.id.buttonAlertTest);
         createNotifBt.setOnClickListener((view) -> (
                 createNotificationChannel();));
-        }*/
+        }
 
         private void createNotificationChannel() {
 
@@ -40,6 +40,6 @@ public class Notifications extends AppCompatActivity {
                     .setContentText("You can do it")
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
-            notificationManager.notify(2008, builder.build());
+            notificationManager.notify(2008, builder.build());*/
     }
 }

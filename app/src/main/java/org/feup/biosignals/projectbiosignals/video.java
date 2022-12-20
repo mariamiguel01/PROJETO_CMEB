@@ -4,41 +4,35 @@ import android.os.Bundle;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
-public class video extends AppCompatActivity {
+public class video extends YouTubeBaseActivity {
 
-    String api_key = "AIzaSyBsVUeqyL52AhSJB9Z126oxe12RCHISTnI";
+    YouTubePlayerView youTubePlayerView1;
 
     @Override
-    protected void
-    onCreate(@Nullable Bundle savedInstanceState)
+    protected void onCreate( Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.video);
+        youTubePlayerView1 = findViewById(R.id.ytPlayer1);
+        YouTubePlayer.OnInitializedListener listener= new YouTubePlayer.OnInitializedListener() {
+            @Override
+            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+                youTubePlayer.loadVideo("5R54QoUbbow");
+                youTubePlayer.play();
+            }
 
-        // Get reference to the view of Video player
-        YouTubePlayerView video = findViewById(R.id.ytPlayer);
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+                Toast.makeText(getApplicationContext(), "Video player Failed", Toast.LENGTH_SHORT).show();
+            }
 
-        video.initialize(
-                api_key,
-                new YouTubePlayer.OnInitializedListener() {
-                    public void onInitializationSuccess(
-                            YouTubePlayer.Provider provider,
-                            YouTubePlayer youTubePlayer, boolean b)
-                    {
-                        youTubePlayer.loadVideo("https://youtu.be/5R54QoUbbow");
-                        youTubePlayer.play();
-                    }
-                    @Override
-                    public void onInitializationFailure(YouTubePlayer.Provider provider,
-                                                        YouTubeInitializationResult
-                                                                youTubeInitializationResult)
-                    {
-                        Toast.makeText(getApplicationContext(), "Video player Failed", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        };
+        youTubePlayerView1.initialize("AIzaSyBUdsYQM6Xe5EqWk8_J9R3UNu6xNuSbWcE",listener);
     }
 }

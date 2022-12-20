@@ -39,12 +39,9 @@ public class News_Exerc extends AppCompatActivity {
         });
         button3 = (Button) findViewById(R.id.bt3);
 
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(News_Exerc.this,video.class);
-                startActivity(intent);
-            }
+        button3.setOnClickListener(v -> {
+            Intent intent = new Intent(News_Exerc.this,video.class);
+            startActivity(intent);
         });
 
 
