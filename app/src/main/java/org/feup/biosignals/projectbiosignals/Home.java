@@ -16,6 +16,7 @@ public class Home extends AppCompatActivity {
     private TextView pointsText;
     int i = 0;
     int points; //Como definir os pontos?
+    int imageToLoad =  0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class Home extends AppCompatActivity {
         // set the id for the progressbar and progress text
         progressBar = findViewById(R.id.progress_bar);
         progressText = findViewById(R.id.progress_text);
+
         pointsText = findViewById(R.id.level);
 
         final Handler handler = new Handler();
@@ -43,21 +45,27 @@ public class Home extends AppCompatActivity {
                 }
 
                 if (points<5) {
+                    imageToLoad = 1;
                     pointsText.setText("level1");
                 }
                 if (points>=5 && points<10) {
+                    imageToLoad = 2;
                     pointsText.setText("level2");
                 }
                 if (points>=10 && points<15) {
+                    imageToLoad = 3;
                     pointsText.setText("level3");
                 }
                 if (points>=15 && points<20) {
+                    imageToLoad = 4;
                     pointsText.setText("level4");
                 }
                 if (points>=20 && points<25) {
+                    imageToLoad = 5;
                     pointsText.setText("level5");
                 }
                 else {
+                    imageToLoad = 6;
                     pointsText.setText("level6");
                 }
             }
