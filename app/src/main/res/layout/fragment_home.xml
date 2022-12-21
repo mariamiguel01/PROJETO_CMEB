@@ -114,8 +114,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginRight="0dp"
-                android:layout_marginBottom="0dp"
-                app:srcCompat="@drawable/level1" />
+                android:layout_marginBottom="0dp" />
 
 
         </RelativeLayout>
