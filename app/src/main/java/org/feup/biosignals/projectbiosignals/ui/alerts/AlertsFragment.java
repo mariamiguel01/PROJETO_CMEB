@@ -33,41 +33,27 @@ import org.feup.biosignals.projectbiosignals.databinding.FragmentHomeBinding;
 public class AlertsFragment extends Fragment {
     private FragmentAlertsBinding binding;
 
-
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         AlertsViewModel alertsViewModel =
                 new ViewModelProvider(this).get(AlertsViewModel.class);
 
         binding = FragmentAlertsBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
-
-       /* NotificationManager notificationManager = ( NotificationManager ) getActivity().getSystemService( getActivity().NOTIFICATION_SERVICE );
-        int icon = R.drawable.ic_outline_notifications_active_24;
-        CharSequence tickerText = "your daily tip";
-        long when = System.currentTimeMillis();
-
-        Context context = getActivity();
-        CharSequence contentTitle = "AutoKit";
-        CharSequence contentText = "hi";
-        Intent notificationIntent = new Intent();
-        PendingIntent contentIntent = PendingIntent.getActivity(getActivity(), 0, notificationIntent, 0);
-        Notification mnotification = new Notification(icon, tickerText, when);
-
-
-        notificationManager.notify(2008, mnotification);*/
-
-        /*mnotification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
-        NotificationManager notificationManager;
-        notificationManager.notify(1, mnotification);*/
-
-        /*final TextView textView = binding.textDashboard;
-        alertsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);*/
-        return root;
+        return binding.getRoot();
     }
 
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Intent intent1 = new Intent(getContext(), Notifications.class);
+
+        binding.buttonAlertTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intent1);
+            }
+        });
+    }
 
     @Override
     public void onDestroyView() {

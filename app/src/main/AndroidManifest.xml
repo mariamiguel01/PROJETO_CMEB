@@ -28,6 +28,13 @@
         android:theme="@style/Theme.ProjectBiosignals"
         tools:targetApi="31">
         <activity
+            android:name=".ui.alerts.Notifications"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".video"
             android:exported="false">
             <meta-data
