@@ -4,6 +4,7 @@ import static android.app.PendingIntent.getActivity;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -11,9 +12,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RemoteViews;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDeepLinkBuilder;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import org.feup.biosignals.projectbiosignals.MainActivity;
 import org.feup.biosignals.projectbiosignals.R;
@@ -43,17 +49,25 @@ public class Notifications extends AppCompatActivity {
             if (manager.areNotificationsEnabled()) { Log.i("MAIN", "ENABLE");}
 
             manager.createNotificationChannel(channel1);
-            Log.i("MAIN", "really create channel");
         }
 
-        Log.i("MAIN", "enter sendonchannel");
+        //RemoteViews collapsedView = new RemoteViews(getPackageName(), R.layout.notification_collapsed);
+        Intent clickNotIntent = new Intent(this, MainActivity.class);
+        PendingIntent clickPendingIntent = PendingIntent.getActivity(this,1,clickNotIntent,PendingIntent.FLAG_MUTABLE);
+
+
+        //collapsedView.setTextViewText(R.id.notification_collapsed, "Hello world!");
+        //collapsedView.setOnClickPendingIntent(R.id.notification_collapsed, clickPendingIntent);
 
         NotificationCompat.Builder notification = new NotificationCompat.Builder(this, CHANNEL1)
                 .setSmallIcon(R.drawable.ic_notifications_black_24dp)
+                //.setCustomContentView(collapsedView)
                 .setContentTitle("Title")
                 .setContentText("Message")
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setAutoCancel(false);
+                .setAutoCancel(true)
+                .setContentIntent(clickPendingIntent)
+                ;
 
         manager.notify(1, notification.build());
         Log.i("MAIN", "send please");

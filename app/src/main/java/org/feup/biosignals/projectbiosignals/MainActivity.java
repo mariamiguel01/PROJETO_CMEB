@@ -40,16 +40,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        /*buttonHelp = findViewById(R.id.buttonAlertTest);
-        buttonHelp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openNotification();
-            }
-        });*/
-
-
-
     }
 
     public void openNotification() {
