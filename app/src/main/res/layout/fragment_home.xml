@@ -29,12 +29,12 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="410dp"
-        android:layout_height="645dp"
-        android:layout_marginTop="48dp"
+        android:layout_height="709dp"
+        android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/text_home"
         tools:context=".MainActivity">
@@ -77,8 +77,8 @@
 
         <RelativeLayout
             android:id="@+id/bonification_layout"
-            android:layout_width="400dp"
-            android:layout_height="150dp"
+            android:layout_width="410dp"
+            android:layout_height="200dp"
             android:layout_margin="100dp">
 
 
@@ -113,8 +113,9 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginRight="0dp"
-                android:layout_marginBottom="0dp" />
+                android:layout_marginRight="-8dp"
+                android:layout_marginBottom="10dp"
+                app:srcCompat="@drawable/level1" />
 
 
         </RelativeLayout>
