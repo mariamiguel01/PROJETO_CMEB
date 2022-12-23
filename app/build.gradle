@@ -40,7 +40,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
     implementation 'androidx.navigation:navigation-fragment:2.4.1'
     implementation 'androidx.navigation:navigation-ui:2.4.1'
-    implementation fileTree(dir: 'C:/Users/maria/OneDrive/Documentos/MIB/4ano/4A1S/CMEB/YouTubeAndroidPlayerApi-1.2.2/libs', include: ['*.aar', '*.jar'], exclude: [])
+    implementation files('https://github.com/mariamiguel01/PROJETO_CMEB/blob/main/YouTubeAndroidPlayerApi.jar')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
