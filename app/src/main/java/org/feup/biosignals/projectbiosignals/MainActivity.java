@@ -41,9 +41,4 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
 
     }
-
-    public void openNotification() {
-        Intent intent = new Intent(this, Notifications.class);
-        startActivity(intent);
-    }
 }

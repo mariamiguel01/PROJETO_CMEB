@@ -35,6 +35,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".ui.alerts.RepeatingActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".video"
             android:exported="false">
             <meta-data

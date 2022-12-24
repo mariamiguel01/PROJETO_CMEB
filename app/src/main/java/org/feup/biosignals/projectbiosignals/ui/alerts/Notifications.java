@@ -2,6 +2,7 @@ package org.feup.biosignals.projectbiosignals.ui.alerts;
 
 import static android.app.PendingIntent.getActivity;
 
+import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -25,13 +26,14 @@ import org.feup.biosignals.projectbiosignals.MainActivity;
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.databinding.ActivityMainBinding;
 
+import java.util.Calendar;
+
 public class Notifications extends AppCompatActivity {
     private ActivityMainBinding binding;
     private static final String CHANNEL1 = "channel1";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Log.i("MyTAG", "Notifications here");
         super.onCreate(savedInstanceState);
         //binding = ActivityMainBinding.inflate(getLayoutInflater());
         //setContentView(binding.getRoot());
@@ -44,20 +46,29 @@ public class Notifications extends AppCompatActivity {
                     NotificationManager.IMPORTANCE_HIGH
             );
             channel1.setDescription("This is channel 1");
-
             manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-            if (manager.areNotificationsEnabled()) { Log.i("MAIN", "ENABLE");}
-
             manager.createNotificationChannel(channel1);
         }
 
-        //RemoteViews collapsedView = new RemoteViews(getPackageName(), R.layout.notification_collapsed);
-        Intent clickNotIntent = new Intent(this, MainActivity.class);
-        PendingIntent clickPendingIntent = PendingIntent.getActivity(this,1,clickNotIntent,PendingIntent.FLAG_MUTABLE);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY,0);
+        calendar.set(Calendar.MINUTE, 26);
+        Intent intentClock = new Intent(getApplicationContext(), NotificationReceiver.class);
+        PendingIntent pendingIntentClock = PendingIntent.getBroadcast(getApplicationContext(), 100,intentClock, PendingIntent.FLAG_MUTABLE);
 
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntentClock);
+        /*long timeInitial = System.currentTimeMillis();
+        long tenSeconds = 1000 * 10;
+        alarmManager.set(AlarmManager.RTC_WAKEUP,
+                timeInitial + tenSeconds,
+                clickPendingIntent);*/
 
         //collapsedView.setTextViewText(R.id.notification_collapsed, "Hello world!");
         //collapsedView.setOnClickPendingIntent(R.id.notification_collapsed, clickPendingIntent);
+
+        /*Intent clickNotIntent = new Intent(this, MainActivity.class);
+        PendingIntent clickPendingIntent = PendingIntent.getActivity(this,1,clickNotIntent,PendingIntent.FLAG_MUTABLE);
 
         NotificationCompat.Builder notification = new NotificationCompat.Builder(this, CHANNEL1)
                 .setSmallIcon(R.drawable.ic_notifications_black_24dp)
@@ -70,9 +81,8 @@ public class Notifications extends AppCompatActivity {
                 ;
 
         manager.notify(1, notification.build());
-        Log.i("MAIN", "send please");
 
         Intent intentBack = new Intent(this, MainActivity.class);
-        startActivity(intentBack);
+        startActivity(intentBack);*/
     }
 }
