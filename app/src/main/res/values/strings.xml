@@ -63,4 +63,5 @@
     <string name="play">Play</string>
     <string name="alertFulltext">Hello! You are sitting with a bad posture for 5 minutes... Do some stretching!</string>
     <string name="get_your_exercises_in">Get your exercises in</string>
+    <string name="calibration">Device Calibration</string>
 </resources>

@@ -65,11 +65,15 @@
         android:textOn="ON"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-    <Button
+    <ImageButton
         android:id="@+id/calibration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center" />
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_calibration"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btcal_background"
+        android:contentDescription="@string/calibration"/>
 
 </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
