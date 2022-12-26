@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.content.Intent;
 
 
 public class Home extends AppCompatActivity {
@@ -17,7 +18,8 @@ public class Home extends AppCompatActivity {
     private TextView pointsText;
     private ImageView imageToLoad;
     int i = 0;
-    int points; //Como definir os pontos?
+    Intent mIntent = getIntent();
+    int points = mIntent.getIntExtra("points", 0);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
