@@ -33,8 +33,6 @@ public class DataStreamService extends Service {
     private final String CHAR_ADDR = "14181dce-eb95-46c5-8431-3b4fe0e0a12d";
     private final String DESC_ADDR = "00002902-0000-1000-8000-00805f9b34fb";
 
-
-
     private String address;
     private BluetoothManager mBluetoothManager;
     private BluetoothAdapter mBluetoothAdapter;
@@ -70,7 +68,6 @@ public class DataStreamService extends Service {
 
         initialize();
         connect(address);
-
 
         return START_STICKY;
     }

@@ -51,7 +51,6 @@ public class ConnectionActivity extends AppCompatActivity implements LeDeviceLis
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-
         leDeviceListAdapter = new LeDeviceListAdapter(mLeDevices, this::onItemClicked);
         recyclerView.setAdapter(leDeviceListAdapter);
 
@@ -79,6 +78,7 @@ public class ConnectionActivity extends AppCompatActivity implements LeDeviceLis
             mScanning = true;
             Log.i(TAG, "Start Scan");
             mBluetoothScanner.startScan(mScanCallback);
+            Log.i(TAG, "Scan ok");
         } else {
             mScanning = false;
             Log.i(TAG, "Stop Scan");

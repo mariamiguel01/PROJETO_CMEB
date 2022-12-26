@@ -47,13 +47,11 @@ public class bleConnection extends AppCompatActivity {
                         float magZ = dataParser.getMagDataZ().get(i);
                         float forceOne = dataParser.getForceOneData().get(i);
                         float forceTwo = dataParser.getForceOneData().get(i);
-                        Log.i(TAG, "" + accX);
+                        Log.i(TAG, "" + gyroX);
                     }
                 }
 
             }
-
-
         }
     };
 
@@ -63,9 +61,6 @@ public class bleConnection extends AppCompatActivity {
 
         return intentFilter;
     }
-
-
-
 
 
     @Override

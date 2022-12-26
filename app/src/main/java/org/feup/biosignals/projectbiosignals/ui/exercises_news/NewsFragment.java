@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
-import org.feup.biosignals.projectbiosignals.News_Exerc;
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.video;
 import org.feup.biosignals.projectbiosignals.databinding.FragmentNewsBinding;

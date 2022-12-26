@@ -13,7 +13,6 @@ import org.feup.biosignals.projectbiosignals.R;
 
 import java.util.ArrayList;
 
-
 public class LeDeviceListAdapter extends RecyclerView.Adapter<LeDeviceListAdapter.ViewHolder> {
     private ArrayList<BluetoothDevice> mLeDevices;
     private OnItemListener mOnItemListener;
@@ -22,7 +21,6 @@ public class LeDeviceListAdapter extends RecyclerView.Adapter<LeDeviceListAdapte
         this.mLeDevices = mLeDevices;
         this.mOnItemListener = onItemListener;
     }
-
 
     public void addDevice(BluetoothDevice device) {
         if(!mLeDevices.contains(device)) {
@@ -34,7 +32,6 @@ public class LeDeviceListAdapter extends RecyclerView.Adapter<LeDeviceListAdapte
         return mLeDevices.get(position);
     }
 
-
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView itemName;
         public TextView itemUUID;
@@ -42,21 +39,17 @@ public class LeDeviceListAdapter extends RecyclerView.Adapter<LeDeviceListAdapte
         OnItemListener onItemListener;
         public ViewHolder(View itemView, OnItemListener onItemListener) {
             super(itemView);
-            itemName =
-                    (TextView) itemView.findViewById(R.id.textView);
-            itemUUID =
-                    (TextView)itemView.findViewById(R.id.textView2);
+            itemName = (TextView) itemView.findViewById(R.id.textView);
+            itemUUID = (TextView)itemView.findViewById(R.id.textView2);
 
             this.onItemListener = onItemListener;
 
             itemView.setOnClickListener(this::onClick);
-
         }
 
         @Override
         public void onClick(View v) {
             onItemListener.onItemClicked(getAdapterPosition());
-
         }
     }
 
@@ -72,16 +65,14 @@ public class LeDeviceListAdapter extends RecyclerView.Adapter<LeDeviceListAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         BluetoothDevice device = getDevice(position);
-        final String deviceName = device.getName();
+        final String deviceName = device.getAddress();
         if (deviceName != null && deviceName.length()>0){
             holder.itemName.setText(deviceName);
         }
         else {
             holder.itemName.setText("Unknown Device");
         }
-
         holder.itemUUID.setText(device.getAddress());
-
     }
 
     @Override
