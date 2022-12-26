@@ -7,11 +7,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Switch;
 
 public class Settings extends AppCompatActivity {
     private Switch sound,vibration,connection;
-    Button bt_cal;
+    ImageButton bt_cal;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +22,7 @@ public class Settings extends AppCompatActivity {
         sound = (Switch)findViewById(R.id.soundSwitch);
         vibration = (Switch)findViewById(R.id.vibrationSwitch);
         connection = (Switch)findViewById(R.id.switch3);
-        bt_cal = (Button)findViewById(R.id.calibration);
+        bt_cal = (ImageButton)findViewById(R.id.calibration);
 
         SharedPreferences getsoundsp = getSharedPreferences("soundSwitch", MODE_PRIVATE);
         SharedPreferences getvibrationsp = getSharedPreferences("vibrationSwitch", MODE_PRIVATE);
