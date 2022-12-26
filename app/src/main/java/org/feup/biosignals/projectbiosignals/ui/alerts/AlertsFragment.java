@@ -6,8 +6,11 @@ import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothManager;
-import android.content.Context;
+import 	android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Vibrator;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +35,10 @@ import org.feup.biosignals.projectbiosignals.databinding.FragmentHomeBinding;
 
 public class AlertsFragment extends Fragment {
     private FragmentAlertsBinding binding;
+    MediaPlayer mediaPlayer;
+    Vibrator vibrator;
+
+    boolean Sound_boolean,Vibration_boolean;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -45,6 +52,8 @@ public class AlertsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        mediaPlayer = MediaPlayer.create(getActivity(), R.raw.sound);
+        vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
         Intent intent1 = new Intent(getContext(), Notifications.class);
 
         binding.buttonAlertTest.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +62,25 @@ public class AlertsFragment extends Fragment {
                 startActivity(intent1);
             }
         });
+    }
+
+    public void alertSoundVibration(){
+        if(Sound_boolean){
+            mediaPlayer.start();
+        }else{
+        }
+        if(Vibration_boolean){
+            vibrator.vibrate(30);
+        }
+    }
+    @Override
+    public void onResume() {
+        SharedPreferences getsoundsp = getActivity().getSharedPreferences("soundSwitch", Context.MODE_PRIVATE);
+        SharedPreferences getvibrationsp = getActivity().getSharedPreferences("vibrationSwitch", Context.MODE_PRIVATE);
+        Sound_boolean = getsoundsp.getBoolean("soundSwitch", false);
+        Vibration_boolean = getvibrationsp.getBoolean("vibrationSwitch", false);
+
+        super.onResume();
     }
 
     @Override
