@@ -28,7 +28,7 @@
         android:textSize="20sp" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/soundSwitch"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:switchMinWidth="56dp"
@@ -40,7 +40,7 @@
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Switch
-        android:id="@+id/switch2"
+        android:id="@+id/vibrationSwitch"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_below="@+id/switch1"
