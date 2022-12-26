@@ -87,10 +87,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-<<<<<<< Updated upstream
-        <receiver android:name=".ui.alerts.NotificationReceiver"/>
-=======
-
         <activity
             android:name=".bleConnection"
             android:exported="true">
@@ -103,7 +99,6 @@
         <activity
             android:name=".ConnectionActivity"
             android:exported="true"></activity>
->>>>>>> Stashed changes
     </application>
 
 </manifest>
