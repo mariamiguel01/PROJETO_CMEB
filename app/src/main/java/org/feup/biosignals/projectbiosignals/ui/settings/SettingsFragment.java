@@ -58,11 +58,10 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // Here goes the code that saves the current data as the "zero"
-                Intent intent_to_ble = new Intent(getContext(), ConnectionActivity.class);
+                Intent intent_to_ble = new Intent(getContext(), bleConnection.class);
                 startActivity(intent_to_ble);
             }
         });
-
     }
 
     public void SoundSwitch() {
