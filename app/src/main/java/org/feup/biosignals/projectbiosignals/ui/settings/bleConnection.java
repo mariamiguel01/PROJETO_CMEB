@@ -12,9 +12,11 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.helpers.DataParser;
+import org.feup.biosignals.projectbiosignals.video;
 
 import java.util.Arrays;
 
@@ -51,7 +53,6 @@ public class bleConnection extends AppCompatActivity {
                         Log.i(TAG, "" + gyroX);
                     }
                 }
-
             }
         }
     };
@@ -69,15 +70,23 @@ public class bleConnection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_ble);
         registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
+
+        /*Intent intent2connection = new Intent(this, ConnectionActivity.class);
+        Button button2connect = findViewById(R.id.button);
+        button2connect.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(intent2connection);
+            }
+        });*/
     }
 
-    public void connect(View view){
+/*    public void connect(){
         // Function on XML onClick
         Log.i(TAG, "Clicked button");
 
         Intent intent = new Intent(this, ConnectionActivity.class);
         startActivityForResult(intent, REQUEST_CONNECTION);
-    }
+    }*/
 
     @SuppressLint("NewApi")
     @Override
