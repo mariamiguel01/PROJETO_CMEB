@@ -7,6 +7,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
+
 public class DBHandler extends SQLiteOpenHelper {
     // creating a constant variables for our database.
     // below variable is for our database name.
@@ -28,7 +33,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String INSTANT_COL = "instant";
 
     // below variable is for our course name column
-    private static final String DAY_COL = "day";
+    private static final String DATE_COL = "date";
 
     // creating a constructor for our database handler (does not work without this)
     public DBHandler(Context context) {
@@ -44,9 +49,9 @@ public class DBHandler extends SQLiteOpenHelper {
         // along with their data types.
         String query = "CREATE TABLE " + TABLE_NAME + " ("
                 + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + ANGLE_COL + " TEXT,"
-                + INSTANT_COL + " TEXT,"
-                + DAY_COL + " TEXT)";
+                + ANGLE_COL + " REAL,"
+                + INSTANT_COL + " REAL,"
+                + DATE_COL + " TEXT)";
 
         // at last we are calling a exec sql
         // method to execute above sql query
@@ -54,7 +59,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     // this method is use to add new course to our sqlite database.
-    public void addNewCourse(Double angle, Double instant, String day) {
+    public void addNewCourse(Double angle, Double instant) {
 
         // on below line we are creating a variable for
         // our sqlite database and calling writable method
@@ -65,11 +70,16 @@ public class DBHandler extends SQLiteOpenHelper {
         // variable for content values.
         ContentValues values = new ContentValues();
 
+        //Get current date
+        Date currentTime = Calendar.getInstance().getTime();
+        String data = DateFormat.getDateInstance().format(currentTime);
+
+
         // on below line we are passing all values
         // along with its key and value pair.
         values.put(ANGLE_COL, angle);
         values.put(INSTANT_COL, instant);
-        values.put(DAY_COL, day);
+        values.put(DATE_COL, data);
 
         // after adding all values we are passing
         // content values to our table.
