@@ -36,7 +36,7 @@ public class Settings extends AppCompatActivity {
             }
         });
 
-        public void SoundSwitch(View view) {
+        /*public void SoundSwitch(View view) {
             if(sound.isChecked()){
                 SharedPreferences.Editor soundswitchPreference = getSharedPreferences("soundSwitch", MODE_PRIVATE).edit();
                 soundswitchPreference.putBoolean("soundSwitch", true);
@@ -63,6 +63,6 @@ public class Settings extends AppCompatActivity {
                 vibrationswitchPreference.apply();
                 vibration.setChecked(false);
             }
-        }
+        }*/
     }
 }

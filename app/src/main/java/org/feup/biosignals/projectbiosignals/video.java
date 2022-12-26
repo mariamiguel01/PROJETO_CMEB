@@ -27,7 +27,7 @@ public class video extends YouTubeBaseActivity {
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 youTubePlayer.loadVideo("5R54QoUbbow");
                 youTubePlayer.play();
-                points ++;
+                //points ++;
             }
 
             @Override
@@ -38,8 +38,8 @@ public class video extends YouTubeBaseActivity {
         };
         youTubePlayerView1.initialize("AIzaSyBUdsYQM6Xe5EqWk8_J9R3UNu6xNuSbWcE",listener);
 
-        Intent pointsIntent = new Intent(video.this, Home.class);
+        /*Intent pointsIntent = new Intent(video.this, Home.class);
         pointsIntent.putExtra("points", points);
-        startActivity(pointsIntent);
+        startActivity(pointsIntent);*/
     }
 }
