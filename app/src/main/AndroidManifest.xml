@@ -39,7 +39,7 @@
         android:theme="@style/Theme.ProjectBiosignals"
         tools:targetApi="31">
         <service
-            android:name=".DataStreamService"
+            android:name=".ui.settings.DataStreamService"
             android:enabled="true"
             android:exported="true"></service>
 
@@ -83,7 +83,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".bleConnection"
+            android:name=".ui.settings.bleConnection"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -92,7 +92,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ConnectionActivity"
+            android:name=".ui.settings.ConnectionActivity"
             android:exported="true"></activity>
     </application>
 

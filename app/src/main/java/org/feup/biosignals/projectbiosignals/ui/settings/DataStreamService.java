@@ -1,4 +1,4 @@
-package org.feup.biosignals.projectbiosignals;
+package org.feup.biosignals.projectbiosignals.ui.settings;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -21,6 +21,9 @@ import android.os.IBinder;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
+
+import org.feup.biosignals.projectbiosignals.R;
+import org.feup.biosignals.projectbiosignals.ui.settings.bleConnection;
 
 import java.util.Arrays;
 import java.util.UUID;

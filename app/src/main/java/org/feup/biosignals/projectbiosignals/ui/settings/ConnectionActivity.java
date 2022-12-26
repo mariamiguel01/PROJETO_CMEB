@@ -1,4 +1,4 @@
-package org.feup.biosignals.projectbiosignals;
+package org.feup.biosignals.projectbiosignals.ui.settings;
 
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.adapters.LeDeviceListAdapter;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package org.feup.biosignals.projectbiosignals;
+package org.feup.biosignals.projectbiosignals.ui.settings;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.helpers.DataParser;
 
 import java.util.Arrays;

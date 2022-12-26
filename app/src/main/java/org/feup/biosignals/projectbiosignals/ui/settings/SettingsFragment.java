@@ -3,14 +3,12 @@ package org.feup.biosignals.projectbiosignals.ui.settings;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.content.SharedPreferences;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
@@ -19,7 +17,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.databinding.FragmentSettingsBinding;
-import org.feup.biosignals.projectbiosignals.ConnectionActivity;
 
 public class SettingsFragment extends Fragment {
 
