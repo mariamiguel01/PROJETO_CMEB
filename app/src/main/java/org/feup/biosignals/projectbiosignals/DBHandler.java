@@ -20,7 +20,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
 
     // below variable is for the table that saves the values from snapki
-    private static final String TABLE_NAME = "SnapkiValues";
+    private static final String TABLE_SNAPKI = "SnapkiValues";
 
     // variables for this table:
     // below variable is for our id column.
@@ -52,7 +52,7 @@ public class DBHandler extends SQLiteOpenHelper {
         // an sqlite query and we are
         // setting our column names
         // along with their data types.
-        String query = "CREATE TABLE " + TABLE_NAME + " ("
+        String query = "CREATE TABLE " + TABLE_SNAPKI+ " ("
                 + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + AX_COL + " INTEGER,"
                 + AY_COL + " INTEGER,"
@@ -96,7 +96,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
         // after adding all values we are passing
         // content values to our table.
-        db.insert(TABLE_NAME, null, values);
+        db.insert(TABLE_SNAPKI, null, values);
         // at last we are closing our
         // database after adding database.
         db.close();
@@ -105,7 +105,7 @@ public class DBHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // this method is called to check if the table exists already.
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SNAPKI);
         onCreate(db);
     }
 }
