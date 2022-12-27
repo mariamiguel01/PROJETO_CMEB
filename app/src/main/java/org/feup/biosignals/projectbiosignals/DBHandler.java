@@ -13,24 +13,29 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class DBHandler extends SQLiteOpenHelper {
-    // creating a constant variables for our database.
+
     // below variable is for our database name.
-    private static final String DB_NAME = "SnapkiValues";
-
-    // below variable is for our table name.
-    private static final String TABLE_NAME = "HistoryValues";
-
+    private static final String DB_NAME = "BackSaver";
     // below int is our database version
     private static final int DB_VERSION = 1;
 
+    // below variable is for the table that saves the values from snapki
+    private static final String TABLE_NAME = "SnapkiValues";
+
+    // variables for this table:
     // below variable is for our id column.
     private static final String ID_COL = "id";
+    // below variable is for the columns corresponding to the values of the accelerometer
+    private static final String AX_COL = "ax";
+    private static final String AY_COL = "ay";
+    private static final String AZ_COL = "az";
+    // below variable is for the values corresponding to the gyroscope
+    private static final String GX_COL = "gx";
+    private static final String GY_COL = "gy";
+    private static final String GZ_COL = "gz";
 
-    // below variable is for our course name column
-    private static final String ANGLE_COL = "angle";
-
-    // below variable is for our course name column
-    private static final String INSTANT_COL = "instant";
+    //below variable is for the column corresponding to the instant
+    private static final String T_COL = "t";
 
     // below variable is for our course name column
     private static final String DATE_COL = "date";
@@ -49,8 +54,12 @@ public class DBHandler extends SQLiteOpenHelper {
         // along with their data types.
         String query = "CREATE TABLE " + TABLE_NAME + " ("
                 + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + ANGLE_COL + " REAL,"
-                + INSTANT_COL + " REAL,"
+                + AX_COL + " INTEGER,"
+                + AY_COL + " INTEGER,"
+                + AZ_COL + " INTEGER,"
+                + GX_COL + " INTEGER,"
+                + GY_COL + "INTEGER,"
+                + GZ_COL + "INTEGER,"
                 + DATE_COL + " TEXT)";
 
         // at last we are calling a exec sql
@@ -59,7 +68,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     // this method is use to add new course to our sqlite database.
-    public void addNewCourse(Double angle, Double instant) {
+    public void addNewCourse(Integer ax, Integer ay, Integer az, Integer gx, Integer gy, Integer gz) {
 
         // on below line we are creating a variable for
         // our sqlite database and calling writable method
@@ -77,8 +86,12 @@ public class DBHandler extends SQLiteOpenHelper {
 
         // on below line we are passing all values
         // along with its key and value pair.
-        values.put(ANGLE_COL, angle);
-        values.put(INSTANT_COL, instant);
+        values.put(AX_COL, ax);
+        values.put(AY_COL, ay);
+        values.put(AZ_COL, az);
+        values.put(GX_COL, gx);
+        values.put(GY_COL, gy);
+        values.put(GZ_COL, gz);
         values.put(DATE_COL, data);
 
         // after adding all values we are passing
