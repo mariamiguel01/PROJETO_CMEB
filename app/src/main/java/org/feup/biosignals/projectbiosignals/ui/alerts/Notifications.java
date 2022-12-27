@@ -17,6 +17,8 @@ import android.widget.RemoteViews;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDeepLinkBuilder;
 import androidx.navigation.Navigation;
@@ -25,6 +27,8 @@ import androidx.navigation.ui.NavigationUI;
 import org.feup.biosignals.projectbiosignals.MainActivity;
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.databinding.ActivityMainBinding;
+import org.feup.biosignals.projectbiosignals.ui.exercises_news.NewsFragment;
+import org.feup.biosignals.projectbiosignals.ui.stats.StatsFragment;
 
 import java.util.Calendar;
 
@@ -35,8 +39,8 @@ public class Notifications extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //binding = ActivityMainBinding.inflate(getLayoutInflater());
-        //setContentView(binding.getRoot());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         NotificationManager manager = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -50,7 +54,7 @@ public class Notifications extends AppCompatActivity {
             manager.createNotificationChannel(channel1);
         }
 
-        Calendar calendar = Calendar.getInstance();
+        /*Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY,0);
         calendar.set(Calendar.MINUTE, 26);
         Intent intentClock = new Intent(getApplicationContext(), NotificationReceiver.class);
@@ -58,7 +62,7 @@ public class Notifications extends AppCompatActivity {
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntentClock);
-        /*long timeInitial = System.currentTimeMillis();
+        *//*long timeInitial = System.currentTimeMillis();
         long tenSeconds = 1000 * 10;
         alarmManager.set(AlarmManager.RTC_WAKEUP,
                 timeInitial + tenSeconds,
@@ -67,8 +71,12 @@ public class Notifications extends AppCompatActivity {
         //collapsedView.setTextViewText(R.id.notification_collapsed, "Hello world!");
         //collapsedView.setOnClickPendingIntent(R.id.notification_collapsed, clickPendingIntent);
 
-        /*Intent clickNotIntent = new Intent(this, MainActivity.class);
+        getSupportFragmentManager().beginTransaction()
+                .add(android.R.id.content, new StatsFragment()).commit();
+
+        Intent clickNotIntent = new Intent(this, StatsFragment.class);
         PendingIntent clickPendingIntent = PendingIntent.getActivity(this,1,clickNotIntent,PendingIntent.FLAG_MUTABLE);
+
 
         NotificationCompat.Builder notification = new NotificationCompat.Builder(this, CHANNEL1)
                 .setSmallIcon(R.drawable.ic_notifications_black_24dp)
@@ -83,6 +91,6 @@ public class Notifications extends AppCompatActivity {
         manager.notify(1, notification.build());
 
         Intent intentBack = new Intent(this, MainActivity.class);
-        startActivity(intentBack);*/
+        startActivity(intentBack);
     }
 }

@@ -24,6 +24,7 @@ import androidx.annotation.NonNull;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import org.feup.biosignals.projectbiosignals.MainActivity;
@@ -31,6 +32,7 @@ import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.databinding.FragmentAlertsBinding;
 import org.feup.biosignals.projectbiosignals.databinding.ActivityMainBinding;
 import org.feup.biosignals.projectbiosignals.databinding.FragmentHomeBinding;
+import org.feup.biosignals.projectbiosignals.ui.exercises_news.NewsFragment;
 
 
 public class AlertsFragment extends Fragment {
@@ -54,8 +56,8 @@ public class AlertsFragment extends Fragment {
 
         mediaPlayer = MediaPlayer.create(getActivity(), R.raw.sound);
         vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
-        Intent intent1 = new Intent(getContext(), Notifications.class);
 
+        Intent intent1 = new Intent(getContext(), Notifications.class);
         binding.buttonAlertTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
