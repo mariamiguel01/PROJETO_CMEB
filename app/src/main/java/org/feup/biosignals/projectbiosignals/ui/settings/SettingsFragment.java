@@ -22,7 +22,7 @@ public class SettingsFragment extends Fragment {
 
     private FragmentSettingsBinding binding;
     private Switch sound,vibration,connection;
-    ImageButton bt_cal;
+    ImageButton bt_cal, bt_bl;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +44,7 @@ public class SettingsFragment extends Fragment {
         vibration = view.findViewById(R.id.vibrationSwitch);
         connection = view.findViewById(R.id.switch3);
         bt_cal = view.findViewById(R.id.calibration);
+        bt_bl = view.findViewById(R.id.bluetooth);
 
         SharedPreferences getsoundsp = getActivity().getSharedPreferences("soundSwitch", Context.MODE_PRIVATE);
         SharedPreferences getvibrationsp = getActivity().getSharedPreferences("vibrationSwitch", Context.MODE_PRIVATE);
@@ -53,13 +54,19 @@ public class SettingsFragment extends Fragment {
         SoundSwitch();
         VibrationSwitch();
 
-
-        bt_cal.setOnClickListener(new View.OnClickListener() {
+        bt_bl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Here goes the code that saves the current data as the "zero"
                 Intent intent_to_ble = new Intent(getContext(), bleConnection.class);
                 startActivity(intent_to_ble);
+            }
+        });
+
+        bt_cal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }

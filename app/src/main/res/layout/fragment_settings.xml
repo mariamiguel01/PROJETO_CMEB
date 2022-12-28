@@ -65,6 +65,16 @@
         android:textOn="ON"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
+    <ImageButton
+        android:id="@+id/bluetooth"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_bluetooth"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btcal_background"
+        android:contentDescription="@string/calibration"/>
+
     <TextView
         android:text="@string/cal_text"
         android:layout_width="wrap_content"
