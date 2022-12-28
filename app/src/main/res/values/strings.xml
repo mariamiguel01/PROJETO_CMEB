@@ -64,5 +64,9 @@
     <string name="alertFulltext">Hello! You are sitting with a bad posture for 5 minutes... Do some stretching!</string>
     <string name="get_your_exercises_in">Get your exercises in</string>
     <string name="calibration">Device Calibration</string>
+    <string name="bl_text">Connect to Bluetooth</string>
     <string name="cal_text">Calibrate your device</string>
+    <string name="choose_device">Choose your Bluetooth Device</string>
+    <string name="return_dev">Return</string>
+
 </resources>

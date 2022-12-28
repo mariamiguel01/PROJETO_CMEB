@@ -52,7 +52,14 @@
         android:textOn="ON"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-
+    <TextView
+        android:text="@string/bl_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
     <ImageButton
         android:id="@+id/bluetooth"
         android:layout_width="80dp"

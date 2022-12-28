@@ -42,7 +42,6 @@ public class SettingsFragment extends Fragment {
 
         sound = view.findViewById(R.id.soundSwitch);
         vibration = view.findViewById(R.id.vibrationSwitch);
-        connection = view.findViewById(R.id.switch3);
         bt_cal = view.findViewById(R.id.calibration);
         bt_bl = view.findViewById(R.id.bluetooth);
 

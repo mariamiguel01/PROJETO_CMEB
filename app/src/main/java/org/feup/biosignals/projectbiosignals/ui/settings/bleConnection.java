@@ -21,6 +21,7 @@ import android.view.View;
 
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.helpers.DataParser;
+import org.feup.biosignals.projectbiosignals.ui.stats.StatsFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -107,6 +108,12 @@ public class bleConnection extends AppCompatActivity {
         Log.i(TAG, "Clicked button");
         Intent intent = new Intent(this, ConnectionActivity.class);
         startActivityForResult(intent, REQUEST_CONNECTION);
+    }
+
+    public void return_main(View view) {
+        Log.i(TAG, "Clicked button");
+        Intent intent2 = new Intent(this, SettingsViewModel.class);
+        startActivity(intent2);
     }
 
     @SuppressLint("NewApi")
