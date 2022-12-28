@@ -31,7 +31,6 @@ public class bleConnection extends AppCompatActivity {
     private final String TAG = "AcquisitionActivity";
     private static final int REQUEST_CONNECTION = 2;
 
-
     private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -70,7 +69,6 @@ public class bleConnection extends AppCompatActivity {
         return intentFilter;
     }
 
-
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,14 +91,6 @@ public class bleConnection extends AppCompatActivity {
                 Log.i(TAG, isGranted.toString());
             }).launch(permsList.stream().toArray(String[]::new));
         }
-
-        /*Intent intent2connection = new Intent(this, ConnectionActivity.class);
-        Button button2connect = findViewById(R.id.button);
-        button2connect.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(intent2connection);
-            }
-        });*/
     }
 
     public void connect(View view) {

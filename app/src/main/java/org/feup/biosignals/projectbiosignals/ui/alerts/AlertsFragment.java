@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -33,6 +34,7 @@ import org.feup.biosignals.projectbiosignals.databinding.FragmentAlertsBinding;
 import org.feup.biosignals.projectbiosignals.databinding.ActivityMainBinding;
 import org.feup.biosignals.projectbiosignals.databinding.FragmentHomeBinding;
 import org.feup.biosignals.projectbiosignals.ui.exercises_news.NewsFragment;
+import org.feup.biosignals.projectbiosignals.ui.settings.SettingsViewModel;
 
 
 public class AlertsFragment extends Fragment {

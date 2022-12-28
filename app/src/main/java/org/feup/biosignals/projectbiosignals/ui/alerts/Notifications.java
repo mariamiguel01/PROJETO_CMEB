@@ -28,6 +28,7 @@ import org.feup.biosignals.projectbiosignals.MainActivity;
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.databinding.ActivityMainBinding;
 import org.feup.biosignals.projectbiosignals.ui.exercises_news.NewsFragment;
+import org.feup.biosignals.projectbiosignals.ui.exercises_news.NewsViewModel;
 import org.feup.biosignals.projectbiosignals.ui.stats.StatsFragment;
 
 import java.util.Calendar;
@@ -54,29 +55,21 @@ public class Notifications extends AppCompatActivity {
             manager.createNotificationChannel(channel1);
         }
 
-        /*Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY,0);
-        calendar.set(Calendar.MINUTE, 26);
-        Intent intentClock = new Intent(getApplicationContext(), NotificationReceiver.class);
-        PendingIntent pendingIntentClock = PendingIntent.getBroadcast(getApplicationContext(), 100,intentClock, PendingIntent.FLAG_MUTABLE);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY,7);
+        calendar.set(Calendar.MINUTE, 40);
+
+        Intent intentClock = new Intent(Notifications.this, NotificationReceiver.class);
+        PendingIntent pendingIntentClock = PendingIntent.getBroadcast(Notifications.this, 100,intentClock, PendingIntent.FLAG_MUTABLE);
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntentClock);
-        *//*long timeInitial = System.currentTimeMillis();
-        long tenSeconds = 1000 * 10;
-        alarmManager.set(AlarmManager.RTC_WAKEUP,
-                timeInitial + tenSeconds,
-                clickPendingIntent);*/
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntentClock);
 
         //collapsedView.setTextViewText(R.id.notification_collapsed, "Hello world!");
         //collapsedView.setOnClickPendingIntent(R.id.notification_collapsed, clickPendingIntent);
 
-        getSupportFragmentManager().beginTransaction()
-                .add(android.R.id.content, new StatsFragment()).commit();
-
-        Intent clickNotIntent = new Intent(this, StatsFragment.class);
+        /*Intent clickNotIntent = new Intent(this, MainActivity.class);
         PendingIntent clickPendingIntent = PendingIntent.getActivity(this,1,clickNotIntent,PendingIntent.FLAG_MUTABLE);
-
 
         NotificationCompat.Builder notification = new NotificationCompat.Builder(this, CHANNEL1)
                 .setSmallIcon(R.drawable.ic_notifications_black_24dp)
@@ -88,7 +81,7 @@ public class Notifications extends AppCompatActivity {
                 .setContentIntent(clickPendingIntent)
                 ;
 
-        manager.notify(1, notification.build());
+        manager.notify(1, notification.build());*/
 
         Intent intentBack = new Intent(this, MainActivity.class);
         startActivity(intentBack);

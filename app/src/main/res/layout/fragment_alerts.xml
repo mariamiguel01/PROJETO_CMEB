@@ -51,7 +51,6 @@
             android:id="@+id/buttonAlertTest"
             android:layout_width="344dp"
             android:layout_height="wrap_content"
-            android:onClick="createNotificationChannel"
             android:text="Button Alert" />
 
     </LinearLayout>
