@@ -24,10 +24,11 @@ public class HomeFragment extends Fragment {
     private ProgressBar progressBar;
     private TextView progressText;
     private TextView pointsText;
+    private TextView levelText;
     private ImageView imageToLoad;
     int i = 0;
 
-    int points = 8;
+    int points = 1;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -49,7 +50,8 @@ public class HomeFragment extends Fragment {
         progressBar = view.findViewById(R.id.progress_bar);
         progressText = view.findViewById(R.id.progress_text);
 
-        pointsText = view.findViewById(R.id.level);
+        levelText = view.findViewById(R.id.level);
+        pointsText = view.findViewById(R.id.points_text);
         imageToLoad = view.findViewById(R.id.image_level);
 
         final Handler handler = new Handler();
@@ -67,30 +69,31 @@ public class HomeFragment extends Fragment {
                     handler.removeCallbacks(this);
                 }
 
-                if (points<5) {
+                pointsText.setText(Integer.toString(points));
+                if (points < 5) {
                     imageToLoad.setImageResource(R.drawable.level1);
-                    pointsText.setText("level1");
+                    levelText.setText("Level 1 (of 6)");
                 }
-                if (points>=5 && points<10) {
+                if (points >= 5 && points < 10) {
                     imageToLoad.setImageResource(R.drawable.level2);
-                    pointsText.setText("level2");
+                    levelText.setText("Level 2 (of 6)");
                 }
-                if (points>=10 && points<15) {
+                if (points >= 10 && points < 15) {
                     imageToLoad.setImageResource(R.drawable.level3);
-                    pointsText.setText("level3");
+                    levelText.setText("Level 3 (of 6)");
                 }
-                if (points>=15 && points<20) {
+                if (points >= 15 && points < 20) {
                     imageToLoad.setImageResource(R.drawable.level4);
-                    pointsText.setText("level4");
+                    levelText.setText("Level 4 (of 6)");
                 }
-                if (points>=20 && points<25) {
+                if (points >= 20 && points < 25) {
                     imageToLoad.setImageResource(R.drawable.level5);
-                    pointsText.setText("level5");
+                    levelText.setText("Level 5 (of 6)");
                 }
-                else {
+ /*               else {
                     imageToLoad.setImageResource(R.drawable.level6);
-                    pointsText.setText("level6");
-                }
+                    levelText.setText("Level 6 (of 6)");
+                }*/
             }
         }, 200);
 

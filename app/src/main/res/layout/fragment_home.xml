@@ -105,7 +105,7 @@
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="20dp"
                 android:layout_toRightOf="@+id/image_level"
-                android:text="Level 1 (of 7)"
+                android:text="Level 1 (of 6)"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
