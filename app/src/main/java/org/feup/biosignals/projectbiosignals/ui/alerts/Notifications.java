@@ -1,3 +1,4 @@
+/*
 package org.feup.biosignals.projectbiosignals.ui.alerts;
 
 import android.app.NotificationChannel;
@@ -40,17 +41,14 @@ public class Notifications extends AppCompatActivity {
     private ActivityMainBinding binding;
     private static final String CHANNEL1 = "channel1";
 
-    MediaPlayer mediaPlayer;
-    Vibrator vibrator;
-    boolean Sound_boolean,Vibration_boolean;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.fragment_alerts_list);
         //replaceFragment(new AlertsFragment());
 
-        /*recyclerViewAlerts = findViewById(R.id.recyclerViewAlerts);
+        */
+/*recyclerViewAlerts = findViewById(R.id.recyclerViewAlerts);
 
         mAlerts.add(new classAlertItem("Title test", "Message test"));
 
@@ -60,53 +58,24 @@ public class Notifications extends AppCompatActivity {
         alertsListAdapter = new AlertsListAdapter(mAlerts, this);
         recyclerViewAlerts.setAdapter(alertsListAdapter);
 
-        mHandler = new Handler();*/
+        mHandler = new Handler();*//*
 
 
-        NotificationManager manager = null;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel1 = new NotificationChannel(
-                    CHANNEL1,
-                    "Channel 1",
-                    NotificationManager.IMPORTANCE_HIGH
-            );
-            channel1.setDescription("This is channel 1");
-            manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-            manager.createNotificationChannel(channel1);
-        }
 
         // Daily alerts --> Apagar depois
-        /*Calendar calendar = Calendar.getInstance();
+        */
+/*Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY,11);
         calendar.set(Calendar.MINUTE, 31);
         Intent intentClock = new Intent(Notifications.this, NotificationReceiver.class);
         PendingIntent pendingIntentClock = PendingIntent.getBroadcast(Notifications.this, 100,intentClock, PendingIntent.FLAG_MUTABLE);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntentClock);*/
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntentClock);*//*
+
 
         //collapsedView.setTextViewText(R.id.notification_collapsed, "Hello world!");
         //collapsedView.setOnClickPendingIntent(R.id.notification_collapsed, clickPendingIntent);
 
-        Intent clickNotIntent = new Intent(this, MainActivity.class);
-        PendingIntent clickPendingIntent = PendingIntent.getActivity(this,1,clickNotIntent,PendingIntent.FLAG_MUTABLE);
-
-        NotificationCompat.Builder notification = new NotificationCompat.Builder(this, CHANNEL1)
-                .setSmallIcon(R.drawable.ic_notifications_black_24dp)
-                //.setCustomContentView(collapsedView)
-                .setContentTitle("Title")
-                .setContentText("Message")
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setAutoCancel(true)
-                .setContentIntent(clickPendingIntent)
-                ;
-
-        //alertSoundVibration();
-
-
-        manager.notify(1, notification.build());
-
-        Intent intentBack = new Intent(this, MainActivity.class);
-        startActivity(intentBack);
     }
 
     private void replaceFragment(Fragment fragment) {
@@ -115,24 +84,4 @@ public class Notifications extends AppCompatActivity {
         fragmentTransaction.replace(R.id.recyclerViewAlerts, fragment);
         fragmentTransaction.commit();
     }
-
-    public void alertSoundVibration(){
-        if(Sound_boolean){
-            mediaPlayer.start();
-        }else{
-        }
-        if(Vibration_boolean){
-            vibrator.vibrate(30);
-        }
-    }
-
-    @Override
-    public void onResume() {
-        SharedPreferences getsoundsp = getSharedPreferences("soundSwitch", Context.MODE_PRIVATE);
-        SharedPreferences getvibrationsp = getSharedPreferences("vibrationSwitch", Context.MODE_PRIVATE);
-        Sound_boolean = getsoundsp.getBoolean("soundSwitch", false);
-        Vibration_boolean = getvibrationsp.getBoolean("vibrationSwitch", false);
-
-        super.onResume();
-    }
-}
+}*/

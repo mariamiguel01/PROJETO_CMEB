@@ -43,9 +43,10 @@ import java.util.ArrayList;
 
 
 public class AlertsFragment extends Fragment implements AlertsListAdapter.OnItemListener {
-    private FragmentAlertsBinding binding;
+    //private FragmentAlertsBinding binding;
     //MediaPlayer mediaPlayer;
     //Vibrator vibrator;
+    private View root;
 
     private ArrayList<classAlertItem> mAlerts = new ArrayList<classAlertItem>();
     private classAlertItem mAlert;
@@ -67,21 +68,18 @@ public class AlertsFragment extends Fragment implements AlertsListAdapter.OnItem
         AlertsViewModel alertsViewModel =
                 new ViewModelProvider(this).get(AlertsViewModel.class);
 
-        binding = FragmentAlertsBinding.inflate(inflater, container, false);
+        root = inflater.inflate(R.layout.fragment_alerts_list, container, false);
 
         /*recyclerview = view.findViewById(R.id.recyclerViewAlerts);
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         AlertsListAdapter alertsListAdapter = new AlertsListAdapter(mAlerts, mOnItemListener);
         recyclerViewAlerts.setAdapter(alertsListAdapter);*/
 
-        return binding.getRoot();
+        return root;
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        //mediaPlayer = MediaPlayer.create(getActivity(), R.raw.sound);
-        //vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
 
         //recyclerViewAlerts = recyclerViewAlerts.findViewById(R.id.recyclerViewAlerts);
 
@@ -89,23 +87,13 @@ public class AlertsFragment extends Fragment implements AlertsListAdapter.OnItem
 
         //mHandler = new Handler();
 
-        Intent intent1 = new Intent(getContext(), Notifications.class);
-        if(true){
-            startActivity(intent1);
-        }
 
-        /*binding.buttonAlertTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(intent1);
-            }
-        });*/
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null;
+        root = null;
     }
 
     @Override

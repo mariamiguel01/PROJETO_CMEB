@@ -4,6 +4,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
@@ -17,6 +18,7 @@ public class NotificationReceiver extends BroadcastReceiver {
     private static final String CHANNEL1 = "channel1";
     @Override
     public void onReceive(Context context, Intent intent) {
+        Log.i("Broadcast", "In broadcast");
         Intent intentOnClick = new Intent(context, MainActivity.class);
         intentOnClick.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntentOnClick = PendingIntent.getActivity(context,100,intentOnClick, PendingIntent.FLAG_MUTABLE);
@@ -29,6 +31,7 @@ public class NotificationReceiver extends BroadcastReceiver {
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntentOnClick)
+                .setChannelId("channel1")
                 ;
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);

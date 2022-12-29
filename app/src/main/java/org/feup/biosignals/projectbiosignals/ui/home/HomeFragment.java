@@ -1,5 +1,7 @@
 package org.feup.biosignals.projectbiosignals.ui.home;
 
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,7 +19,7 @@ import androidx.lifecycle.ViewModelProvider;
 import org.feup.biosignals.projectbiosignals.MainActivity;
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.databinding.FragmentHomeBinding;
-import org.feup.biosignals.projectbiosignals.ui.alerts.Notifications;
+import org.feup.biosignals.projectbiosignals.ui.alerts.NotificationReceiver;
 import org.feup.biosignals.projectbiosignals.video;
 
 public class HomeFragment extends Fragment {
@@ -31,6 +33,7 @@ public class HomeFragment extends Fragment {
     int i = 0;
     int points;
 
+    int timeCounter = 0;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -55,14 +58,14 @@ public class HomeFragment extends Fragment {
         pointsText = view.findViewById(R.id.points_text);
         imageToLoad = view.findViewById(R.id.image_level);
 
-        Intent intent;
+        /*Intent intent;
         intent = new Intent(getActivity(), video.class);
         intent.putExtra("points", points);
-        startActivity(intent);
+        startActivity(intent);*/
 
         if(getArguments() != null) {
             points = getArguments().getInt("points");
-        }
+        } else { points = 0; }
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -74,7 +77,7 @@ public class HomeFragment extends Fragment {
                     progressText.setText("" + i);
                     progressBar.setProgress(i);
                     i++;
-                    handler.postDelayed(this, 200);
+                    handler.postDelayed(this, 1000);
                 } else {
                     handler.removeCallbacks(this);
                 }
@@ -104,9 +107,18 @@ public class HomeFragment extends Fragment {
                     imageToLoad.setImageResource(R.drawable.level6);
                     levelText.setText("Level 6 (of 6)");
                 }
-            }
-        }, 200);
 
+                if (i > 5) {
+                    timeCounter++;
+                    if (timeCounter > 5) {
+                        Intent intent2notifications = new Intent(getContext(), NotificationReceiver.class);
+                        //intent2notifications.setAction("");
+                        getActivity().sendBroadcast(intent2notifications);
+                        timeCounter = 0;
+                    }
+                } else { timeCounter = 0; }
+            }
+        }, 1000);
     }
 
     @Override
