@@ -27,8 +27,7 @@ public class HomeFragment extends Fragment {
     private TextView levelText;
     private ImageView imageToLoad;
     int i = 0;
-
-    int points = 1;
+    int points = 15;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -69,7 +68,7 @@ public class HomeFragment extends Fragment {
                     handler.removeCallbacks(this);
                 }
 
-                pointsText.setText(Integer.toString(points));
+                pointsText.setText("Points:" + Integer.toString(points));
                 if (points < 5) {
                     imageToLoad.setImageResource(R.drawable.level1);
                     levelText.setText("Level 1 (of 6)");
@@ -90,10 +89,10 @@ public class HomeFragment extends Fragment {
                     imageToLoad.setImageResource(R.drawable.level5);
                     levelText.setText("Level 5 (of 6)");
                 }
- /*               else {
+                if (points >= 25) {
                     imageToLoad.setImageResource(R.drawable.level6);
                     levelText.setText("Level 6 (of 6)");
-                }*/
+                }
             }
         }, 200);
 
