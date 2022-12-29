@@ -67,7 +67,7 @@ public class SettingsFragment extends Fragment {
         bt_cal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                // the idea is to somehow save the current values, and store the Euler Angles to be the zero, subtracting these values for each calculated angle
             }
         });
     }

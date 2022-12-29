@@ -48,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
-        db = new DBManager(this);
-        db.AddAngle(0.1, 0.2, 0.3);
 
         createNotificationChannel();
     }
@@ -65,5 +63,8 @@ public class MainActivity extends AppCompatActivity {
             NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             manager.createNotificationChannel(channel1);
         }
+        // To add values to the database
+        // db.AddAngle(0.1, 0.2, 0.3);
+
     }
 }

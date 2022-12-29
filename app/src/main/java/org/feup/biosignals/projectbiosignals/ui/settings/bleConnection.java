@@ -20,8 +20,11 @@ import android.util.Log;
 import android.view.View;
 
 import org.feup.biosignals.projectbiosignals.DBHandler;
+import org.feup.biosignals.projectbiosignals.DBManager;
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.helpers.DataParser;
+import org.feup.biosignals.projectbiosignals.ui.home.HomeFragment;
+import org.feup.biosignals.projectbiosignals.ui.home.HomeViewModel;
 import org.feup.biosignals.projectbiosignals.ui.stats.StatsFragment;
 
 import java.util.ArrayList;
@@ -31,6 +34,9 @@ public class bleConnection extends AppCompatActivity {
 
     private final String TAG = "AcquisitionActivity";
     private static final int REQUEST_CONNECTION = 2;
+    DBManager db;
+    private static final double DT = 0.02;  // time step for integration
+    private double pitch, roll, yaw;
 
 
     private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
@@ -58,6 +64,15 @@ public class bleConnection extends AppCompatActivity {
                         float forceOne = dataParser.getForceOneData().get(i);
                         float forceTwo = dataParser.getForceOneData().get(i);
                         Log.i(TAG, "" + gyroX);
+
+
+                        // this is the value of the angles without subtracting the zero
+                        // the goal is to send them to the HomeFragment directly to show on the progress bar
+                        //Then save the data in the database (AddAngle function for that)
+                        pitch = pitch + gyroX *DT;
+                        roll = roll + gyroY *DT;
+                        yaw += gyroZ * DT;
+
                     }
                 }
             }
