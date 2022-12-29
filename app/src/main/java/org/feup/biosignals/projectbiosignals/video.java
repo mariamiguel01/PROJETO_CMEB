@@ -22,6 +22,7 @@ public class video extends YouTubeBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.video);
         youTubePlayerView1 = findViewById(R.id.ytPlayer1);
+
         YouTubePlayer.OnInitializedListener listener= new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
@@ -38,8 +39,8 @@ public class video extends YouTubeBaseActivity {
         };
         youTubePlayerView1.initialize("AIzaSyBUdsYQM6Xe5EqWk8_J9R3UNu6xNuSbWcE",listener);
 
-/*        Intent pointsIntent = new Intent(this, MainActivity.class);
+        Intent pointsIntent = new Intent(this, MainActivity.class);
         pointsIntent.putExtra("points", points);
-        startActivity(pointsIntent);*/
+        startActivity(pointsIntent);
     }
 }

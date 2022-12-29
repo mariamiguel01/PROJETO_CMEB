@@ -75,14 +75,12 @@ public class Notifications extends AppCompatActivity {
             manager.createNotificationChannel(channel1);
         }
 
-        // Daily alerts
+        // Daily alerts --> Apagar depois
         /*Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY,11);
         calendar.set(Calendar.MINUTE, 31);
-
         Intent intentClock = new Intent(Notifications.this, NotificationReceiver.class);
         PendingIntent pendingIntentClock = PendingIntent.getBroadcast(Notifications.this, 100,intentClock, PendingIntent.FLAG_MUTABLE);
-
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntentClock);*/
 
@@ -102,7 +100,7 @@ public class Notifications extends AppCompatActivity {
                 .setContentIntent(clickPendingIntent)
                 ;
 
-        alertSoundVibration();
+        //alertSoundVibration();
 
 
         manager.notify(1, notification.build());

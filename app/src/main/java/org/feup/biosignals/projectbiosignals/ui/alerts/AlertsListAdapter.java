@@ -21,7 +21,7 @@ public class AlertsListAdapter extends RecyclerView.Adapter<AlertsListAdapter.Vi
     private OnItemListener mOnItemListener;
     Context context;
 
-    public AlertsListAdapter(ArrayList<classAlertItem> mAlerts, OnItemListener onItemListener) {
+    public AlertsListAdapter(Context ct, ArrayList<classAlertItem> mAlerts, OnItemListener onItemListener) {
         this.mAlerts = mAlerts;
         this.mOnItemListener = onItemListener;
     }
@@ -53,24 +53,15 @@ public class AlertsListAdapter extends RecyclerView.Adapter<AlertsListAdapter.Vi
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_alerts, parent, false);
+                .inflate(R.layout.recycler_view_alert, parent, false);
         ViewHolder viewHolder = new ViewHolder(v, mOnItemListener);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        classAlertItem alert = getAlert(position);
-
-        final String alertTitle = alert.getTitle();
-        if (alertTitle != null && alertTitle.length()>0){
-            holder.alertTitle.setText(alertTitle);
-            holder.alertText.setText(alert.getMessage());
-        }
-        else {
-            holder.alertTitle.setText("No new notifications");
-            holder.alertText.setText("");
-        }
+        holder.alertTitle.setText(mAlerts.get(position).getTitle());
+        holder.alertText.setText(mAlerts.get(position).getMessage());
     }
 
     @Override

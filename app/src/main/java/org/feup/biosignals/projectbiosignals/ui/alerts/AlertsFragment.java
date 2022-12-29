@@ -44,8 +44,8 @@ import java.util.ArrayList;
 
 public class AlertsFragment extends Fragment implements AlertsListAdapter.OnItemListener {
     private FragmentAlertsBinding binding;
-    MediaPlayer mediaPlayer;
-    Vibrator vibrator;
+    //MediaPlayer mediaPlayer;
+    //Vibrator vibrator;
 
     private ArrayList<classAlertItem> mAlerts = new ArrayList<classAlertItem>();
     private classAlertItem mAlert;
@@ -60,7 +60,7 @@ public class AlertsFragment extends Fragment implements AlertsListAdapter.OnItem
 
     private Handler mHandler;
 
-    boolean Sound_boolean,Vibration_boolean;
+    //boolean Sound_boolean,Vibration_boolean;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -80,8 +80,8 @@ public class AlertsFragment extends Fragment implements AlertsListAdapter.OnItem
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mediaPlayer = MediaPlayer.create(getActivity(), R.raw.sound);
-        vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+        //mediaPlayer = MediaPlayer.create(getActivity(), R.raw.sound);
+        //vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
 
         //recyclerViewAlerts = recyclerViewAlerts.findViewById(R.id.recyclerViewAlerts);
 
@@ -90,33 +90,17 @@ public class AlertsFragment extends Fragment implements AlertsListAdapter.OnItem
         //mHandler = new Handler();
 
         Intent intent1 = new Intent(getContext(), Notifications.class);
-        binding.buttonAlertTest.setOnClickListener(new View.OnClickListener() {
+        if(true){
+            startActivity(intent1);
+        }
+
+        /*binding.buttonAlertTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(intent1);
             }
-        });
+        });*/
     }
-
-    /*public void alertSoundVibration(){
-        if(Sound_boolean){
-            mediaPlayer.start();
-        }else{
-        }
-        if(Vibration_boolean){
-            vibrator.vibrate(30);
-        }
-    }
-
-    @Override
-    public void onResume() {
-        SharedPreferences getsoundsp = getActivity().getSharedPreferences("soundSwitch", Context.MODE_PRIVATE);
-        SharedPreferences getvibrationsp = getActivity().getSharedPreferences("vibrationSwitch", Context.MODE_PRIVATE);
-        Sound_boolean = getsoundsp.getBoolean("soundSwitch", false);
-        Vibration_boolean = getvibrationsp.getBoolean("vibrationSwitch", false);
-
-        super.onResume();
-    }*/
 
     @Override
     public void onDestroyView() {
