@@ -29,7 +29,7 @@ public class HomeFragment extends Fragment {
     private TextView levelText;
     private ImageView imageToLoad;
     int i = 0;
-    int points = 0;
+    int points;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -59,6 +59,10 @@ public class HomeFragment extends Fragment {
         intent = new Intent(getActivity(), video.class);
         intent.putExtra("points", points);
         startActivity(intent);
+
+        if(getArguments() != null) {
+            points = getArguments().getInt("points");
+        }
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
