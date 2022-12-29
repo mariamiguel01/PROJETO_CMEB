@@ -1,5 +1,6 @@
 package org.feup.biosignals.projectbiosignals;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private Button buttonHelp;
     private int points = 0;
+    DBManager db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+        db = new DBManager(this);
+        db.AddAngle(0.1, 0.2, 0.3);
+
+
 
     }
 }

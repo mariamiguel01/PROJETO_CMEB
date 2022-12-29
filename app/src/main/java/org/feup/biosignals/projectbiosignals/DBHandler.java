@@ -18,10 +18,8 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String DB_NAME = "BackSaver";
     // below int is our database version
     private static final int DB_VERSION = 1;
-
     // below variable is for the table that saves the values from snapki
     private static final String TABLE_EULER_ANGLES = "EulerAngles";
-
     // variables for this table:
     // below variable is for our id column.
     private static final String ID_COL = "id";
@@ -30,8 +28,6 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String ROLL = "roll";
     private static final String YAW = "yaw";
 
-    //below variable is for the column corresponding to the instant
-    private static final String T_COL = "t";
 
     // below variable is for our course name column
     private static final String DATE_COL = "date";
@@ -41,6 +37,11 @@ public class DBHandler extends SQLiteOpenHelper {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
+    @Override
+    public void onConfigure(SQLiteDatabase db) {
+        super.onConfigure(db);
+        db.setForeignKeyConstraintsEnabled(true);
+    }
 
     // below method is for creating a database by running a sqlite query
     @Override
@@ -61,37 +62,6 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
-    // this method is use to add new data to our sqlite database.
-    public void addNewEulerAngles(Double pitch, Double roll, Double yaw) {
-
-        // on below line we are creating a variable for
-        // our sqlite database and calling writable method
-        // as we are writing data in our database.
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        // on below line we are creating a
-        // variable for content values.
-        ContentValues values = new ContentValues();
-
-        //Get current date
-        Date currentTime = Calendar.getInstance().getTime();
-        String data = DateFormat.getDateInstance().format(currentTime);
-
-
-        // on below line we are passing all values
-        // along with its key and value pair.
-        values.put(PITCH, pitch);
-        values.put(ROLL, roll);
-        values.put(YAW, yaw);
-        values.put(DATE_COL, data);
-
-        // after adding all values we are passing
-        // content values to our table.
-        db.insert(TABLE_EULER_ANGLES, null, values);
-        // at last we are closing our
-        // database after adding database.
-        db.close();
-    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
