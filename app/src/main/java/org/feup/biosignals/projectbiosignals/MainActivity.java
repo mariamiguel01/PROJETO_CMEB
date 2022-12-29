@@ -1,6 +1,10 @@
 package org.feup.biosignals.projectbiosignals;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
@@ -11,13 +15,13 @@ import android.bluetooth.BluetoothDevice;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import org.feup.biosignals.projectbiosignals.databinding.ActivityMainBinding;
-import org.feup.biosignals.projectbiosignals.ui.alerts.Notifications;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private int points = 0;
     DBManager db;
 
+    private static final String CHANNEL1 = "channel1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +51,19 @@ public class MainActivity extends AppCompatActivity {
         db = new DBManager(this);
         db.AddAngle(0.1, 0.2, 0.3);
 
+        createNotificationChannel();
+    }
 
-
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel1 = new NotificationChannel(
+                    CHANNEL1,
+                    "Channel 1",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+            channel1.setDescription("This is channel 1");
+            NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            manager.createNotificationChannel(channel1);
+        }
     }
 }
