@@ -41,10 +41,8 @@ public class ConnectionActivity extends AppCompatActivity implements LeDeviceLis
     private Handler mHandler;
     private boolean mScanning;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i(TAG, "hello");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connection);
 

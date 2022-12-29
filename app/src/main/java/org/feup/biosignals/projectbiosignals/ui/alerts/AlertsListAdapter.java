@@ -1,8 +1,8 @@
-/*
 package org.feup.biosignals.projectbiosignals.ui.alerts;
 
 import android.Manifest;
 import android.bluetooth.BluetoothDevice;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,34 +18,33 @@ import org.feup.biosignals.projectbiosignals.R;
 import java.util.ArrayList;
 
 public class AlertsListAdapter extends RecyclerView.Adapter<AlertsListAdapter.ViewHolder> {
-    private ArrayList<Alerts> mAlerts;
+    private ArrayList<classAlertItem> mAlerts;
     private OnItemListener mOnItemListener;
+    Context context;
 
-    public AlertsListAdapter(ArrayList<Alerts> mAlerts, OnItemListener onItemListener) {
+    public AlertsListAdapter(ArrayList<classAlertItem> mAlerts, OnItemListener onItemListener) {
         this.mAlerts = mAlerts;
         this.mOnItemListener = onItemListener;
     }
 
-    public void addAlerts(Alerts alert) {
+    public void addAlerts(classAlertItem alert) {
         if (!mAlerts.contains(alert)) {
             mAlerts.add(alert);
         }
     }
 
-    public NewAlerts getDevice(int position) {
-        return mLeDevices.get(position);
-    }
+    public classAlertItem getAlert(int position) { return mAlerts.get(position); }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView itemName;
-        public TextView itemUUID;
+        public TextView alertTitle;
+        public TextView alertText;
 
         OnItemListener onItemListener;
 
         public ViewHolder(View itemView, OnItemListener onItemListener) {
             super(itemView);
-            itemName = (TextView) itemView.findViewById(R.id.textView);
-            itemUUID = (TextView) itemView.findViewById(R.id.textView2);
+            alertTitle = (TextView) itemView.findViewById(R.id.alertRecTitle);
+            alertText = (TextView) itemView.findViewById(R.id.alertRecText);
 
             this.onItemListener = onItemListener;
         }
@@ -55,23 +54,24 @@ public class AlertsListAdapter extends RecyclerView.Adapter<AlertsListAdapter.Vi
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recycle_view_item, parent, false);
+                .inflate(R.layout.fragment_alerts, parent, false);
         ViewHolder viewHolder = new ViewHolder(v, mOnItemListener);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        BluetoothDevice device = getDevice(position);
+        classAlertItem alert = getAlert(position);
 
-        final String deviceName = device.getName();
-        if (deviceName != null && deviceName.length()>0){
-            holder.itemName.setText(deviceName);
+        final String alertTitle = alert.getTitle();
+        if (alertTitle != null && alertTitle.length()>0){
+            holder.alertTitle.setText(alertTitle);
+            holder.alertText.setText(alert.getMessage());
         }
         else {
-            holder.itemName.setText("Unknown Device");
+            holder.alertTitle.setText("No new notifications");
+            holder.alertText.setText("");
         }
-        holder.itemUUID.setText(device.getAddress());
     }
 
     @Override
@@ -84,4 +84,3 @@ public class AlertsListAdapter extends RecyclerView.Adapter<AlertsListAdapter.Vi
 
 
 }
-*/

@@ -17,10 +17,10 @@ public class NotificationReceiver extends BroadcastReceiver {
     private static final String CHANNEL1 = "channel1";
     @Override
     public void onReceive(Context context, Intent intent) {
-        /*Intent intentDaily = new Intent(context, MainActivity.class);
-        intentDaily.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntentDaily = PendingIntent.getActivity(context,100,intentDaily, PendingIntent.FLAG_UPDATE_CURRENT);
-*/
+        Intent intentOnClick = new Intent(context, MainActivity.class);
+        intentOnClick.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntentOnClick = PendingIntent.getActivity(context,100,intentOnClick, PendingIntent.FLAG_MUTABLE);
+
         NotificationCompat.Builder notification = new NotificationCompat.Builder(context, CHANNEL1)
                 .setSmallIcon(R.drawable.ic_notifications_black_24dp)
                 //.setCustomContentView(collapsedView)
@@ -28,7 +28,7 @@ public class NotificationReceiver extends BroadcastReceiver {
                 .setContentText("Message daily")
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setAutoCancel(true)
-                //.setContentIntent(pendingIntentDaily)
+                .setContentIntent(pendingIntentOnClick)
                 ;
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
