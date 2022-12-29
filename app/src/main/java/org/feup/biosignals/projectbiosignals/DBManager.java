@@ -2,11 +2,14 @@ package org.feup.biosignals.projectbiosignals;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 
 public class DBManager {
@@ -32,7 +35,24 @@ public class DBManager {
     }
 
 
+    // function to use in statistics (get the data by the date)
+    public List<List<String>> getListByDate() {
+        List<List<String>> info = new ArrayList<>();
+        //Get current date
+        Date currentTime = Calendar.getInstance().getTime();
+        String date = DateFormat.getDateInstance().format(currentTime);
+        Cursor cursor = db.rawQuery("Select * from EulerAngles WHERE date='"+date+"'" , null);
 
+        if (cursor.getCount() != 0) {
+            while (cursor.moveToNext()) {
+                List<String> row = new ArrayList<>();
+                for (int i = 0; i < cursor.getColumnCount(); i++)
+                    row.add(cursor.getString(i));
+                info.add(row);
+            }
+        }
+        return info;
+    }
 
-
+    
 }

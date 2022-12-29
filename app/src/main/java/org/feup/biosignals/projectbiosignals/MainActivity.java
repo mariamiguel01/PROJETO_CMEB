@@ -44,9 +44,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
         db = new DBManager(this);
-        db.AddAngle(0.1, 0.2, 0.3);
-
-
+        // To add values to the database
+        // db.AddAngle(0.1, 0.2, 0.3);
 
     }
 }
