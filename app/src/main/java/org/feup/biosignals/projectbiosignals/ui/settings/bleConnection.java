@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import org.feup.biosignals.projectbiosignals.DBHandler;
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.helpers.DataParser;
 import org.feup.biosignals.projectbiosignals.ui.stats.StatsFragment;
@@ -30,6 +31,7 @@ public class bleConnection extends AppCompatActivity {
 
     private final String TAG = "AcquisitionActivity";
     private static final int REQUEST_CONNECTION = 2;
+
 
     private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
         @Override

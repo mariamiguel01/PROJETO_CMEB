@@ -15,8 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import org.feup.biosignals.projectbiosignals.DBHandler;
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.databinding.FragmentSettingsBinding;
+import org.feup.biosignals.projectbiosignals.ui.stats.StatsFragment;
 
 public class SettingsFragment extends Fragment {
 
@@ -69,6 +71,7 @@ public class SettingsFragment extends Fragment {
             }
         });
     }
+
 
     public void SoundSwitch() {
         if(sound.isChecked()){
