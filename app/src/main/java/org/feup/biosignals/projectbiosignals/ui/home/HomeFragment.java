@@ -14,9 +14,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import org.feup.biosignals.projectbiosignals.MainActivity;
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.databinding.FragmentHomeBinding;
 import org.feup.biosignals.projectbiosignals.ui.alerts.Notifications;
+import org.feup.biosignals.projectbiosignals.video;
 
 public class HomeFragment extends Fragment {
 
@@ -27,7 +29,7 @@ public class HomeFragment extends Fragment {
     private TextView levelText;
     private ImageView imageToLoad;
     int i = 0;
-    int points = 15;
+    int points;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -53,6 +55,15 @@ public class HomeFragment extends Fragment {
         pointsText = view.findViewById(R.id.points_text);
         imageToLoad = view.findViewById(R.id.image_level);
 
+        Intent intent;
+        intent = new Intent(getActivity(), video.class);
+        intent.putExtra("points", points);
+        startActivity(intent);
+
+        if(getArguments() != null) {
+            points = getArguments().getInt("points");
+        }
+
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -68,7 +79,7 @@ public class HomeFragment extends Fragment {
                     handler.removeCallbacks(this);
                 }
 
-                pointsText.setText("Points:" + Integer.toString(points));
+                pointsText.setText("Points: " + Integer.toString(points));
                 if (points < 5) {
                     imageToLoad.setImageResource(R.drawable.level1);
                     levelText.setText("Level 1 (of 6)");
