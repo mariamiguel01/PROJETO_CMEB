@@ -98,7 +98,7 @@ public class AlertsFragment extends Fragment implements AlertsListAdapter.OnItem
         });
     }
 
-    public void alertSoundVibration(){
+    /*public void alertSoundVibration(){
         if(Sound_boolean){
             mediaPlayer.start();
         }else{
@@ -107,6 +107,7 @@ public class AlertsFragment extends Fragment implements AlertsListAdapter.OnItem
             vibrator.vibrate(30);
         }
     }
+
     @Override
     public void onResume() {
         SharedPreferences getsoundsp = getActivity().getSharedPreferences("soundSwitch", Context.MODE_PRIVATE);
@@ -115,7 +116,7 @@ public class AlertsFragment extends Fragment implements AlertsListAdapter.OnItem
         Vibration_boolean = getvibrationsp.getBoolean("vibrationSwitch", false);
 
         super.onResume();
-    }
+    }*/
 
     @Override
     public void onDestroyView() {

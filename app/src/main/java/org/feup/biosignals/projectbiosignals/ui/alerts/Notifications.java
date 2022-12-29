@@ -9,9 +9,12 @@ import android.bluetooth.BluetoothManager;
 import android.bluetooth.le.BluetoothLeScanner;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Vibrator;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -36,6 +39,10 @@ import java.util.Calendar;
 public class Notifications extends AppCompatActivity {
     private ActivityMainBinding binding;
     private static final String CHANNEL1 = "channel1";
+
+    MediaPlayer mediaPlayer;
+    Vibrator vibrator;
+    boolean Sound_boolean,Vibration_boolean;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -95,6 +102,7 @@ public class Notifications extends AppCompatActivity {
                 .setContentIntent(clickPendingIntent)
                 ;
 
+        alertSoundVibration();
 
 
         manager.notify(1, notification.build());
@@ -108,5 +116,25 @@ public class Notifications extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.recyclerViewAlerts, fragment);
         fragmentTransaction.commit();
+    }
+
+    public void alertSoundVibration(){
+        if(Sound_boolean){
+            mediaPlayer.start();
+        }else{
+        }
+        if(Vibration_boolean){
+            vibrator.vibrate(30);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        SharedPreferences getsoundsp = getSharedPreferences("soundSwitch", Context.MODE_PRIVATE);
+        SharedPreferences getvibrationsp = getSharedPreferences("vibrationSwitch", Context.MODE_PRIVATE);
+        Sound_boolean = getsoundsp.getBoolean("soundSwitch", false);
+        Vibration_boolean = getvibrationsp.getBoolean("vibrationSwitch", false);
+
+        super.onResume();
     }
 }
