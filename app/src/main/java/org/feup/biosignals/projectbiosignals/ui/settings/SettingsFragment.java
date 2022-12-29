@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.databinding.FragmentSettingsBinding;
+import org.feup.biosignals.projectbiosignals.ui.stats.StatsFragment;
 
 public class SettingsFragment extends Fragment {
 
@@ -65,10 +66,14 @@ public class SettingsFragment extends Fragment {
         bt_cal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent getStatus = new Intent(getContext(),bleConnection.class);
+                getStatus.putExtra("isCalibrating", true);
+                startActivity(getStatus);
 
             }
         });
     }
+
 
     public void SoundSwitch() {
         if(sound.isChecked()){

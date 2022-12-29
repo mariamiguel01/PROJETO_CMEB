@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import org.feup.biosignals.projectbiosignals.DBHandler;
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.helpers.DataParser;
 import org.feup.biosignals.projectbiosignals.ui.stats.StatsFragment;
@@ -30,6 +31,13 @@ public class bleConnection extends AppCompatActivity {
 
     private final String TAG = "AcquisitionActivity";
     private static final int REQUEST_CONNECTION = 2;
+    private static final double DT = 0.02;  // time step for integration
+    private double pitch, roll, yaw;
+    private double right_pitch, right_yaw, right_roll;
+    DBHandler dbHandler = new DBHandler(this);
+    Boolean isCalibrated = false;
+    Boolean isFirst = true;
+
 
     private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
         @Override
@@ -56,6 +64,28 @@ public class bleConnection extends AppCompatActivity {
                         float forceOne = dataParser.getForceOneData().get(i);
                         float forceTwo = dataParser.getForceOneData().get(i);
                         Log.i(TAG, "" + gyroX);
+                        isCalibrated = intent.getBooleanExtra("isCalibrated",false);
+                        if (isCalibrated && isFirst) {
+                            right_pitch = pitch + gyroX *DT;
+                            right_roll = roll + gyroY * DT;
+                            right_yaw = gyroZ *DT;
+
+                            // add to the database the angles
+                            dbHandler.addNewEulerAngles(right_pitch, right_roll, right_yaw);
+                            isFirst = false;
+                        }
+                        if(isCalibrated && !isFirst) {
+                            pitch = pitch + gyroX *DT;
+                            roll = roll + gyroY *DT;
+                            yaw += gyroZ * DT;
+
+                            pitch = pitch - right_pitch;
+                            roll = roll - right_roll;
+                            yaw = yaw - right_yaw;
+                            // add angles to the database
+                            dbHandler.addNewEulerAngles(pitch, roll, yaw);
+                        }
+
                     }
                 }
             }
