@@ -68,6 +68,8 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Log.i("Com_inicial", Integer.toString(points));
+
         progressBar = view.findViewById(R.id.progress_bar);
         progressText = view.findViewById(R.id.progress_text);
 
@@ -75,14 +77,15 @@ public class HomeFragment extends Fragment {
         pointsText = view.findViewById(R.id.points_text);
         imageToLoad = view.findViewById(R.id.image_level);
 
-        /*Intent intent;
-        intent = new Intent(getActivity(), video.class);
-        intent.putExtra("points", points);
-        startActivity(intent);*/
-
-        if(getArguments() != null) {
-            points = getArguments().getInt("points");
-        } else { points = 0; }
+        getParentFragmentManager().setFragmentResultListener("changedPoints", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String changedPoints, @NonNull Bundle bundle) {
+                // We use a String here, but any type that can be put in a Bundle is supported
+                points = bundle.getInt("video_points");
+                // Do something with the result
+                Log.i("Com_receive", Integer.toString(points));
+            }
+        });
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -124,6 +127,11 @@ public class HomeFragment extends Fragment {
                     imageToLoad.setImageResource(R.drawable.level6);
                     levelText.setText("Level 6 (of 6)");
                 }
+
+                Bundle result = new Bundle(); // --> Enviar a informação
+                result.putInt("points", points);
+                getParentFragmentManager().setFragmentResult("requestPoints", result);
+                Log.i("Com_send", Integer.toString(points));
 
                 if (i > 5) {
                     timeCounter++;

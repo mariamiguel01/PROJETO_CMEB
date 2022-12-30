@@ -21,7 +21,6 @@ import org.feup.biosignals.projectbiosignals.ui.home.HomeViewModel;
 public class video extends YouTubeBaseActivity {
 
     YouTubePlayerView youTubePlayerView1;
-    int points = 0;
 
     @Override
     protected void onCreate( Bundle savedInstanceState)
@@ -36,10 +35,6 @@ public class video extends YouTubeBaseActivity {
                 youTubePlayer.loadVideo("5R54QoUbbow");
                 youTubePlayer.play();
                 Intent intent = getIntent();
-                points = intent.getIntExtra("points_main", points);
-                Log.i("points ", Integer.toString(points));
-                points ++;
-                Log.i("points ", Integer.toString(points));
             }
 
             @Override
@@ -49,20 +44,7 @@ public class video extends YouTubeBaseActivity {
 
         };
         youTubePlayerView1.initialize("AIzaSyBUdsYQM6Xe5EqWk8_J9R3UNu6xNuSbWcE",listener);
-
-
-        passfragment();
-
-        Intent pointsIntent = new Intent(this, MainActivity.class);
-        pointsIntent.putExtra("points", points);
-        startActivity(pointsIntent);
-    }
-
-    private void passfragment() {
-        Bundle bundle = new Bundle();
-        bundle.putInt("points", points);
-        Fragment fragment = new HomeFragment();
-        fragment.setArguments(bundle);
+        
     }
 
 }
