@@ -2,6 +2,7 @@ package org.feup.biosignals.projectbiosignals.ui.stats;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.github.mikephil.charting.charts.BarChart;
@@ -37,6 +39,7 @@ public class StatsFragment extends Fragment {
     private PieChart pieChart;
     private BarChart barChart;
     private LineChart lineChart;
+    int points;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -61,6 +64,15 @@ public class StatsFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
+        getParentFragmentManager().setFragmentResultListener("requestPoints", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestPoints, @NonNull Bundle bundle) {
+                // We use a String here, but any type that can be put in a Bundle is supported
+                points = bundle.getInt("points");
+                // Do something with the result
+                Log.i("Comunication", Integer.toString(points));
+            }
+        });
 
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
@@ -94,6 +106,16 @@ public class StatsFragment extends Fragment {
 
     private void loadPieChartData() {
         ArrayList<PieEntry> entries = new ArrayList<>();
+
+        double value_good = 0.8;
+        if (value_good >= 0.7) {
+            Log.i("Com_piechart", Integer.toString(points));
+            points = points + 5;
+            Bundle result = new Bundle(); // --> Enviar a informação
+            result.putInt("points", points);
+            getParentFragmentManager().setFragmentResult("statsPoints", result);
+        }
+
         entries.add(new PieEntry(0.2f, "Bad Posture"));
         entries.add(new PieEntry(0.8f, "Good Posture"));
 

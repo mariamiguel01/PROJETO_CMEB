@@ -87,6 +87,16 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        getParentFragmentManager().setFragmentResultListener("statsPoints", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String statsPoints, @NonNull Bundle bundle) {
+                // We use a String here, but any type that can be put in a Bundle is supported
+                points = bundle.getInt("points");
+                // Do something with the result
+                Log.i("Com_rec_stats", Integer.toString(points));
+            }
+        });
+
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
