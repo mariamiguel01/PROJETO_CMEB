@@ -46,6 +46,10 @@ public class NewsFragment extends Fragment{
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                points ++;
+                Bundle result = new Bundle(); // --> Enviar a informação
+                result.putInt("points", points);
+                getParentFragmentManager().setFragmentResult("changedPoints", result);
                 FragmentTransaction fr = getParentFragmentManager().beginTransaction();
                 fr.replace(R.id.nav_host_fragment_activity_main, new show_news1());
                 fr.commit();
@@ -56,6 +60,10 @@ public class NewsFragment extends Fragment{
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                points ++;
+                Bundle result = new Bundle(); // --> Enviar a informação
+                result.putInt("points", points);
+                getParentFragmentManager().setFragmentResult("changedPoints", result);
                 FragmentTransaction fr = getParentFragmentManager().beginTransaction();
                 fr.replace(R.id.nav_host_fragment_activity_main, new show_news2());
                 fr.commit();
@@ -70,7 +78,7 @@ public class NewsFragment extends Fragment{
             public void onClick(View v) {
                 points ++;
                 Bundle result = new Bundle(); // --> Enviar a informação
-                result.putInt("video_points", points);
+                result.putInt("points", points);
                 getParentFragmentManager().setFragmentResult("changedPoints", result);
                 Log.i("Comunication", Integer.toString(points));
                 startActivity(intent1);

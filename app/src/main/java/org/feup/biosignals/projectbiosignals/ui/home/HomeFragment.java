@@ -81,7 +81,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onFragmentResult(@NonNull String changedPoints, @NonNull Bundle bundle) {
                 // We use a String here, but any type that can be put in a Bundle is supported
-                points = bundle.getInt("video_points");
+                points = bundle.getInt("points");
                 // Do something with the result
                 Log.i("Com_receive", Integer.toString(points));
             }
