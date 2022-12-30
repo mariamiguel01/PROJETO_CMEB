@@ -37,6 +37,7 @@ import org.feup.biosignals.projectbiosignals.databinding.FragmentAlertsBinding;
 import org.feup.biosignals.projectbiosignals.databinding.ActivityMainBinding;
 import org.feup.biosignals.projectbiosignals.databinding.FragmentHomeBinding;
 import org.feup.biosignals.projectbiosignals.ui.exercises_news.NewsFragment;
+import org.feup.biosignals.projectbiosignals.ui.home.HomeFragment;
 import org.feup.biosignals.projectbiosignals.ui.settings.SettingsViewModel;
 
 import java.util.ArrayList;
@@ -82,12 +83,12 @@ public class AlertsFragment extends Fragment implements AlertsListAdapter.OnItem
         super.onViewCreated(view, savedInstanceState);
 
         //recyclerViewAlerts = recyclerViewAlerts.findViewById(R.id.recyclerViewAlerts);
-
         //mAlerts.add(new classAlertItem("Title test", "Message test"));
-
         //mHandler = new Handler();
 
-
+        Bundle result = new Bundle(); // --> Enviar a informação
+        result.putString("bundleKey", "34");
+        getParentFragmentManager().setFragmentResult("requestKey", result);
     }
 
     @Override
