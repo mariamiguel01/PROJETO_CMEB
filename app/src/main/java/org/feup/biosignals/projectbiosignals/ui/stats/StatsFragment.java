@@ -52,27 +52,22 @@ public class StatsFragment extends Fragment {
 
         getActivity().getWindow().setBackgroundDrawable(null);
 
+        getParentFragmentManager().setFragmentResultListener("requestPoints", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestPoints, @NonNull Bundle bundle) {
+                // We use a String here, but any type that can be put in a Bundle is supported
+                points = bundle.getInt("points");
+            }
+        });
+
         return root;
     }
 
     @Override
     public void onDestroyView() {
+        addPoints();
         super.onDestroyView();
         binding = null;
-    }
-
-    @Override // --> Receber a informação
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getParentFragmentManager().setFragmentResultListener("requestPoints", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestPoints, @NonNull Bundle bundle) {
-                // We use a String here, but any type that can be put in a Bundle is supported
-                int points = bundle.getInt("points");
-                // Do something with the result
-                Log.i("Com_stats_rec", Integer.toString(points));
-            }
-        });
     }
 
     @Override
@@ -87,7 +82,6 @@ public class StatsFragment extends Fragment {
         setupPieChart();
         loadPieChartData();
         loadLineChart();
-
     }
 
     private void setupPieChart(){
@@ -113,18 +107,8 @@ public class StatsFragment extends Fragment {
     private void loadPieChartData() {
         ArrayList<PieEntry> entries = new ArrayList<>();
 
-        double value_good = 0.8;
-        if (value_good >= 0.7) {
-            Log.i("Com_piechart", Integer.toString(points));
-            points = points + 5;
-            Bundle result = new Bundle(); // --> Enviar a informação
-            result.putInt("points", points);
-            getParentFragmentManager().setFragmentResult("statsPoints", result);
-        }
-
         entries.add(new PieEntry(0.2f, "Bad Posture"));
         entries.add(new PieEntry(0.8f, "Good Posture"));
-
 
         PieDataSet dataSet = new PieDataSet(entries, "Posture Habits");
         dataSet.setColors(new int[] {Color.rgb(131,157,219), Color.rgb(140,191,219)});
@@ -139,9 +123,7 @@ public class StatsFragment extends Fragment {
         pieChart.invalidate();
     }
 
-
     private void loadLineChart(){
-
         ArrayList<Double> valueList = new ArrayList<Double>();
         ArrayList<Entry> entries = new ArrayList<>();
 
@@ -180,5 +162,14 @@ public class StatsFragment extends Fragment {
         lineChart.invalidate();
     }
 
-
+    public void addPoints() {
+        double value_good = 0.8;
+        if (value_good >= 0.7) {
+            Log.i("Com_piechart", Integer.toString(points));
+            points = points + 5;
+            Bundle result = new Bundle(); // --> Enviar a informação
+            result.putInt("points", points);
+            getParentFragmentManager().setFragmentResult("statsPoints", result);
+        }
+    }
 }
