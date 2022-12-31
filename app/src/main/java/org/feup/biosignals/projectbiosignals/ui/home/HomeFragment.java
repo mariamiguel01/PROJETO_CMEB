@@ -67,19 +67,6 @@ public class HomeFragment extends Fragment {
                 Log.i("Comunication", result);
             }
         });
-    }
-
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        Log.i("Com_inicial", Integer.toString(points));
-
-        progressBar = view.findViewById(R.id.progress_bar);
-        progressText = view.findViewById(R.id.progress_text);
-
-        levelText = view.findViewById(R.id.level);
-        pointsText = view.findViewById(R.id.points_text);
-        imageToLoad = view.findViewById(R.id.image_level);
 
         getParentFragmentManager().setFragmentResultListener("changedPoints", this, new FragmentResultListener() {
             @Override
@@ -87,7 +74,6 @@ public class HomeFragment extends Fragment {
                 // We use a String here, but any type that can be put in a Bundle is supported
                 points = bundle.getInt("points");
                 // Do something with the result
-                Log.i("Com_receive", Integer.toString(points));
             }
         });
 
@@ -97,9 +83,19 @@ public class HomeFragment extends Fragment {
                 // We use a String here, but any type that can be put in a Bundle is supported
                 points = bundle.getInt("points");
                 // Do something with the result
-                Log.i("Com_rec_stats", Integer.toString(points));
             }
         });
+    }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        progressBar = view.findViewById(R.id.progress_bar);
+        progressText = view.findViewById(R.id.progress_text);
+
+        levelText = view.findViewById(R.id.level);
+        pointsText = view.findViewById(R.id.points_text);
+        imageToLoad = view.findViewById(R.id.image_level);
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -167,6 +163,7 @@ public class HomeFragment extends Fragment {
                 } else { timeCounter = 0; }
             }
         }, 1000);
+
     }
 
     @Override

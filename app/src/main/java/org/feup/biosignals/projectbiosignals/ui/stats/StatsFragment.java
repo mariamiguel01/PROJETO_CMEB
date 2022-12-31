@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.lifecycle.ViewModelProvider;
@@ -60,19 +61,24 @@ public class StatsFragment extends Fragment {
         binding = null;
     }
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-
-        super.onViewCreated(view, savedInstanceState);
+    @Override // --> Receber a informação
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         getParentFragmentManager().setFragmentResultListener("requestPoints", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestPoints, @NonNull Bundle bundle) {
                 // We use a String here, but any type that can be put in a Bundle is supported
-                points = bundle.getInt("points");
+                int points = bundle.getInt("points");
                 // Do something with the result
-                Log.i("Comunication", Integer.toString(points));
+                Log.i("Com_stats_rec", Integer.toString(points));
             }
         });
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+
+        super.onViewCreated(view, savedInstanceState);
 
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);

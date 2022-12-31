@@ -38,7 +38,7 @@ public class NewsFragment extends Fragment{
                 // We use a String here, but any type that can be put in a Bundle is supported
                 points = bundle.getInt("points");
                 // Do something with the result
-                Log.i("Comunication", Integer.toString(points));
+                //Log.i("Comunication", Integer.toString(points));
             }
         });
 
