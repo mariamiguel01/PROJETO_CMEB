@@ -42,18 +42,8 @@ public class SettingsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-/*        sound = view.findViewById(R.id.soundSwitch);
-        vibration = view.findViewById(R.id.vibrationSwitch);*/
         bt_cal = view.findViewById(R.id.calibration);
         bt_bl = view.findViewById(R.id.bluetooth);
-
-/*        SharedPreferences getsoundsp = getActivity().getSharedPreferences("soundSwitch", Context.MODE_PRIVATE);
-        SharedPreferences getvibrationsp = getActivity().getSharedPreferences("vibrationSwitch", Context.MODE_PRIVATE);
-        sound.setChecked(getsoundsp.getBoolean("soundSwitch", false));
-        vibration.setChecked(getvibrationsp.getBoolean("vibrationSwitch", false));*/
-/*
-        SoundSwitch();
-        VibrationSwitch();*/
 
         bt_bl.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,35 +61,6 @@ public class SettingsFragment extends Fragment {
             }
         });
     }
-
-
-/*    public void SoundSwitch() {
-        if(sound.isChecked()){
-            SharedPreferences.Editor soundswitchPreference = getActivity().getSharedPreferences("soundSwitch", Context.MODE_PRIVATE).edit();
-            soundswitchPreference.putBoolean("soundSwitch", true);
-            soundswitchPreference.apply();
-            sound.setChecked(true);
-        }else{
-            SharedPreferences.Editor soundswitchPreference = getActivity().getSharedPreferences("soundSwitch", Context.MODE_PRIVATE).edit();
-            soundswitchPreference.putBoolean("soundSwitch", false);
-            soundswitchPreference.apply();
-            sound.setChecked(false);
-        }
-    }
-
-    public void VibrationSwitch() {
-        if(vibration.isChecked()){
-            SharedPreferences.Editor vibrationswitchPreference = getActivity().getSharedPreferences("vibrationSwitch", Context.MODE_PRIVATE).edit();
-            vibrationswitchPreference.putBoolean("vibrationSwitch", true);
-            vibrationswitchPreference.apply();
-            vibration.setChecked(true);
-        }else{
-            SharedPreferences.Editor vibrationswitchPreference = getActivity().getSharedPreferences("vibrationSwitch", Context.MODE_PRIVATE).edit();
-            vibrationswitchPreference.putBoolean("vibrationSwitch", false);
-            vibrationswitchPreference.apply();
-            vibration.setChecked(false);
-        }
-    }*/
 
     @Override
     public void onDestroyView() {
