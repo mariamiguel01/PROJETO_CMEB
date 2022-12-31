@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private Button buttonHelp;
-    private int points = 0;
+    //private int points = 0;
     DBManager db;
 
     private static final String CHANNEL1 = "channel1";
