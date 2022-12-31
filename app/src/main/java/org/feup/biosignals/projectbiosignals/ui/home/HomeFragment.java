@@ -107,18 +107,23 @@ public class HomeFragment extends Fragment {
             public void run() {
                 // set the limitations for the numeric
                 // text under the progress bar
-
+               /* if(db_home.getListByDate().get(0)==null){
+                    back_angle="---";
+                    progressText.setText(back_angle);
+                    progressBar.setProgress(0);
+                }
+                else{
                 back_angle = (CharSequence) db_home.getListByDate().get(0);
                 progressText.setText(back_angle);
-                progressBar.setProgress(50);
-                /*if (i <= 100) {
+                progressBar.setProgress(50);}*/
+                if (i <= 100) {
                     progressText.setText("" + i);
                     progressBar.setProgress(i);
                     i++;
                     handler.postDelayed(this, 1000);
                 } else {
                     handler.removeCallbacks(this);
-                }*/
+                }
 
                 pointsText.setText("Points: " + Integer.toString(points));
                 if (points < 5) {
