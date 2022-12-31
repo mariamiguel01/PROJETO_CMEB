@@ -79,6 +79,12 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".ui.alerts.NotificationReceiver"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:excludeFromRecents="true">
+        </activity>
+        <activity
             android:name=".ui.settings.bleConnection"
             android:exported="true">
             <intent-filter>
