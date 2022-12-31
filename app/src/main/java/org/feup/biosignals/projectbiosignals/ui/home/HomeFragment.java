@@ -58,6 +58,7 @@ public class HomeFragment extends Fragment {
     @Override // --> Receber a informação
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db_home=new DBManager(getContext());
         getParentFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
@@ -103,16 +104,18 @@ public class HomeFragment extends Fragment {
             public void run() {
                 // set the limitations for the numeric
                 // text under the progress bar
-               /* if(db_home.getListByDate().get(0)==null){
+               if(db_home.getListByDate().get(1)==null){
                     back_angle="---";
                     progressText.setText(back_angle);
                     progressBar.setProgress(0);
+                    Log.i("pitch","isnull");
                 }
                 else{
-                back_angle = (CharSequence) db_home.getListByDate().get(0);
+                back_angle = (CharSequence) db_home.getListByDate().get(1);
                 progressText.setText(back_angle);
-                progressBar.setProgress(50);}*/
-                if (i <= 100) {
+                progressBar.setProgress(50);}
+                Log.i("pitch","isnotnull");
+                /*if (i <= 100) {
                     progressText.setText("" + i);
                     progressBar.setProgress(i);
                     i++;
@@ -120,7 +123,7 @@ public class HomeFragment extends Fragment {
                 } else {
                     handler.removeCallbacks(this);
                 }
-
+                */
                 pointsText.setText("Points: " + Integer.toString(points));
                 if (points < 5) {
                     imageToLoad.setImageResource(R.drawable.level1);
