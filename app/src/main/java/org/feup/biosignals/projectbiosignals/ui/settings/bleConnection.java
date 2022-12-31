@@ -73,6 +73,8 @@ public class bleConnection extends AppCompatActivity {
                         roll = roll + gyroY *DT;
                         yaw += gyroZ * DT;
 
+                        db.AddAngle(pitch, roll, yaw);
+
                     }
                 }
             }

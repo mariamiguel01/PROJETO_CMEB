@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.lifecycle.ViewModelProvider;
 
+import org.feup.biosignals.projectbiosignals.DBManager;
 import org.feup.biosignals.projectbiosignals.MainActivity;
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.databinding.FragmentHomeBinding;
@@ -33,6 +34,9 @@ public class HomeFragment extends Fragment {
     private TextView pointsText;
     private TextView levelText;
     private ImageView imageToLoad;
+
+    DBManager db_home;
+    CharSequence back_angle;
     int i = 0;
     int points;
 
@@ -103,14 +107,18 @@ public class HomeFragment extends Fragment {
             public void run() {
                 // set the limitations for the numeric
                 // text under the progress bar
-                if (i <= 100) {
+
+                back_angle = (CharSequence) db_home.getListByDate().get(0);
+                progressText.setText(back_angle);
+                progressBar.setProgress(50);
+                /*if (i <= 100) {
                     progressText.setText("" + i);
                     progressBar.setProgress(i);
                     i++;
                     handler.postDelayed(this, 1000);
                 } else {
                     handler.removeCallbacks(this);
-                }
+                }*/
 
                 pointsText.setText("Points: " + Integer.toString(points));
                 if (points < 5) {
@@ -148,7 +156,7 @@ public class HomeFragment extends Fragment {
                     if (timeCounter > 5) {
                         Intent intent2notifications = new Intent(getContext(), NotificationReceiver.class);
                         //intent2notifications.setAction("");
-                        getActivity().sendBroadcast(intent2notifications);
+                        //getActivity().sendBroadcast(intent2notifications);
                         timeCounter = 0;
                     }
                 } else { timeCounter = 0; }
