@@ -27,7 +27,7 @@
         android:textColor="@color/white"
         android:textSize="20sp" />
 
-    <Switch
+<!--    <Switch
         android:id="@+id/soundSwitch"
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -37,9 +37,9 @@
         android:textOff="OFF"
         android:textOn="ON"
         android:textSize="25sp"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
+        tools:ignore="UseSwitchCompatOrMaterialXml" />-->
 
-    <Switch
+<!--    <Switch
         android:id="@+id/vibrationSwitch"
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -50,7 +50,7 @@
         android:textSize="25sp"
         android:textOff="OFF"
         android:textOn="ON"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
+        tools:ignore="UseSwitchCompatOrMaterialXml" />-->
 
     <TextView
         android:text="@string/bl_text"

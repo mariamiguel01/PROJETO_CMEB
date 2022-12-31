@@ -23,7 +23,7 @@ import org.feup.biosignals.projectbiosignals.ui.stats.StatsFragment;
 public class SettingsFragment extends Fragment {
 
     private FragmentSettingsBinding binding;
-    private Switch sound,vibration,connection;
+    //private Switch sound,vibration,connection;
     ImageButton bt_cal, bt_bl;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -42,18 +42,18 @@ public class SettingsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        sound = view.findViewById(R.id.soundSwitch);
-        vibration = view.findViewById(R.id.vibrationSwitch);
+/*        sound = view.findViewById(R.id.soundSwitch);
+        vibration = view.findViewById(R.id.vibrationSwitch);*/
         bt_cal = view.findViewById(R.id.calibration);
         bt_bl = view.findViewById(R.id.bluetooth);
 
-        SharedPreferences getsoundsp = getActivity().getSharedPreferences("soundSwitch", Context.MODE_PRIVATE);
+/*        SharedPreferences getsoundsp = getActivity().getSharedPreferences("soundSwitch", Context.MODE_PRIVATE);
         SharedPreferences getvibrationsp = getActivity().getSharedPreferences("vibrationSwitch", Context.MODE_PRIVATE);
         sound.setChecked(getsoundsp.getBoolean("soundSwitch", false));
-        vibration.setChecked(getvibrationsp.getBoolean("vibrationSwitch", false));
-
+        vibration.setChecked(getvibrationsp.getBoolean("vibrationSwitch", false));*/
+/*
         SoundSwitch();
-        VibrationSwitch();
+        VibrationSwitch();*/
 
         bt_bl.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +73,7 @@ public class SettingsFragment extends Fragment {
     }
 
 
-    public void SoundSwitch() {
+/*    public void SoundSwitch() {
         if(sound.isChecked()){
             SharedPreferences.Editor soundswitchPreference = getActivity().getSharedPreferences("soundSwitch", Context.MODE_PRIVATE).edit();
             soundswitchPreference.putBoolean("soundSwitch", true);
@@ -99,7 +99,7 @@ public class SettingsFragment extends Fragment {
             vibrationswitchPreference.apply();
             vibration.setChecked(false);
         }
-    }
+    }*/
 
     @Override
     public void onDestroyView() {
