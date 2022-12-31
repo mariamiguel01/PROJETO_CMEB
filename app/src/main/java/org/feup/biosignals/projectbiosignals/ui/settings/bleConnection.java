@@ -74,8 +74,7 @@ public class bleConnection extends AppCompatActivity {
                         roll = roll + gyroY *DT;
                         yaw += gyroZ * DT;
 
-                        // db.AddAngle(pitch, roll, yaw);
-
+                        db.AddAngle(pitch, roll, yaw);
                     }
                 }
             }
@@ -94,6 +93,7 @@ public class bleConnection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_ble);
+        db = new DBManager(this);
         registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
 
         ArrayList<String> permsList = new ArrayList<String>();
