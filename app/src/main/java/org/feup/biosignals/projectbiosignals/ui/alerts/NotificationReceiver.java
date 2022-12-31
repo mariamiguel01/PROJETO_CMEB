@@ -12,6 +12,7 @@ import androidx.core.app.NotificationManagerCompat;
 
 import org.feup.biosignals.projectbiosignals.MainActivity;
 import org.feup.biosignals.projectbiosignals.R;
+import org.feup.biosignals.projectbiosignals.databinding.FragmentNewsBinding;
 
 public class NotificationReceiver extends BroadcastReceiver {
 

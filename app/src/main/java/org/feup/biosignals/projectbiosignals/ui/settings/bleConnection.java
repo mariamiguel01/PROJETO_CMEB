@@ -22,6 +22,7 @@ import android.view.View;
 import org.feup.biosignals.projectbiosignals.DBHandler;
 import org.feup.biosignals.projectbiosignals.DBManager;
 import org.feup.biosignals.projectbiosignals.R;
+import org.feup.biosignals.projectbiosignals.databinding.FragmentSettingsBinding;
 import org.feup.biosignals.projectbiosignals.helpers.DataParser;
 import org.feup.biosignals.projectbiosignals.ui.home.HomeFragment;
 import org.feup.biosignals.projectbiosignals.ui.home.HomeViewModel;
@@ -121,7 +122,7 @@ public class bleConnection extends AppCompatActivity {
 
     public void return_main(View view) {
         Log.i(TAG, "Clicked button");
-        Intent intent2 = new Intent(this, SettingsViewModel.class);
+        Intent intent2 = new Intent(this, FragmentSettingsBinding.class);
         startActivity(intent2);
     }
 
