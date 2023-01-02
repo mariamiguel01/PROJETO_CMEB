@@ -54,5 +54,17 @@ public class DBManager {
         return info;
     }
 
+    // function to get the last value in the database
+    public String getPitchPB() {
+       Cursor cursor = db.rawQuery("Select * from EulerAngles", null);
+       cursor.moveToLast();
+       String pitch = cursor.getString(1);
+       return pitch;
+    }
+
+
+
+
+
     
 }
