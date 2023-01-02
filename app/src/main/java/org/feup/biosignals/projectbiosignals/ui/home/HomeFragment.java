@@ -113,7 +113,8 @@ public class HomeFragment extends Fragment {
                 // set the limitations for the numeric
                 // text under the progress bar
                 try{
-                    back_angle = (CharSequence) db_home.getListByDate().get(1);
+                    // back_angle = (CharSequence) db_home.getListByDate().get(1);
+                    back_angle = db_home.getPitchPB(); 
                     progressText.setText(back_angle);
                     progressBar.setProgress(50);
                     Log.i("pitch","isnotnull");

@@ -55,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
         //  String pitch = db.getPitchPB();
         // Log.i("yo", pitch);
 
-
-
         createNotificationChannel();
     }
 
