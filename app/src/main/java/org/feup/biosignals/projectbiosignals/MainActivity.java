@@ -26,9 +26,6 @@ import org.feup.biosignals.projectbiosignals.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    private Button buttonHelp;
-    //private int points = 0;
-    DBManager db;
 
     private static final String CHANNEL1 = "channel1";
 
@@ -63,8 +60,5 @@ public class MainActivity extends AppCompatActivity {
             NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             manager.createNotificationChannel(channel1);
         }
-        // To add values to the database
-        // db.AddAngle(0.1, 0.2, 0.3);
-
     }
 }

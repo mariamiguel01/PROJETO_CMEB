@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.feup.biosignals.projectbiosignals.R;
+import org.feup.biosignals.projectbiosignals.adapters.AlertsListAdapter;
 
 import java.util.ArrayList;
 

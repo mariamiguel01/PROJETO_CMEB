@@ -1,9 +1,6 @@
-package org.feup.biosignals.projectbiosignals.ui.alerts;
+package org.feup.biosignals.projectbiosignals.adapters;
 
-import android.Manifest;
-import android.bluetooth.BluetoothDevice;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,17 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.feup.biosignals.projectbiosignals.R;
+import org.feup.biosignals.projectbiosignals.ui.alerts.classAlertItem;
 
 import java.util.ArrayList;
 
 public class AlertsListAdapter extends RecyclerView.Adapter<AlertsListAdapter.ViewHolder> {
     private ArrayList<classAlertItem> mAlerts;
-    private OnItemListener mOnItemListener;
+    //private OnItemListener mOnItemListener;
     Context context;
 
-    public AlertsListAdapter(Context ct, ArrayList<classAlertItem> mAlerts, OnItemListener onItemListener) {
+    public AlertsListAdapter(Context ct, ArrayList<classAlertItem> mAlerts) {
         this.mAlerts = mAlerts;
-        this.mOnItemListener = onItemListener;
+        //this.mOnItemListener = onItemListener;
     }
 
     public void addAlerts(classAlertItem alert) {
@@ -40,12 +38,10 @@ public class AlertsListAdapter extends RecyclerView.Adapter<AlertsListAdapter.Vi
 
         OnItemListener onItemListener;
 
-        public ViewHolder(View itemView, OnItemListener onItemListener) {
+        public ViewHolder(View itemView) {
             super(itemView);
             alertTitle = (TextView) itemView.findViewById(R.id.alertRecTitle);
             alertText = (TextView) itemView.findViewById(R.id.alertRecText);
-
-            this.onItemListener = onItemListener;
         }
     }
 
@@ -54,7 +50,7 @@ public class AlertsListAdapter extends RecyclerView.Adapter<AlertsListAdapter.Vi
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recycler_view_alert, parent, false);
-        ViewHolder viewHolder = new ViewHolder(v, mOnItemListener);
+        ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
 
@@ -71,6 +67,4 @@ public class AlertsListAdapter extends RecyclerView.Adapter<AlertsListAdapter.Vi
     public interface OnItemListener{
         void onItemClicked (int position);
     }
-
-
 }

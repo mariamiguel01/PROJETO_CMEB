@@ -2,7 +2,9 @@ package org.feup.biosignals.projectbiosignals.ui.home;
 
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -20,6 +22,7 @@ import androidx.fragment.app.FragmentResultListener;
 import androidx.lifecycle.ViewModelProvider;
 
 import org.feup.biosignals.projectbiosignals.DBManager;
+import org.feup.biosignals.projectbiosignals.DatabaseALertsHelper;
 import org.feup.biosignals.projectbiosignals.MainActivity;
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.databinding.FragmentHomeBinding;
@@ -41,6 +44,10 @@ public class HomeFragment extends Fragment {
     int points;
 
     int timeCounter = 0;
+    DatabaseALertsHelper dbA;
+    private static final String DATABASE_NAME="dbAlerts";
+    public static final String TITLE="Correct your posture";
+    public String MESSAGE;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -150,16 +157,16 @@ public class HomeFragment extends Fragment {
 
                 if (i > 5) {
                     timeCounter++;
-                    if (timeCounter > 5) {
+                    if (timeCounter > 10) {
                         Intent intent2notifications = new Intent(getContext(), NotificationReceiver.class);
-                        //intent2notifications.setAction("");
-                        //getActivity().sendBroadcast(intent2notifications);
+                        getActivity().sendBroadcast(intent2notifications);
                         timeCounter = 0;
+                        MESSAGE = "Bad posture for " + i + "seconds";
+                        dbA.AddAlert(TITLE, MESSAGE);
                     }
                 } else { timeCounter = 0; }
             }
         }, 1000);
-
     }
 
     @Override
