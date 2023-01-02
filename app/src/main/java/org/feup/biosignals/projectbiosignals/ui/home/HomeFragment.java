@@ -165,7 +165,7 @@ public class HomeFragment extends Fragment {
                         timeCounter = 0;
                         MESSAGE = "Bad posture for " + 10 + " seconds";
                         Log.i("xxx", MESSAGE);
-                        //dbA.AddAlert(TITLE, MESSAGE);
+                        dbA.AddAlert(TITLE, MESSAGE);
                         Log.i("xxx", "Added");
                     }
                 } else { timeCounter = 0; }

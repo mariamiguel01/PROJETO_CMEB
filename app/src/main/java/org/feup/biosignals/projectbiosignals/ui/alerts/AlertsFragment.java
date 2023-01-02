@@ -54,6 +54,7 @@ public class AlertsFragment extends Fragment implements AlertsListAdapter.OnItem
         super.onViewCreated(view, savedInstanceState);
 
         ArrayList<classAlertItem> mAlerts = new ArrayList<>();
+        dbAlerts = new DBAlertsManager(getContext());
 
         recyclerViewAlerts = view.findViewById(R.id.recyclerViewAlerts);
         AlertsListAdapter alertsListAdapter = new AlertsListAdapter(getContext(), mAlerts);
