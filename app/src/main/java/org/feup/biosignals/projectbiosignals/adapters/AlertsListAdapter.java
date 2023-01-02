@@ -14,31 +14,29 @@ import org.feup.biosignals.projectbiosignals.ui.alerts.classAlertItem;
 
 import java.util.ArrayList;
 
-public class AlertsListAdapter extends RecyclerView.Adapter<AlertsListAdapter.ViewHolder> {
+public class AlertsListAdapter extends RecyclerView.Adapter<AlertsListAdapter.MyViewHolder> {
     private ArrayList<classAlertItem> mAlerts;
     //private OnItemListener mOnItemListener;
     Context context;
 
     public AlertsListAdapter(Context ct, ArrayList<classAlertItem> mAlerts) {
         this.mAlerts = mAlerts;
-        //this.mOnItemListener = onItemListener;
+        this.context = ct;
     }
 
-    public void addAlerts(classAlertItem alert) {
+   /* public void addAlerts(classAlertItem alert) {
         if (!mAlerts.contains(alert)) {
             mAlerts.add(alert);
         }
-    }
+    }*/
 
     public classAlertItem getAlert(int position) { return mAlerts.get(position); }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView alertTitle;
         public TextView alertText;
 
-        OnItemListener onItemListener;
-
-        public ViewHolder(View itemView) {
+        public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             alertTitle = (TextView) itemView.findViewById(R.id.alertRecTitle);
             alertText = (TextView) itemView.findViewById(R.id.alertRecText);
@@ -47,15 +45,15 @@ public class AlertsListAdapter extends RecyclerView.Adapter<AlertsListAdapter.Vi
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recycler_view_alert, parent, false);
-        ViewHolder viewHolder = new ViewHolder(v);
+        MyViewHolder viewHolder = new MyViewHolder(v);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.alertTitle.setText(mAlerts.get(position).getTitle());
         holder.alertText.setText(mAlerts.get(position).getMessage());
     }

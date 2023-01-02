@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.lifecycle.ViewModelProvider;
 
+import org.feup.biosignals.projectbiosignals.DBAlertsManager;
 import org.feup.biosignals.projectbiosignals.DBManager;
 import org.feup.biosignals.projectbiosignals.DatabaseALertsHelper;
 import org.feup.biosignals.projectbiosignals.MainActivity;
@@ -44,7 +45,7 @@ public class HomeFragment extends Fragment {
     int points;
 
     int timeCounter = 0;
-    DatabaseALertsHelper dbA;
+    DBAlertsManager dbA;
     private static final String DATABASE_NAME="dbAlerts";
     public static final String TITLE="Correct your posture";
     public String MESSAGE;
@@ -155,14 +156,17 @@ public class HomeFragment extends Fragment {
                 getParentFragmentManager().setFragmentResult("requestPoints", result);
                 Log.i("Com_send", Integer.toString(points));
 
-                if (i > 5) {
+                if (true) {
                     timeCounter++;
-                    if (timeCounter > 10) {
+                    Log.i("xxx", "true");
+                    if (timeCounter > 5) {
                         Intent intent2notifications = new Intent(getContext(), NotificationReceiver.class);
                         getActivity().sendBroadcast(intent2notifications);
                         timeCounter = 0;
-                        MESSAGE = "Bad posture for " + i + "seconds";
-                        dbA.AddAlert(TITLE, MESSAGE);
+                        MESSAGE = "Bad posture for " + 10 + " seconds";
+                        Log.i("xxx", MESSAGE);
+                        //dbA.AddAlert(TITLE, MESSAGE);
+                        Log.i("xxx", "Added");
                     }
                 } else { timeCounter = 0; }
             }

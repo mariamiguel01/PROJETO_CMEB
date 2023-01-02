@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.feup.biosignals.projectbiosignals.DBAlertsManager;
 import org.feup.biosignals.projectbiosignals.DatabaseALertsHelper;
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.adapters.AlertsListAdapter;
@@ -24,17 +25,19 @@ public class AlertsFragment extends Fragment implements AlertsListAdapter.OnItem
     //private FragmentAlertsBinding binding;
     private View root;
 
-    private ArrayList<classAlertItem> mAlerts = new ArrayList<classAlertItem>();
-    private classAlertItem mAlert;
+    //private classAlertItem mAlert;
     //private AlertsListAdapter.OnItemListener mOnItemListener;
     private static final long SCAN_PERIOD = 10000;
-
-    private AlertsListAdapter alertsListAdapter;
 
     RecyclerView.LayoutManager layoutManager;
     RecyclerView recyclerViewAlerts;
     //private Handler mHandler;
-    DatabaseALertsHelper dbAlerts;
+    DBAlertsManager dbAlerts;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -43,24 +46,22 @@ public class AlertsFragment extends Fragment implements AlertsListAdapter.OnItem
                 new ViewModelProvider(this).get(AlertsViewModel.class);
 
         root = inflater.inflate(R.layout.fragment_alerts_list, container, false);
-        /*recyclerview = view.findViewById(R.id.recyclerViewAlerts);
-        recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        AlertsListAdapter alertsListAdapter = new AlertsListAdapter(mAlerts, mOnItemListener);
-        recyclerViewAlerts.setAdapter(alertsListAdapter);*/
         return root;
     }
 
+    @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ArrayList<classAlertItem> mAlerts = new ArrayList<>();
+
         recyclerViewAlerts = view.findViewById(R.id.recyclerViewAlerts);
+        AlertsListAdapter alertsListAdapter = new AlertsListAdapter(getContext(), mAlerts);
+        recyclerViewAlerts.setAdapter(alertsListAdapter);
+
         layoutManager = new LinearLayoutManager(getContext());
         recyclerViewAlerts.setLayoutManager(layoutManager);
 
-        alertsListAdapter = new AlertsListAdapter(getContext(), mAlerts);
-        recyclerViewAlerts.setAdapter(alertsListAdapter);
-
-        dbAlerts = new DatabaseALertsHelper(getContext());
         dbAlerts.getAlertsByDate();
     }
 
