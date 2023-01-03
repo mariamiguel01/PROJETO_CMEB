@@ -31,7 +31,8 @@ public class AlertsFragment extends Fragment implements AlertsListAdapter.OnItem
 
     RecyclerView.LayoutManager layoutManager;
     RecyclerView recyclerViewAlerts;
-    //private Handler mHandler;
+    private AlertsListAdapter alertsListAdapter;
+    private Handler mHandler;
     DBAlertsManager dbAlerts;
 
     @Override
@@ -54,16 +55,21 @@ public class AlertsFragment extends Fragment implements AlertsListAdapter.OnItem
         super.onViewCreated(view, savedInstanceState);
 
         ArrayList<classAlertItem> mAlerts = new ArrayList<>();
+
         dbAlerts = new DBAlertsManager(getContext());
 
         recyclerViewAlerts = view.findViewById(R.id.recyclerViewAlerts);
-        AlertsListAdapter alertsListAdapter = new AlertsListAdapter(getContext(), mAlerts);
+        alertsListAdapter = new AlertsListAdapter(getContext(), mAlerts);
         recyclerViewAlerts.setAdapter(alertsListAdapter);
 
         layoutManager = new LinearLayoutManager(getContext());
         recyclerViewAlerts.setLayoutManager(layoutManager);
+        recyclerViewAlerts.setHasFixedSize(true);
 
-        dbAlerts.getAlertsByDate();
+        mAlerts = dbAlerts.getAlertsByDate();
+        for (classAlertItem i:mAlerts) {
+            alertsListAdapter.addAlerts(i);
+        }
     }
 
     @Override

@@ -67,6 +67,8 @@ public class HomeFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db_home=new DBManager(getContext());
+        dbA = new DBAlertsManager(getContext());
+
         getParentFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
@@ -160,7 +162,7 @@ public class HomeFragment extends Fragment {
                 if (true) {
                     timeCounter++;
                     Log.i("xxx", "true");
-                    if (timeCounter > 5) {
+                    if (timeCounter > 1) {
                         Intent intent2notifications = new Intent(getContext(), NotificationReceiver.class);
                         getActivity().sendBroadcast(intent2notifications);
                         timeCounter = 0;

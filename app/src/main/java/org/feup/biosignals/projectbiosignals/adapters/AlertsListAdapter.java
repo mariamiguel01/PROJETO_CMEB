@@ -24,11 +24,11 @@ public class AlertsListAdapter extends RecyclerView.Adapter<AlertsListAdapter.My
         this.context = ct;
     }
 
-   /* public void addAlerts(classAlertItem alert) {
+    public void addAlerts(classAlertItem alert) {
         if (!mAlerts.contains(alert)) {
             mAlerts.add(alert);
         }
-    }*/
+    }
 
     public classAlertItem getAlert(int position) { return mAlerts.get(position); }
 
