@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 
 import android.Manifest;
@@ -39,6 +40,11 @@ public class bleConnection extends AppCompatActivity {
     DBManager db;
     private static final double DT = 0.02;  // time step for integration
     private double pitch, roll, yaw;
+    private double first_pitch, first_roll, first_yaw;
+    SettingsFragment settingsFragment = new SettingsFragment();
+    private boolean isCalibrated;
+    private boolean isFirst = true;
+
 
 
     private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
@@ -67,17 +73,38 @@ public class bleConnection extends AppCompatActivity {
                         float forceTwo = dataParser.getForceOneData().get(i);
                         Log.i(TAG, "" + gyroX);
 
+                        isCalibrated = settingsFragment.isCalibrated;
 
+                        if(isCalibrated && isFirst){
+                            pitch = pitch + gyroX * DT;
+                            pitch = Math.round(pitch*100.0)/100.0;
+                            roll = roll + gyroY * DT;
+                            roll = Math.round(roll*100.0)/100.0;
+                            yaw += gyroZ * DT;
+                            yaw = Math.round(yaw*100.0)/100.0;
+
+                            first_pitch = pitch;
+                            first_roll = roll;
+                            first_yaw = yaw;
+                            db.AddAngle(0.0, 0.0, 0.0);
+                            isFirst = false; 
+                        }
+
+                        if(isCalibrated && !isFirst){
+                            pitch = (pitch + gyroX * DT) - first_pitch;
+                            pitch = Math.round(pitch*100.0)/100.0;
+                            roll = (roll + gyroY * DT) - first_roll;
+                            roll = Math.round(roll*100.0)/100.0;
+                            yaw += (gyroZ * DT) - first_yaw;
+                            yaw = Math.round(yaw*100.0)/100.0;
+
+                            db.AddAngle(pitch, roll, yaw);
+
+                        }
                         // this is the value of the angles without subtracting the zero
                         // the goal is to send them to the HomeFragment directly to show on the progress bar
                         //Then save the data in the database (AddAngle function for that)
-                        pitch = pitch + gyroX * DT;
-                        pitch = Math.round(pitch*100.0)/100.0;
-                        roll = roll + gyroY * DT;
-                        roll = Math.round(roll*100.0)/100.0;
-                        yaw += gyroZ * DT;
-                        yaw = Math.round(yaw*100.0)/100.0;
-                        db.AddAngle(pitch, roll, yaw);
+
 
                     }
                 }

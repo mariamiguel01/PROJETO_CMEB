@@ -32,6 +32,7 @@ public class SettingsFragment extends Fragment {
     ImageButton bt_cal, bt_bl;
     DBManager db;
     String back_angle = null;
+    public boolean isCalibrated = false;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -77,6 +78,7 @@ public class SettingsFragment extends Fragment {
             public void onClick(View view) {
                 back_angle = db.getPitchPB();
                 Toast.makeText(getContext(),"Device calibrated",Toast.LENGTH_SHORT);
+                isCalibrated = true;
             }
         });
 
@@ -86,6 +88,8 @@ public class SettingsFragment extends Fragment {
             getParentFragmentManager().setFragmentResult("requestCalibration", result);
             Log.i("cal", back_angle);
         }
+
+        Log.i("loool", ""+isCalibrated);
     }
 
     @Override
