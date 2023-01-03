@@ -74,12 +74,24 @@ public class DBManager {
     }
 
     // to calculate the daily pitch average
-    private double calculateAverage(List <Integer> dailyPitch) {
-        int sum = 0;
+    public double calculateAverage(List <Double> dailyPitch) {
+        double sum = 0;
         for (int i=0; i< dailyPitch.size(); i++) {
-            sum += i;
+            sum += dailyPitch.get(i);
         }
         return sum / dailyPitch.size();
+    }
+
+    // to calculate the daily pitch average
+    public double calculatePercentage(List <Double> dailyPitch) {
+        double count = 0;
+        for (int i=0; i< dailyPitch.size(); i++) {
+            if(dailyPitch.get(i)>=10.0){
+                count++;
+            }
+        }
+
+        return (count/dailyPitch.size())*100;
     }
     
     // function to get the last value in the database
