@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
     private ImageView imageToLoad;
 
     DBManager db_home;
-    CharSequence back_angle;
+    String back_angle;
     int i = 0;
     int points;
 
@@ -114,7 +114,7 @@ public class HomeFragment extends Fragment {
                 // text under the progress bar
                 try{
                     // back_angle = (CharSequence) db_home.getListByDate().get(1);
-                    back_angle = db_home.getPitchPB(); 
+                    back_angle = db_home.getPitchPB();
                     progressText.setText(back_angle);
                     progressBar.setProgress(50);
                     Log.i("pitch","isnotnull");
