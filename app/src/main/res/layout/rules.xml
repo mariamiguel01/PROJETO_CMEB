@@ -28,6 +28,7 @@
             android:autoLink="web"
             android:padding="16dp"
             android:textSize="16sp"
+            android:layout_marginBottom="25dip"
             android:text="@string/rules_connection"
             android:justificationMode="inter_word" />
 
@@ -49,6 +50,7 @@
             android:autoLink="web"
             android:padding="16dp"
             android:textSize="16sp"
+            android:layout_marginBottom="25dip"
             android:text="@string/rules_calibration"
             android:justificationMode="inter_word" />
 
