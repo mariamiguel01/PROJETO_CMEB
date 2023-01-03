@@ -44,6 +44,7 @@ public class HomeFragment extends Fragment {
     String back_angle;
     int i = 0;
     int points;
+    String calibrationAngle;
 
     int timeCounter = 0;
     DBAlertsManager dbA;
@@ -67,34 +68,36 @@ public class HomeFragment extends Fragment {
     @Override // --> Receber a informação
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db_home=new DBManager(getContext());
+        db_home = new DBManager(getContext());
         dbA = new DBAlertsManager(getContext());
 
-        getParentFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
+        /*getParentFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
                 // We use a String here, but any type that can be put in a Bundle is supported
                 String result = bundle.getString("bundleKey");
-                // Do something with the result
-                Log.i("Comunication", result);
+            }
+        });*/
+
+        getParentFragmentManager().setFragmentResultListener("requestCalibration", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String calibration_Angle, @NonNull Bundle bundle) {
+                calibrationAngle = bundle.getString("calibration");
+                Log.i("cal_home", calibrationAngle);
             }
         });
 
         getParentFragmentManager().setFragmentResultListener("changedPoints", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String changedPoints, @NonNull Bundle bundle) {
-                // We use a String here, but any type that can be put in a Bundle is supported
                 points = bundle.getInt("points");
-                // Do something with the result
             }
         });
 
         getParentFragmentManager().setFragmentResultListener("statsPoints", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String statsPoints, @NonNull Bundle bundle) {
-                // We use a String here, but any type that can be put in a Bundle is supported
                 points = bundle.getInt("points");
-                // Do something with the result
             }
         });
     }
@@ -119,6 +122,8 @@ public class HomeFragment extends Fragment {
             // text under the progress bar
             try{
                 // back_angle = (CharSequence) db_home.getListByDate().get(1);
+                Log.i("angle raw", db_home.getPitchPB());
+                //back_angle = Integer.toString(Integer.parseInt(db_home.getPitchPB()) - Integer.parseInt(calibrationAngle));
                 back_angle = db_home.getPitchPB();
                 progressText.setText(back_angle);
                 progressBar.setProgress(50);
@@ -158,11 +163,10 @@ public class HomeFragment extends Fragment {
             Bundle result = new Bundle(); // --> Enviar a informação
             result.putInt("points", points);
             getParentFragmentManager().setFragmentResult("requestPoints", result);
-            Log.i("Com_send", Integer.toString(points));
 
             if (true) {
                 timeCounter++;
-                if (timeCounter > 1) {
+                if (timeCounter > 10) {
                     Intent intent2notifications = new Intent(getContext(), NotificationReceiver.class);
                     getActivity().sendBroadcast(intent2notifications);
                     timeCounter = 0;
