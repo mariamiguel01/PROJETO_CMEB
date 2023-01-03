@@ -74,8 +74,8 @@ public class DBManager {
     }
 
     // to calculate the daily pitch average
-    public double calculateAverage(List <Double> dailyPitch) {
-        double sum = 0;
+    public float calculateAverage(List <Double> dailyPitch) {
+        float sum = 0;
         for (int i=0; i< dailyPitch.size(); i++) {
             sum += dailyPitch.get(i);
         }
@@ -83,15 +83,15 @@ public class DBManager {
     }
 
     // to calculate the daily pitch average
-    public double calculatePercentage(List <Double> dailyPitch) {
-        double count = 0;
+    public float calculatePercentage(List <Double> dailyPitch) {
+        float count = 0;
         for (int i=0; i< dailyPitch.size(); i++) {
             if(dailyPitch.get(i)>=10.0){
                 count++;
             }
         }
 
-        return (count/dailyPitch.size())*100;
+        return count/dailyPitch.size();
     }
     
     // function to get the last value in the database
@@ -111,6 +111,16 @@ public class DBManager {
         count = cursor.getCount();
         return count;
     }
+
+    // function to get the last value in the database
+    public Double getCalibration() {
+        Cursor cursor = db.rawQuery("Select * from EulerAngles", null);
+        cursor.moveToLast();
+        Double pitch = cursor.getDouble(1);
+        return pitch;
+    }
+
+
 
 
 
