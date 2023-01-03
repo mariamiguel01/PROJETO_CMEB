@@ -10,6 +10,10 @@
     <string name="vibration">Vibration:</string>
     <string name="connection">Connect to device:</string>
     <string name="rules_settings">How to use this app?</string>
+    <string name="title_connection">Connection with the device</string>
+    <string name="rules_connection"></string>
+    <string name="title_calibration">Calibration</string>
+    <string name="rules_calibration"></string>
     <string name="title_points">Points and Levels</string>
     <string name="rules_points">In this app, you can colect points by reading news, watching the video with exercises (1 point per action) and by having a percentage of correct posture over 70% (5 points) in statistics.
 For each 5 points earned, you reach a new level of progress (only 6 levels are available).</string>
