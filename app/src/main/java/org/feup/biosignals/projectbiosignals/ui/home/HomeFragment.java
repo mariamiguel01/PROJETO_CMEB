@@ -39,6 +39,7 @@ public class HomeFragment extends Fragment {
     private TextView levelText;
     private ImageView imageToLoad;
 
+    final Handler handler = new Handler();
     DBManager db_home;
     String back_angle;
     int i = 0;
@@ -108,73 +109,70 @@ public class HomeFragment extends Fragment {
         pointsText = view.findViewById(R.id.points_text);
         imageToLoad = view.findViewById(R.id.image_level);
 
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // set the limitations for the numeric
-                // text under the progress bar
-                try{
-                    // back_angle = (CharSequence) db_home.getListByDate().get(1);
-                    back_angle = db_home.getPitchPB();
-                    progressText.setText(back_angle);
-                    progressBar.setProgress(50);
-                    Log.i("pitch","isnotnull");
-                }
-                catch(Exception e){
-                    back_angle="---";
-                    progressText.setText(back_angle);
-                    progressBar.setProgress(0);
-                    Log.i("pitch","isnull");
-                }
-
-                pointsText.setText("Points: " + Integer.toString(points));
-                if (points < 5) {
-                    imageToLoad.setImageResource(R.drawable.level1);
-                    levelText.setText("Level 1 (of 6)");
-                }
-                if (points >= 5 && points < 10) {
-                    imageToLoad.setImageResource(R.drawable.level2);
-                    levelText.setText("Level 2 (of 6)");
-                }
-                if (points >= 10 && points < 15) {
-                    imageToLoad.setImageResource(R.drawable.level3);
-                    levelText.setText("Level 3 (of 6)");
-                }
-                if (points >= 15 && points < 20) {
-                    imageToLoad.setImageResource(R.drawable.level4);
-                    levelText.setText("Level 4 (of 6)");
-                }
-                if (points >= 20 && points < 25) {
-                    imageToLoad.setImageResource(R.drawable.level5);
-                    levelText.setText("Level 5 (of 6)");
-                }
-                if (points >= 25) {
-                    imageToLoad.setImageResource(R.drawable.level6);
-                    levelText.setText("Level 6 (of 6)");
-                }
-
-                Bundle result = new Bundle(); // --> Enviar a informação
-                result.putInt("points", points);
-                getParentFragmentManager().setFragmentResult("requestPoints", result);
-                Log.i("Com_send", Integer.toString(points));
-
-                if (true) {
-                    timeCounter++;
-                    Log.i("xxx", "true");
-                    if (timeCounter > 1) {
-                        Intent intent2notifications = new Intent(getContext(), NotificationReceiver.class);
-                        getActivity().sendBroadcast(intent2notifications);
-                        timeCounter = 0;
-                        MESSAGE = "Bad posture for " + 10 + " seconds";
-                        Log.i("xxx", MESSAGE);
-                        dbA.AddAlert(TITLE, MESSAGE);
-                        Log.i("xxx", "Added");
-                    }
-                } else { timeCounter = 0; }
-            }
-        }, 1000);
+        handler.postDelayed(angleRunnable, 1000);
     }
+
+    private Runnable angleRunnable = new Runnable() {
+        @Override
+        public void run() {
+            // set the limitations for the numeric
+            // text under the progress bar
+            try{
+                // back_angle = (CharSequence) db_home.getListByDate().get(1);
+                back_angle = db_home.getPitchPB();
+                progressText.setText(back_angle);
+                progressBar.setProgress(50);
+            }
+            catch(Exception e){
+                back_angle="---";
+                progressText.setText(back_angle);
+                progressBar.setProgress(0);
+            }
+
+            pointsText.setText("Points: " + Integer.toString(points));
+            if (points < 5) {
+                imageToLoad.setImageResource(R.drawable.level1);
+                levelText.setText("Level 1 (of 6)");
+            }
+            if (points >= 5 && points < 10) {
+                imageToLoad.setImageResource(R.drawable.level2);
+                levelText.setText("Level 2 (of 6)");
+            }
+            if (points >= 10 && points < 15) {
+                imageToLoad.setImageResource(R.drawable.level3);
+                levelText.setText("Level 3 (of 6)");
+            }
+            if (points >= 15 && points < 20) {
+                imageToLoad.setImageResource(R.drawable.level4);
+                levelText.setText("Level 4 (of 6)");
+            }
+            if (points >= 20 && points < 25) {
+                imageToLoad.setImageResource(R.drawable.level5);
+                levelText.setText("Level 5 (of 6)");
+            }
+            if (points >= 25) {
+                imageToLoad.setImageResource(R.drawable.level6);
+                levelText.setText("Level 6 (of 6)");
+            }
+
+            Bundle result = new Bundle(); // --> Enviar a informação
+            result.putInt("points", points);
+            getParentFragmentManager().setFragmentResult("requestPoints", result);
+            Log.i("Com_send", Integer.toString(points));
+
+            if (true) {
+                timeCounter++;
+                if (timeCounter > 1) {
+                    Intent intent2notifications = new Intent(getContext(), NotificationReceiver.class);
+                    getActivity().sendBroadcast(intent2notifications);
+                    timeCounter = 0;
+                    MESSAGE = "Bad posture for " + 10 + " seconds";
+                    dbA.AddAlert(TITLE, MESSAGE);
+                }
+            } else { timeCounter = 0; }
+            handler.postDelayed(this, 1000);
+        }
+    };
 
     @Override
     public void onDestroyView() {
