@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import org.feup.biosignals.projectbiosignals.DBHandler;
 import org.feup.biosignals.projectbiosignals.DBManager;
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.databinding.FragmentSettingsBinding;
+import org.feup.biosignals.projectbiosignals.rules;
 import org.feup.biosignals.projectbiosignals.ui.stats.StatsFragment;
 
 public class SettingsFragment extends Fragment {
@@ -41,6 +43,16 @@ public class SettingsFragment extends Fragment {
 
         final TextView textView = binding.textSettings;
         settingsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
+        Intent intent1;
+        intent1 = new Intent(getActivity(), rules.class);
+        final Button button3 = (Button) root.findViewById(R.id.rules);
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(intent1);
+            }
+        });
         return root;
     }
 

@@ -31,7 +31,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:onClick="plotECG"
             android:text="@string/news_title1"/>
 
         <Button
@@ -39,7 +38,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:onClick="plotECG"
             android:text="@string/news_title2" />
 
         <TextView
