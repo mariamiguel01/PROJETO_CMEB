@@ -28,6 +28,7 @@ import org.feup.biosignals.projectbiosignals.ui.home.HomeFragment;
 import org.feup.biosignals.projectbiosignals.ui.home.HomeViewModel;
 import org.feup.biosignals.projectbiosignals.ui.stats.StatsFragment;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -70,11 +71,14 @@ public class bleConnection extends AppCompatActivity {
                         // this is the value of the angles without subtracting the zero
                         // the goal is to send them to the HomeFragment directly to show on the progress bar
                         //Then save the data in the database (AddAngle function for that)
-                        pitch = pitch + gyroX *DT;
-                        roll = roll + gyroY *DT;
+                        pitch = pitch + gyroX * DT;
+                        pitch = Math.round(pitch*100.0)/100.0;
+                        roll = roll + gyroY * DT;
+                        roll = Math.round(roll*100.0)/100.0;
                         yaw += gyroZ * DT;
-
+                        yaw = Math.round(yaw*100.0)/100.0;
                         db.AddAngle(pitch, roll, yaw);
+
                     }
                 }
             }
