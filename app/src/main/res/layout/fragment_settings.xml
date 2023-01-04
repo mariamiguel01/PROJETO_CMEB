@@ -87,7 +87,7 @@
         android:textSize="20sp" />
 
     <ImageButton
-        android:id="@+id/calibration"
+        android:id="@+id/bt_cal"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:src="@drawable/ic_calibration"

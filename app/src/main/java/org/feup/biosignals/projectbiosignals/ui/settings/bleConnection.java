@@ -46,11 +46,40 @@ public class bleConnection extends AppCompatActivity {
     private boolean is_Calibrated;
     private boolean isFirst = true;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_ble);
+
+        Intent intent = getIntent();
+        is_Calibrated = intent.getBooleanExtra("CALIBRATION", false);
+
+        db = new DBManager(this);
+        registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
+
+        ArrayList<String> permsList = new ArrayList<String>();
+        permsList.add(Manifest.permission.BLUETOOTH);
+        permsList.add(Manifest.permission.BLUETOOTH_ADMIN);
+        permsList.add(Manifest.permission.BLUETOOTH_SCAN);
+        permsList.add(Manifest.permission.BLUETOOTH_ADVERTISE);
+        permsList.add(Manifest.permission.BLUETOOTH_CONNECT);
+        permsList.add(Manifest.permission.ACCESS_FINE_LOCATION);
+        permsList.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+
+        if (ContextCompat.checkSelfPermission(this, permsList.get(0))
+                != PackageManager.PERMISSION_GRANTED){
+            registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), isGranted -> {
+                Log.i(TAG, isGranted.toString());
+            }).launch(permsList.stream().toArray(String[]::new));
+        }
+    }
+
     private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
-            is_Calibrated = intent.getBooleanExtra("CALIBRATION", false);
+            //is_Calibrated = getIsCal(intent);
             Log.i("bt ble con", ""+is_Calibrated);
 
             if ("DATA_AVAILABLE".equals(action)) {
@@ -88,7 +117,7 @@ public class bleConnection extends AppCompatActivity {
                             first_roll = roll;
                             first_yaw = yaw;
                             db.AddAngle(0.0, 0.0, 0.0);
-                            isFirst = false; 
+                            isFirst = false;
                         }
 
                         if(is_Calibrated && !isFirst){
@@ -127,11 +156,15 @@ public class bleConnection extends AppCompatActivity {
         return intentFilter;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+   /* @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_ble);
+
+        Intent intent = getIntent();
+        is_Calibrated = intent.getBooleanExtra("CALIBRATION", false);
+
         db = new DBManager(this);
         registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
 
@@ -150,7 +183,7 @@ public class bleConnection extends AppCompatActivity {
                 Log.i(TAG, isGranted.toString());
             }).launch(permsList.stream().toArray(String[]::new));
         }
-    }
+    }*/
 
     public void connect(View view) {
         // Function on XML onClick
@@ -163,6 +196,12 @@ public class bleConnection extends AppCompatActivity {
         Log.i(TAG, "Clicked button");
         Intent intent2 = new Intent(this, MainActivity.class);
         startActivity(intent2);
+    }
+
+    public Boolean getIsCal(Intent intent) {
+        is_Calibrated = intent.getBooleanExtra("CALIBRATION", false);
+        Log.i("bt ble con", ""+is_Calibrated);
+        return is_Calibrated;
     }
 
     @SuppressLint("NewApi")

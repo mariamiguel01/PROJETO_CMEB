@@ -121,12 +121,10 @@ public class HomeFragment extends Fragment {
             // set the limitations for the numeric
             // text under the progress bar
             try{
-                // back_angle = (CharSequence) db_home.getListByDate().get(1);
                 Log.i("angle raw", db_home.getPitchPB());
-                //back_angle = Integer.toString(Integer.parseInt(db_home.getPitchPB()) - Integer.parseInt(calibrationAngle));
                 back_angle = db_home.getPitchPB();
                 progressText.setText(back_angle);
-                progressBar.setProgress(50); //
+                progressBar.setProgress(Math.abs(Integer.parseInt(back_angle)));
             }
             catch(Exception e){
                 back_angle="---";
@@ -164,7 +162,7 @@ public class HomeFragment extends Fragment {
             result.putInt("points", points);
             getParentFragmentManager().setFragmentResult("requestPoints", result);
 
-            if (true) { //back_angle > xx
+            if (Integer.parseInt(back_angle) > 15) { //back_angle > xx
                 timeCounter++;
                 if (timeCounter > i) {
                     Intent intent2notifications = new Intent(getContext(), NotificationReceiver.class);
