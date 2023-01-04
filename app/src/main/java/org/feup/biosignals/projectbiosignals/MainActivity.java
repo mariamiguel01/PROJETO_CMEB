@@ -51,16 +51,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        db.AddAngle(14.0, 23.0, 2.0);
-        db.AddAngle(8.0, 23.0, 2.0);
-        db.AddAngle(5.0, 10.0, 1.9);
-        db.AddAngle(5.0, 10.0, 1.9);
-        db.AddAngle(5.0, 10.0, 1.9);
-        db.AddAngle(5.0, 10.0, 1.9);
-
-        //  String pitch = db.getPitchPB();
-        // Log.i("yo", pitch);
-
         createNotificationChannel();
     }
 
