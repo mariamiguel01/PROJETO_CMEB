@@ -30,9 +30,11 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
+import org.feup.biosignals.projectbiosignals.DBManager;
 import org.feup.biosignals.projectbiosignals.databinding.FragmentStatsBinding;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class StatsFragment extends Fragment {
 
@@ -41,6 +43,7 @@ public class StatsFragment extends Fragment {
     private BarChart barChart;
     private LineChart lineChart;
     int points;
+    DBManager db;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -79,6 +82,8 @@ public class StatsFragment extends Fragment {
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
         pieChart = view.findViewById(org.feup.biosignals.projectbiosignals.R.id.piechart);
         lineChart = view.findViewById(org.feup.biosignals.projectbiosignals.R.id.linechart);
+        db = new DBManager(getContext());
+
         setupPieChart();
         loadPieChartData();
         loadLineChart();
@@ -106,9 +111,12 @@ public class StatsFragment extends Fragment {
 
     private void loadPieChartData() {
         ArrayList<PieEntry> entries = new ArrayList<>();
+        List<Double> aux = db.getPitchByDate();
 
-        entries.add(new PieEntry(0.2f, "Bad Posture"));
-        entries.add(new PieEntry(0.8f, "Good Posture"));
+
+
+        entries.add(new PieEntry(1-db.calculatePercentage(aux), "Bad Posture"));
+        entries.add(new PieEntry(db.calculatePercentage(aux), "Good Posture"));
 
         PieDataSet dataSet = new PieDataSet(entries, "Posture Habits");
         dataSet.setColors(new int[] {Color.rgb(131,157,219), Color.rgb(140,191,219)});
