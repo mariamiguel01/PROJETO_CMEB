@@ -97,7 +97,7 @@
                     android:layout_marginLeft="24dp"
                     android:layout_marginTop="20dp"
                     android:layout_toRightOf="@+id/image_level"
-                    android:text="Points"
+                    android:text="Points: 0"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
