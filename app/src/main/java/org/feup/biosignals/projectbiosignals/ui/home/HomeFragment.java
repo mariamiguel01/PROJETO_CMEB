@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
     final Handler handler = new Handler();
     DBManager db_home;
     String back_angle;
-    int i = 0;
+    int i = 20;
     int points;
     String calibrationAngle;
 
@@ -126,7 +126,7 @@ public class HomeFragment extends Fragment {
                 //back_angle = Integer.toString(Integer.parseInt(db_home.getPitchPB()) - Integer.parseInt(calibrationAngle));
                 back_angle = db_home.getPitchPB();
                 progressText.setText(back_angle);
-                progressBar.setProgress(50);
+                progressBar.setProgress(50); //
             }
             catch(Exception e){
                 back_angle="---";
@@ -164,13 +164,15 @@ public class HomeFragment extends Fragment {
             result.putInt("points", points);
             getParentFragmentManager().setFragmentResult("requestPoints", result);
 
-            if (true) {
+            if (true) { //back_angle > xx
                 timeCounter++;
-                if (timeCounter > 10) {
+                if (timeCounter > i) {
                     Intent intent2notifications = new Intent(getContext(), NotificationReceiver.class);
+                    MESSAGE = "Bad posture for " + i + " seconds"; //mudar para tempo correto
+                    intent2notifications.putExtra("title", TITLE);
+                    intent2notifications.putExtra("message", MESSAGE);
                     getActivity().sendBroadcast(intent2notifications);
                     timeCounter = 0;
-                    MESSAGE = "Bad posture for " + 10 + " seconds";
                     dbA.AddAlert(TITLE, MESSAGE);
                 }
             } else { timeCounter = 0; }
