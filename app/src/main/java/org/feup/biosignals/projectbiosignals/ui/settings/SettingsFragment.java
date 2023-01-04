@@ -76,18 +76,21 @@ public class SettingsFragment extends Fragment {
         bt_cal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                back_angle = db.getPitchPB();
+                //back_angle = db.getPitchPB();
                 Toast.makeText(getContext(),"Device calibrated",Toast.LENGTH_SHORT);
-                isCalibrated = true;
+                Intent intent_to_ble = new Intent(getContext(), bleConnection.class);
+                intent_to_ble.putExtra("CALIBRATION", true);
+                startActivity(intent_to_ble);
+                //isCalibrated = true;
             }
         });
 
-        if (back_angle != null) {
+        /*if (back_angle != null) {
             Bundle result = new Bundle(); // --> Send to home
             result.putString("calibration", back_angle);
             getParentFragmentManager().setFragmentResult("requestCalibration", result);
             Log.i("cal", back_angle);
-        }
+        }*/
 
         Log.i("loool", ""+isCalibrated);
     }

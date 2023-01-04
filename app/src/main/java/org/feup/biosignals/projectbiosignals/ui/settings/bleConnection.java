@@ -42,7 +42,7 @@ public class bleConnection extends AppCompatActivity {
     private double pitch, roll, yaw;
     private double first_pitch, first_roll, first_yaw;
     SettingsFragment settingsFragment = new SettingsFragment();
-    private boolean isCalibrated;
+    private boolean is_Calibrated;
     private boolean isFirst = true;
 
 
@@ -60,22 +60,24 @@ public class bleConnection extends AppCompatActivity {
                 dataParser.parse(data);
                 if (data != null) {
                     for (int i = 0; i < 5; i++) {
-                        float accX = dataParser.getAccDataX().get(i);
+                        /*float accX = dataParser.getAccDataX().get(i);
                         float accY = dataParser.getAccDataY().get(i);
-                        float accZ = dataParser.getAccDataZ().get(i);
+                        float accZ = dataParser.getAccDataZ().get(i);*/
                         float gyroX = dataParser.getGyroDataX().get(i);
                         float gyroY = dataParser.getGyroDataY().get(i);
                         float gyroZ = dataParser.getGyroDataZ().get(i);
-                        float magX = dataParser.getMagDataX().get(i);
+                        /*float magX = dataParser.getMagDataX().get(i);
                         float magY = dataParser.getMagDataY().get(i);
                         float magZ = dataParser.getMagDataZ().get(i);
                         float forceOne = dataParser.getForceOneData().get(i);
-                        float forceTwo = dataParser.getForceOneData().get(i);
+                        float forceTwo = dataParser.getForceOneData().get(i);*/
                         Log.i(TAG, "" + gyroX);
 
-                        isCalibrated = settingsFragment.isCalibrated;
+                        //isCalibrated = settingsFragment.isCalibrated;
 
-                        if(isCalibrated && isFirst){
+                        is_Calibrated = isCalibrated();
+                        Log.i("CAL", "" + is_Calibrated);
+                        if(is_Calibrated && isFirst){
                             pitch = pitch + gyroX * DT;
                             pitch = Math.round(pitch*100.0)/100.0;
                             roll = roll + gyroY * DT;
@@ -90,7 +92,7 @@ public class bleConnection extends AppCompatActivity {
                             isFirst = false; 
                         }
 
-                        if(isCalibrated && !isFirst){
+                        if(is_Calibrated && !isFirst){
                             pitch = (pitch + gyroX * DT) - first_pitch;
                             pitch = Math.round(pitch*100.0)/100.0;
                             roll = (roll + gyroY * DT) - first_roll;
@@ -104,13 +106,22 @@ public class bleConnection extends AppCompatActivity {
                         // this is the value of the angles without subtracting the zero
                         // the goal is to send them to the HomeFragment directly to show on the progress bar
                         //Then save the data in the database (AddAngle function for that)
-
-
                     }
                 }
             }
         }
     };
+
+    private boolean isCalibrated() {
+        if(getIntent().hasExtra("CALIBRATION")) {
+            Intent intentC = getIntent();
+            //get the attached extras from the intent
+            //we should use the same key as we used to attach the data.
+            boolean calibration = intentC.getBooleanExtra("CALIBRATION", false);
+            return calibration;
+        }
+        return false;
+    }
 
     private static IntentFilter makeGattUpdateIntentFilter() {
         final IntentFilter intentFilter = new IntentFilter();
@@ -123,6 +134,7 @@ public class bleConnection extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main_ble);
         db = new DBManager(this);
         registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
