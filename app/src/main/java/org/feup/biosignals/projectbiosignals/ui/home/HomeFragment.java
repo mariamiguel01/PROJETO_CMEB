@@ -71,14 +71,6 @@ public class HomeFragment extends Fragment {
         db_home = new DBManager(getContext());
         dbA = new DBAlertsManager(getContext());
 
-        /*getParentFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-                // We use a String here, but any type that can be put in a Bundle is supported
-                String result = bundle.getString("bundleKey");
-            }
-        });*/
-
         getParentFragmentManager().setFragmentResultListener("requestCalibration", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String calibration_Angle, @NonNull Bundle bundle) {
@@ -124,7 +116,7 @@ public class HomeFragment extends Fragment {
                 Log.i("angle raw", db_home.getPitchPB());
                 back_angle = db_home.getPitchPB();
                 progressText.setText(back_angle);
-                progressBar.setProgress(Math.abs(Integer.parseInt(back_angle)));
+                progressBar.setProgress(50);
             }
             catch(Exception e){
                 back_angle="---";
@@ -162,7 +154,7 @@ public class HomeFragment extends Fragment {
             result.putInt("points", points);
             getParentFragmentManager().setFragmentResult("requestPoints", result);
 
-            if (Integer.parseInt(back_angle) > 15) { //back_angle > xx
+            if (10 > 15) { //back_angle > xx
                 timeCounter++;
                 if (timeCounter > i) {
                     Intent intent2notifications = new Intent(getContext(), NotificationReceiver.class);

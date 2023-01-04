@@ -107,11 +107,11 @@ public class bleConnection extends AppCompatActivity {
                         Log.i("CAL", "" + is_Calibrated);
                         if(is_Calibrated && isFirst){
                             pitch = pitch + gyroX * DT;
-                            pitch = Math.round(pitch*100.0)/100.0;
+                            pitch = Math.round(pitch);
                             roll = roll + gyroY * DT;
-                            roll = Math.round(roll*100.0)/100.0;
+                            roll = Math.round(roll);
                             yaw += gyroZ * DT;
-                            yaw = Math.round(yaw*100.0)/100.0;
+                            yaw = Math.round(yaw);
 
                             first_pitch = pitch;
                             first_roll = roll;
@@ -122,11 +122,11 @@ public class bleConnection extends AppCompatActivity {
 
                         if(is_Calibrated && !isFirst){
                             pitch = (pitch + gyroX * DT) - first_pitch;
-                            pitch = Math.round(pitch*100.0)/100.0;
+                            pitch = Math.round(pitch);
                             roll = (roll + gyroY * DT) - first_roll;
-                            roll = Math.round(roll*100.0)/100.0;
+                            roll = Math.round(roll);
                             yaw += (gyroZ * DT) - first_yaw;
-                            yaw = Math.round(yaw*100.0)/100.0;
+                            yaw = Math.round(yaw);
 
                             db.AddAngle(pitch, roll, yaw);
                         }
