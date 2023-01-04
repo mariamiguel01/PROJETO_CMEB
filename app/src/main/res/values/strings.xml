@@ -12,7 +12,7 @@
     <string name="rules_settings">How to use this app?</string>
     <string name="title_connection">Connection with the device</string>
     <string name="rules_connection">Firstly, it is necessary to make the connection with de device. To do so, you should click on the correspondent button in the settings page.
-A list of devices will be shown and you must select the Snapki option to make the Bluetooth connection. </string>
+A list of devices will be shown and you must select the Snapki option (SnapKi14) to make the Bluetooth connection. </string>
     <string name="title_calibration">Calibration</string>
     <string name="rules_calibration">After making the connection with the device, you should place the SnapKi on your back in the cervical area and calibrate the device by clicking on the calibration button in the settings page.
 Make sure that your back is in a correct position when you do this!</string>
