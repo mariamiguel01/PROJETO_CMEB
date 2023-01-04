@@ -27,17 +27,12 @@ import org.feup.biosignals.projectbiosignals.databinding.ActivityMainBinding;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
     private ActivityMainBinding binding;
-
     private static final String CHANNEL1 = "channel1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //DBManager db = new DBManager(this);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -50,16 +45,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
-
-        String year = db.getCurrentYear();
-        String month = db.getCurrentMonth();
-        int day = 31;;
-
-        List<Double> tentativa1= db.getPitchForHist(month, year, day);
-        float tentativa2 = db.calculatePercentage(tentativa1);
-        Log.i("tentativa", ""+tentativa2);
-
-
 
         createNotificationChannel();
     }

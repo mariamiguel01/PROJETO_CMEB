@@ -22,6 +22,7 @@ import android.view.View;
 
 import org.feup.biosignals.projectbiosignals.DBHandler;
 import org.feup.biosignals.projectbiosignals.DBManager;
+import org.feup.biosignals.projectbiosignals.MainActivity;
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.databinding.FragmentSettingsBinding;
 import org.feup.biosignals.projectbiosignals.helpers.DataParser;
@@ -45,12 +46,13 @@ public class bleConnection extends AppCompatActivity {
     private boolean is_Calibrated;
     private boolean isFirst = true;
 
-
-
     private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
+            is_Calibrated = intent.getBooleanExtra("CALIBRATION", false);
+            Log.i("bt ble con", ""+is_Calibrated);
+
             if ("DATA_AVAILABLE".equals(action)) {
                 byte[] data = intent.getByteArrayExtra("data");
                 //byte[] data = string.getBytes(StandardCharsets.UTF_8);
@@ -73,9 +75,6 @@ public class bleConnection extends AppCompatActivity {
                         float forceTwo = dataParser.getForceOneData().get(i);*/
                         Log.i(TAG, "" + gyroX);
 
-                        //isCalibrated = settingsFragment.isCalibrated;
-
-                        is_Calibrated = isCalibrated();
                         Log.i("CAL", "" + is_Calibrated);
                         if(is_Calibrated && isFirst){
                             pitch = pitch + gyroX * DT;
@@ -101,7 +100,6 @@ public class bleConnection extends AppCompatActivity {
                             yaw = Math.round(yaw*100.0)/100.0;
 
                             db.AddAngle(pitch, roll, yaw);
-
                         }
                         // this is the value of the angles without subtracting the zero
                         // the goal is to send them to the HomeFragment directly to show on the progress bar
@@ -112,7 +110,7 @@ public class bleConnection extends AppCompatActivity {
         }
     };
 
-    private boolean isCalibrated() {
+    /*private boolean isCalibrated() {
         if(getIntent().hasExtra("CALIBRATION")) {
             Intent intentC = getIntent();
             //get the attached extras from the intent
@@ -121,12 +119,11 @@ public class bleConnection extends AppCompatActivity {
             return calibration;
         }
         return false;
-    }
+    }*/
 
     private static IntentFilter makeGattUpdateIntentFilter() {
         final IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("DATA_AVAILABLE");
-
         return intentFilter;
     }
 
@@ -134,7 +131,6 @@ public class bleConnection extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main_ble);
         db = new DBManager(this);
         registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
@@ -165,7 +161,7 @@ public class bleConnection extends AppCompatActivity {
 
     public void return_main(View view) {
         Log.i(TAG, "Clicked button");
-        Intent intent2 = new Intent(this, FragmentSettingsBinding.class);
+        Intent intent2 = new Intent(this, MainActivity.class);
         startActivity(intent2);
     }
 

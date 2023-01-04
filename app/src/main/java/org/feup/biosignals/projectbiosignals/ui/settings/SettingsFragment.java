@@ -67,8 +67,9 @@ public class SettingsFragment extends Fragment {
         bt_bl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Sends to
+                Log.i("bt ble", ""+isCalibrated);
                 Intent intent_to_ble = new Intent(getContext(), bleConnection.class);
+                intent_to_ble.putExtra("CALIBRATION", isCalibrated);
                 startActivity(intent_to_ble);
             }
         });
@@ -76,12 +77,13 @@ public class SettingsFragment extends Fragment {
         bt_cal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //back_angle = db.getPitchPB();
                 Toast.makeText(getContext(),"Device calibrated",Toast.LENGTH_SHORT);
-                Intent intent_to_ble = new Intent(getContext(), bleConnection.class);
+                /*Intent intent_to_ble = new Intent(getContext(), bleConnection.class);
                 intent_to_ble.putExtra("CALIBRATION", true);
-                startActivity(intent_to_ble);
-                //isCalibrated = true;
+                startActivity(intent_to_ble);*/
+                Log.i("bt cal", ""+isCalibrated);
+                isCalibrated = true;
+                Log.i("bt cal2", ""+isCalibrated);
             }
         });
 
