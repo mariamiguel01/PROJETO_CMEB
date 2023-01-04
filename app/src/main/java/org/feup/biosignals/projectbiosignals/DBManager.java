@@ -93,6 +93,27 @@ public class DBManager {
 
         return count/dailyPitch.size();
     }
+
+    // function to get the current month
+    public String getCurrentMonth() {
+        String month;
+        Date currentTime = Calendar.getInstance().getTime();
+        String date = DateFormat.getDateInstance().format(currentTime);
+        String[] splitDate = date.split(" ");
+        month = splitDate[0].trim();
+        return month;
+    };
+
+    // function to get the current month
+    public String getCurrentYear() {
+        String year;
+        Date currentTime = Calendar.getInstance().getTime();
+        String date = DateFormat.getDateInstance().format(currentTime);
+        String[] splitDate = date.split(",");
+        year = splitDate[1].trim();
+        return year;
+    };
+
     
     // function to get the last value in the database
     public String getPitchPB() {
@@ -118,6 +139,22 @@ public class DBManager {
         cursor.moveToLast();
         Double pitch = cursor.getDouble(1);
         return pitch;
+    }
+
+    // function to use in statistics (get the pitch by the date)
+    public List<Double> getPitchForHist(String month, String year, int day) {
+        List<Double> info = new ArrayList<>();
+        //Get current date with the variables introduced by the user
+        String date = month + " " + day + ", " + year ;
+
+        Cursor cursor = db.rawQuery("Select * from EulerAngles WHERE date='"+date+"'" , null);
+
+        if (cursor.getCount() != 0) {
+            while (cursor.moveToNext()) {
+                info.add(cursor.getDouble(1));
+            }
+        }
+        return info;
     }
 
 

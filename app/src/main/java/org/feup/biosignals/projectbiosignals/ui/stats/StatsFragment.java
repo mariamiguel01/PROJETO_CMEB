@@ -113,8 +113,6 @@ public class StatsFragment extends Fragment {
         ArrayList<PieEntry> entries = new ArrayList<>();
         List<Double> aux = db.getPitchByDate();
 
-
-
         entries.add(new PieEntry(1-db.calculatePercentage(aux), "Bad Posture"));
         entries.add(new PieEntry(db.calculatePercentage(aux), "Good Posture"));
 
@@ -135,39 +133,31 @@ public class StatsFragment extends Fragment {
         ArrayList<Double> valueList = new ArrayList<Double>();
         ArrayList<Entry> entries = new ArrayList<>();
 
-        entries.add(new Entry(0,40f));
-        entries.add(new Entry(1,60f));
-        entries.add(new Entry(2, 50f));
-        entries.add(new Entry(3, 60f));
-        entries.add(new Entry(4, 61f));
-        entries.add(new Entry(5, 62f));
-        entries.add(new Entry(6, 65f));
+        String month = db.getCurrentMonth();
+        String year = db.getCurrentYear();
+        for (int i = 1; i <= 31; i++) {
+            List<Double> aux1= db.getPitchForHist(month, year, i);
+            float aux2 = db.calculatePercentage(aux1);
+            if(Float.isNaN(aux2)){
+                entries.add(new Entry(i,0));
+            }
+            else{
+                entries.add(new Entry(i,aux2));
+            }
+        }
 
-        LineDataSet set1 = new LineDataSet(entries, "Good Posture");
-        set1.setColors(new int[] {Color.rgb(131,157,219)});
-
-        ArrayList<Entry> entries2 = new ArrayList<>();
-        entries2.add(new Entry(0,60f));
-        entries2.add(new Entry(1,40f));
-        entries2.add(new Entry(2,50f));
-        entries2.add(new Entry(3, 40f));
-        entries2.add(new Entry(4, 39f));
-        entries2.add(new Entry(5, 38f));
-        entries2.add(new Entry(6, 35f));
-
-
-        LineDataSet set2 = new LineDataSet(entries2, "Wrong Posture");
-        set2.setColors(new int[] {Color.rgb(131,157,219)});
+        LineDataSet set1 = new LineDataSet(entries, "% Good Posture");
 
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(set1);
-        dataSets.add(set2);
-
-        LineData data = new LineData(dataSets);
-
+        LineData data = new LineData(set1);
 
         lineChart.setData(data);
         lineChart.invalidate();
+        lineChart.getDescription().setEnabled(false);
+        lineChart.getLineData().setDrawValues(false);
+
+
     }
 
     public void addPoints() {

@@ -51,6 +51,16 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+        String year = db.getCurrentYear();
+        String month = db.getCurrentMonth();
+        int day = 31;;
+
+        List<Double> tentativa1= db.getPitchForHist(month, year, day);
+        float tentativa2 = db.calculatePercentage(tentativa1);
+        Log.i("tentativa", ""+tentativa2);
+
+
+
         createNotificationChannel();
     }
 
