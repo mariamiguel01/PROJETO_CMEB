@@ -47,9 +47,9 @@ public class SettingsFragment extends Fragment {
 
         Intent intent1;
         intent1 = new Intent(getActivity(), rules.class);
-        final Button button3 = (Button) root.findViewById(R.id.rules);
+        final Button but_rules = (Button) root.findViewById(R.id.rules);
 
-        button3.setOnClickListener(new View.OnClickListener() {
+        but_rules.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(intent1);
             }

@@ -161,8 +161,8 @@ public class StatsFragment extends Fragment {
     }
 
     public void addPoints() {
-        double value_good = 0.8;
-        if (value_good >= 0.7) {
+        List<Double> aux = db.getPitchByDate();
+        if (db.calculatePercentage(aux) >= 0.7) {
             Log.i("Com_piechart", Integer.toString(points));
             points = points + 5;
             Bundle result = new Bundle(); // --> Enviar a informação
