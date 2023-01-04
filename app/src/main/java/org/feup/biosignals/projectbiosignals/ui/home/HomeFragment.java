@@ -1,10 +1,6 @@
 package org.feup.biosignals.projectbiosignals.ui.home;
 
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -23,12 +19,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import org.feup.biosignals.projectbiosignals.DBAlertsManager;
 import org.feup.biosignals.projectbiosignals.DBManager;
-import org.feup.biosignals.projectbiosignals.DatabaseALertsHelper;
-import org.feup.biosignals.projectbiosignals.MainActivity;
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.databinding.FragmentHomeBinding;
 import org.feup.biosignals.projectbiosignals.ui.alerts.NotificationReceiver;
-import org.feup.biosignals.projectbiosignals.video;
 
 public class HomeFragment extends Fragment {
 
@@ -44,11 +37,9 @@ public class HomeFragment extends Fragment {
     String back_angle;
     int i = 20;
     int points;
-    String calibrationAngle;
 
     int timeCounter = 0;
     DBAlertsManager dbA;
-    private static final String DATABASE_NAME="dbAlerts";
     public static final String TITLE="Correct your posture";
     public String MESSAGE;
 
@@ -70,14 +61,6 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         db_home = new DBManager(getContext());
         dbA = new DBAlertsManager(getContext());
-
-        getParentFragmentManager().setFragmentResultListener("requestCalibration", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String calibration_Angle, @NonNull Bundle bundle) {
-                calibrationAngle = bundle.getString("calibration");
-                Log.i("cal_home", calibrationAngle);
-            }
-        });
 
         getParentFragmentManager().setFragmentResultListener("changedPoints", this, new FragmentResultListener() {
             @Override
@@ -117,6 +100,19 @@ public class HomeFragment extends Fragment {
                 back_angle = db_home.getPitchPB();
                 progressText.setText(back_angle);
                 progressBar.setProgress(Integer.parseInt(back_angle.replaceAll("[\\D]", "")));
+
+                if (Math.round(Integer.parseInt(back_angle.replaceAll("[\\D]", ""))) > 15) { //back_angle > xx
+                    timeCounter++;
+                    if (timeCounter > i) {
+                        Intent intent2notifications = new Intent(getContext(), NotificationReceiver.class);
+                        MESSAGE = "Bad posture for " + i + " seconds"; //mudar para tempo correto
+                        intent2notifications.putExtra("title", TITLE);
+                        intent2notifications.putExtra("message", MESSAGE);
+                        getActivity().sendBroadcast(intent2notifications);
+                        timeCounter = 0;
+                        dbA.AddAlert(TITLE, MESSAGE);
+                    }
+                } else { timeCounter = 0; }
             }
             catch(Exception e){
                 back_angle="---";
@@ -154,18 +150,6 @@ public class HomeFragment extends Fragment {
             result.putInt("points", points);
             getParentFragmentManager().setFragmentResult("requestPoints", result);
 
-            if (Math.round(Integer.parseInt(back_angle.replaceAll("[\\D]", ""))) > 15) { //back_angle > xx
-                timeCounter++;
-                if (timeCounter > i) {
-                    Intent intent2notifications = new Intent(getContext(), NotificationReceiver.class);
-                    MESSAGE = "Bad posture for " + i + " seconds"; //mudar para tempo correto
-                    intent2notifications.putExtra("title", TITLE);
-                    intent2notifications.putExtra("message", MESSAGE);
-                    getActivity().sendBroadcast(intent2notifications);
-                    timeCounter = 0;
-                    dbA.AddAlert(TITLE, MESSAGE);
-                }
-            } else { timeCounter = 0; }
             handler.postDelayed(this, 1000);
         }
     };
