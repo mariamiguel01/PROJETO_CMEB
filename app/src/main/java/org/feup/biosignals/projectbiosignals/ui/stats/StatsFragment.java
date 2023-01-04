@@ -111,10 +111,14 @@ public class StatsFragment extends Fragment {
 
     private void loadPieChartData() {
         ArrayList<PieEntry> entries = new ArrayList<>();
-        List<Double> aux = db.getPitchByDate();
 
-        entries.add(new PieEntry(1-db.calculatePercentage(aux), "Bad Posture"));
-        entries.add(new PieEntry(db.calculatePercentage(aux), "Good Posture"));
+        try {
+            List<Double> aux = db.getPitchByDate(); //!!
+            entries.add(new PieEntry(1-db.calculatePercentage(aux), "Bad Posture"));
+            entries.add(new PieEntry(db.calculatePercentage(aux), "Good Posture"));
+        } catch(Exception e) {
+            entries.add(new PieEntry(0, "No information yet"));
+        }
 
         PieDataSet dataSet = new PieDataSet(entries, "Posture Habits");
         dataSet.setColors(new int[] {Color.rgb(131,157,219), Color.rgb(140,191,219)});
@@ -130,19 +134,18 @@ public class StatsFragment extends Fragment {
     }
 
     private void loadLineChart(){
-        ArrayList<Double> valueList = new ArrayList<Double>();
+        //ArrayList<Double> valueList = new ArrayList<Double>();
         ArrayList<Entry> entries = new ArrayList<>();
 
         String month = db.getCurrentMonth();
         String year = db.getCurrentYear();
         for (int i = 1; i <= 31; i++) {
-            List<Double> aux1= db.getPitchForHist(month, year, i);
-            float aux2 = db.calculatePercentage(aux1);
-            if(Float.isNaN(aux2)){
-                entries.add(new Entry(i,0));
-            }
-            else{
+            try {
+                List<Double> aux1= db.getPitchForHist(month, year, i); //!!
+                float aux2 = db.calculatePercentage(aux1);
                 entries.add(new Entry(i,aux2));
+            } catch(Exception e) {
+                entries.add(new Entry(i,0));
             }
         }
 
@@ -156,18 +159,18 @@ public class StatsFragment extends Fragment {
         lineChart.invalidate();
         lineChart.getDescription().setEnabled(false);
         lineChart.getLineData().setDrawValues(false);
-
-
     }
 
     public void addPoints() {
-        List<Double> aux = db.getPitchByDate();
-        if (db.calculatePercentage(aux) >= 0.7) {
-            Log.i("Com_piechart", Integer.toString(points));
-            points = points + 5;
-            Bundle result = new Bundle(); // --> Enviar a informação
-            result.putInt("points", points);
-            getParentFragmentManager().setFragmentResult("statsPoints", result);
-        }
+        try {
+            List<Double> aux = db.getPitchByDate();
+            if (db.calculatePercentage(aux) >= 0.7) {
+                Log.i("Com_piechart", Integer.toString(points));
+                points = points + 5;
+                Bundle result = new Bundle(); // --> Enviar a informação
+                result.putInt("points", points);
+                getParentFragmentManager().setFragmentResult("statsPoints", result);
+            }
+        } catch (Exception ignored) { }
     }
 }
