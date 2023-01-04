@@ -116,7 +116,7 @@ public class HomeFragment extends Fragment {
                 Log.i("angle raw", db_home.getPitchPB());
                 back_angle = db_home.getPitchPB();
                 progressText.setText(back_angle);
-                progressBar.setProgress(50);
+                progressBar.setProgress(Integer.parseInt(back_angle.replaceAll("[\\D]", "")));
             }
             catch(Exception e){
                 back_angle="---";
@@ -154,7 +154,7 @@ public class HomeFragment extends Fragment {
             result.putInt("points", points);
             getParentFragmentManager().setFragmentResult("requestPoints", result);
 
-            if (10 > 15) { //back_angle > xx
+            if (Math.round(Integer.parseInt(back_angle.replaceAll("[\\D]", ""))) > 15) { //back_angle > xx
                 timeCounter++;
                 if (timeCounter > i) {
                     Intent intent2notifications = new Intent(getContext(), NotificationReceiver.class);
