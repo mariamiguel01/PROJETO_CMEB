@@ -139,10 +139,18 @@ public class StatsFragment extends Fragment {
 
         String month = db.getCurrentMonth();
         String year = db.getCurrentYear();
+        Log.i("year", year);
+        Log.i("month", month);
         for (int i = 1; i <= 31; i++) {
             try {
-                List<Double> aux1= db.getPitchForHist(month, year, i); //!!
+                String day;
+                if(i < 10 ) {
+                    day = "0"+i;
+                }
+                else { day = Integer.toString(i); }
+                List<Double> aux1= db.getPitchForHist(month, year, day); //!!
                 float aux2 = db.calculatePercentage(aux1);
+                Log.i("yoloo", ""+aux2);
                 entries.add(new Entry(i,aux2));
             } catch(Exception e) {
                 entries.add(new Entry(i,0));

@@ -99,8 +99,9 @@ public class DBManager {
         String month;
         Date currentTime = Calendar.getInstance().getTime();
         String date = DateFormat.getDateInstance().format(currentTime);
-        String[] splitDate = date.split(" ");
-        month = splitDate[0].trim();
+        //String date = "04/01/2023";
+        String[] splitDate = date.split("/");
+        month = splitDate[1].trim();
         return month;
     };
 
@@ -109,8 +110,9 @@ public class DBManager {
         String year;
         Date currentTime = Calendar.getInstance().getTime();
         String date = DateFormat.getDateInstance().format(currentTime);
-        String[] splitDate = date.split(",");
-        year = splitDate[1].trim();
+        //String date = "04/01/2023";
+        String[] splitDate = date.split("/");
+        year = splitDate[2].trim();
         return year;
     };
 
@@ -142,10 +144,10 @@ public class DBManager {
     }
 
     // function to use in statistics (get the pitch by the date)
-    public List<Double> getPitchForHist(String month, String year, int day) {
+    public List<Double> getPitchForHist(String month, String year, String day) {
         List<Double> info = new ArrayList<>();
         //Get current date with the variables introduced by the user
-        String date = month + " " + day + ", " + year ;
+        String date = day + "/" + month + "/" + year;
 
         Cursor cursor = db.rawQuery("Select * from EulerAngles WHERE date='"+date+"'" , null);
 
