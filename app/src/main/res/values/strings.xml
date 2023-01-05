@@ -10,11 +10,11 @@
     <string name="vibration">Vibration:</string>
     <string name="connection">Connect to device:</string>
     <string name="rules_settings">How to use this app?</string>
-    <string name="title_connection">Connection with the device</string>
-    <string name="rules_connection">After calibrating, it is necessary to make the connection with de device. To do so, you should click on the correspondent button in the settings page.
+    <string name="title_connection">Connection to the device</string>
+    <string name="rules_connection">After calibrating, it is necessary to make the connection to the device. To do so, you should click on the correspondent button in the settings page.
 A list of devices will be shown and you must select the Snapki option (SnapKi14) to make the Bluetooth connection. Make sure that your back is in a correct position when you do this, once the first value collected will be the one used to calibrate!</string>
     <string name="title_calibration">Calibration</string>
-    <string name="rules_calibration">Firstly, you should place the SnapKi on your back in the cervical area and allow the calibration with the device by clicking on the calibration button in the settings page.</string>
+    <string name="rules_calibration">Firstly, you should place the SnapKi on your back in the cervical area and allow the calibration of the correct position by clicking on the calibration button in the settings page.</string>
     <string name="title_points">Points and Levels</string>
     <string name="rules_points">In this app, you can colect points by reading news, watching the video with exercises (1 point per action) and by having a percentage of correct posture over 70% (5 points) in statistics.
 For each 5 points earned, you reach a new level of progress (6 levels are available).</string>
