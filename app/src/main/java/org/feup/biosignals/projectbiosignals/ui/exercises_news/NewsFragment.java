@@ -56,6 +56,8 @@ public class NewsFragment extends Fragment{
             }
         });
 
+        Intent intent2;
+        intent2 = new Intent(getActivity(), news1.class);
         Button button2 = (Button) root.findViewById(R.id.bt2);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,9 +66,9 @@ public class NewsFragment extends Fragment{
                 Bundle result = new Bundle(); // --> Enviar a informação
                 result.putInt("points", points);
                 getParentFragmentManager().setFragmentResult("changedPoints", result);
-                FragmentTransaction fr = getParentFragmentManager().beginTransaction();
-                fr.replace(R.id.nav_host_fragment_activity_main, new show_news2());
-                fr.commit();
+                Log.i("Comunication", Integer.toString(points));
+                startActivity(intent2);
+
             }
         });
 
