@@ -7,19 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import org.feup.biosignals.projectbiosignals.R;
 import org.feup.biosignals.projectbiosignals.video;
-import org.feup.biosignals.projectbiosignals.databinding.FragmentNewsBinding;
-import org.feup.biosignals.projectbiosignals.show_news1;
-import org.feup.biosignals.projectbiosignals.show_news2;
+import org.feup.biosignals.projectbiosignals.news1;
+import org.feup.biosignals.projectbiosignals.news2;
 
 public class NewsFragment extends Fragment{
 
@@ -42,6 +39,8 @@ public class NewsFragment extends Fragment{
             }
         });
 
+        Intent intent3;
+        intent3 = new Intent(getActivity(), news1.class);
         Button button1 = (Button) root.findViewById(R.id.bt1);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,14 +49,12 @@ public class NewsFragment extends Fragment{
                 Bundle result = new Bundle(); // --> Enviar a informação
                 result.putInt("points", points);
                 getParentFragmentManager().setFragmentResult("changedPoints", result);
-                FragmentTransaction fr = getParentFragmentManager().beginTransaction();
-                fr.replace(R.id.nav_host_fragment_activity_main, new show_news1());
-                fr.commit();
+                startActivity(intent3);
             }
         });
 
         Intent intent2;
-        intent2 = new Intent(getActivity(), news1.class);
+        intent2 = new Intent(getActivity(), news2.class);
         Button button2 = (Button) root.findViewById(R.id.bt2);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +63,6 @@ public class NewsFragment extends Fragment{
                 Bundle result = new Bundle(); // --> Enviar a informação
                 result.putInt("points", points);
                 getParentFragmentManager().setFragmentResult("changedPoints", result);
-                Log.i("Comunication", Integer.toString(points));
                 startActivity(intent2);
 
             }
