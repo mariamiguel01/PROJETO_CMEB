@@ -11,28 +11,6 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/title_connection"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/title_connection"
-            android:textSize="20sp"
-            android:justificationMode="inter_word"
-            android:textAppearance=
-                "@android:style/TextAppearance.DeviceDefault" />
-
-        <TextView
-            android:id="@+id/rules_connection"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autoLink="web"
-            android:padding="16dp"
-            android:textSize="16sp"
-            android:layout_marginBottom="25dip"
-            android:text="@string/rules_connection"
-            android:justificationMode="inter_word" />
-
-        <TextView
             android:id="@+id/title_calibration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,6 +30,28 @@
             android:textSize="16sp"
             android:layout_marginBottom="25dip"
             android:text="@string/rules_calibration"
+            android:justificationMode="inter_word" />
+
+        <TextView
+            android:id="@+id/title_connection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/title_connection"
+            android:textSize="20sp"
+            android:justificationMode="inter_word"
+            android:textAppearance=
+                "@android:style/TextAppearance.DeviceDefault" />
+
+        <TextView
+            android:id="@+id/rules_connection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:padding="16dp"
+            android:textSize="16sp"
+            android:layout_marginBottom="25dip"
+            android:text="@string/rules_connection"
             android:justificationMode="inter_word" />
 
         <TextView
