@@ -31,50 +31,6 @@ public class DatabaseALertsHelper extends SQLiteOpenHelper {
 		db.execSQL("CREATE TABLE table_alerts (_id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, title TEXT, message TEXT);");
 	}
 
-	/*public void AddAlert(String title, String message){
-		// Gets the data repository in write mode
-		SQLiteDatabase db = getWritableDatabase();
-		//Get current date
-		Date currentTime = Calendar.getInstance().getTime();
-		String date = DateFormat.getDateInstance().format(currentTime);
-		// Create a new map of values, where column names are the keys
-		ContentValues alertMessage = new ContentValues();
-		alertMessage.put(DATE, date);
-		alertMessage.put(TITLE, title);
-		alertMessage.put(MESSAGE, message);
-		// Insert the new row, returning the primary key value of the new row
-		//long newRowId = db.insert(FeedEntry.TABLE_NAME, null, values);
-		db.insert("table_alerts", null, alertMessage);
-	}
-
-	public ArrayList<classAlertItem> getAlertsByDate() {
-		Log.i("db helper", "getAlert");
-		SQLiteDatabase db = getReadableDatabase();
-
-		// Define a projection that specifies which columns from the database
-		// you will actually use after this query.
-		String[] cols = {TITLE, MESSAGE};
-
-		//Get current date
-		Date currentTime = Calendar.getInstance().getTime();
-		String[] current_date = {DateFormat.getDateInstance().format(currentTime)};
-		Cursor cursor = db.query("table_alerts", cols, "date=?", current_date, null, null, null);
-
-		ArrayList<classAlertItem> info = new ArrayList<>();
-		if (cursor.getCount() != 0) {
-			while (cursor.moveToNext()) {
-				classAlertItem row = new classAlertItem(cursor.getString(0),cursor.getString(1));
-				info.add(row);
-			}
-			cursor.close();
-		} else {
-			classAlertItem row = new classAlertItem("No alerts today","---");
-			info.add(row);
-			cursor.close();
-		}
-		return info;
-	}*/
-
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		android.util.Log.w("Constants", "Upgrading database, which will destroy all old data");
