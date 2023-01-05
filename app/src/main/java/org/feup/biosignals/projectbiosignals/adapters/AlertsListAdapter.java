@@ -16,7 +16,6 @@ import java.util.ArrayList;
 
 public class AlertsListAdapter extends RecyclerView.Adapter<AlertsListAdapter.MyViewHolder> {
     private ArrayList<classAlertItem> mAlerts;
-    //private OnItemListener mOnItemListener;
     Context context;
 
     public AlertsListAdapter(Context ct, ArrayList<classAlertItem> mAlerts) {
